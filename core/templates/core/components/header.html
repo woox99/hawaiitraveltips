@@ -1,0 +1,80 @@
+{% load static %}
+<header>
+
+        <!-- header area start -->
+        <div class="togo-header-3-ptb togo-hdr-transparent" data-bg-color="#fff">
+            <div class="container-fluid p-0">
+                <div class="togo-header-wrapper">
+                    <div class="row align-items-center">
+                        <div class="col-xl-3 col-lg-6 col-6">
+                            <div class="togo-header-logo">
+                                <a href="{% url 'core:home' %}">
+                                    <img width="120" src="{% static 'core/img/logo.webp' %}" alt="Logo">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 d-none d-xl-block">
+                            <div class="togo-header-style-3 text-center">
+                                <div class="togo-header-menu togo-header-submenu">
+                                    <nav class="togo-mobile-menu">
+                                        <ul>
+                                            <li class="togo-dropdown active">
+                                                <a href="{% url 'core:home' %}">Select Island</a>
+                                                <ul class="togo-submenu mobile-slide">
+                                                    {% for island in islands %}
+                                                    <li><a href="{% url 'core:island' island.slug %}">{{ island.name }}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                            <li class="togo-dropdown">
+                                                <a href="#">Tours & Activities</a>
+                                                <ul class="togo-submenu mobile-slide">
+                                                    {% for island in islands %}
+                                                    <li><a href="{% url 'core:bookings' island.slug %}">{{island.name}}</a></li>
+                                                    {%endfor %}
+                                                </ul>
+                                            </li>
+                                            <li class="togo-dropdown">
+                                                <a href="#">Guides</a>
+                                                <ul class="togo-submenu mobile-slide">
+                                                    {% for island in islands %}
+                                                    <li><a href="{% url 'core:guides' island.slug %}">{{island.name}}</a></li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </li>
+                                            <li class="togo-dropdown">
+                                                <a href="#">Company</a>
+                                                <ul class="togo-submenu mobile-slide">
+                                                    <li><a href="about.html">About Us</a></li>
+                                                    <li><a href="contact.html">Contact</a></li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-6">
+                            <div class="togo-header-3-right d-flex align-items-center justify-content-end">
+                                <div class="togo-header-3-bar ml-20">
+                                    <button class="togo-offcanvas-3-open-btn offcanvas-open-btn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M4.5 6.5H19.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M4.5 12H19.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                            <path d="M4.5 17.5H19.5" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- header area end -->
+
+    </header>

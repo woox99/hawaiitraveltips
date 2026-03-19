@@ -1,0 +1,113 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  8.3 adventure css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-adventure{
+    &-bg-shape{
+        position: absolute;
+        bottom: 26%;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        & img{
+            width: 100%;
+        }
+    }
+    &-heading{
+        & .togo-section-title{
+            margin-bottom: 15px;
+        }
+        & p{
+            font-size: 18px;
+            & br{
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-item{
+        &-point{
+            margin-bottom: 17px;
+        }
+        &-number{
+            top: 5px;
+            left: 24px;
+            position: absolute;
+            font-size: 60px;
+            font-weight: 500;
+            display: inline-block;
+            font-family: var(--togo-ff-outfit);
+            color: rgba(240, 224, 210, 0.60);
+        }
+        &-icon{
+            z-index: 1;
+            position: relative;
+            display: inline-block;
+        }
+        &-title{
+            font-size: 20px;
+        }
+        & p{
+            & br{
+                @media #{$xl,$lg,$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-review{
+    &-ptb{
+        margin-top: -290px;
+        padding-top: 370px;
+        padding-bottom: 40px;
+        @media #{$md,$xs} {
+            margin-top: 0;
+            padding-top: 60px;
+        }
+    }
+    &-title{
+        font-size: 20px;
+        font-weight: 400;
+        line-height: 1.4;
+        margin-bottom: 38px;
+        font-family: var(--togo-ff-playfair);
+    }
+    &-item{
+        &-wrap{
+            gap: 120px;
+            justify-content: end;
+            @media #{$md,$xs} {
+                justify-content: start;
+            }
+        }
+        &-title{
+            font-size: 46px;
+            & span{
+                @extend %svg-4;
+                margin-right: 5px;
+                display: inline-block;
+            }
+        }
+    }
+    &-user{
+        gap: 10px;
+        padding: 10px 15px;
+        margin-left: 115px;
+        border-radius: 20px;
+        align-items: center;
+        display: inline-flex;
+        background-color: var(--togo-common-white);
+        @media #{$lg,$md,$xs} {
+            margin-left: 0;
+        }
+        & p{
+            margin: 0;
+        }
+    }
+}

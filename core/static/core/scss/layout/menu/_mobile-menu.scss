@@ -1,0 +1,96 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  4.1 Mobile Menu
+/*----------------------------------------*/
+
+
+.togo-offcanvas-menu {
+    margin-bottom: 80px;
+    & ul{
+        list-style: none;
+        & li {
+            position: relative;
+            & > a{
+                padding: 10px 0;
+                display: block;
+                font-size: 20px;
+                font-weight: 500;
+            }
+            &.active{
+                & > a{
+                    color: var(--togo-common-black);
+                    
+                }
+                & > .togo-menu-close{
+                    & i{
+                        top: 10px;
+                        @include togo-transform(rotate(135deg));
+                    }
+                }
+            }
+            & .submenu {
+                display: none;
+                & .submenu{
+                    margin-left: 30px;
+                }
+            }
+        }
+    }
+    & .togo-megamenu-wrapper{
+        &.megamenu-white-bg {
+            backdrop-filter: none;
+            background: transparent;
+            box-shadow: none;
+        }
+    }
+    & .mega-menu {
+        width: auto;
+        opacity: 1;
+        visibility: visible;
+        transition: none;
+        position: static;
+        display: none;
+        @include togo-transform(perspective(0) rotateX(0));
+    }
+    & .togo-megamenu-list ul li {
+        padding: 0;
+        & a{
+            font-size: 17px;
+            padding: 12px 20px;
+        }
+    }
+    & .togo-submenu > li > a{
+        padding: 8px 20px;
+        border-radius: 10px;
+        font-size: 17px;
+        &:hover{
+            background-color: #f8f8fb;
+            color: var(--togo-common-black);
+        }
+    }
+    & .togo-megamenu-box {
+        padding: 20px 0;
+        & li {
+            & a{
+                font-size: 17px;
+                padding: 8px 20px;
+                border-radius: 10px;
+                &:hover{
+                    background-color: #f8f8fb;
+                    color: var(--togo-common-black);
+                }
+            }
+        }
+    }
+}
+.togo-menu-close {
+    position: absolute;
+    right: 7px;
+    top: 12px;
+    & i{
+        transition: all 0.3s;
+        font-size: 18px;
+        font-weight: 500;
+    }
+}

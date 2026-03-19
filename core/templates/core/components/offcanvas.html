@@ -1,0 +1,26 @@
+{% load static %}
+    <div class="offcanvas-area ">
+        <div class="offcanvas-wrapper">
+            <div class="offcanvas-top d-flex align-items-center justify-content-between">
+                <div class="offcanvas-logo">
+                    <a href="{% url 'core:home' %}">
+                        <img width="120" src="{% static 'core/img/logo.webp' %}" alt="Logo">
+                    </a>
+                </div>
+                <div class="offcanvas-close">
+                    <button class="offcanvas-close-btn">
+                        <svg width="37" height="38" viewBox="0 0 37 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9.19141 9.80762L27.5762 28.1924" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M9.19141 28.1924L27.5762 9.80761" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div class="offcanvas-content">
+                <div class="togo-mobilemenu-content fix mb-30"></div>
+            </div>
+        </div>
+    </div>
+    <div class="body-overlay"></div>

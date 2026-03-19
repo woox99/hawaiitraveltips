@@ -1,0 +1,41 @@
+/* transform */
+@font-face {
+  font-family: "Otomanopee";
+  src: url("../fonts/OtomanopeeOne-Regular.ttf");
+  src: url("../fonts/OtomanopeeOne-Regular.ttf") format("embedded-opentype"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff2"), url("../fonts/OtomanopeeOne-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+:root {
+  /**
+  @font family declaration
+  */
+  --togo-ff-body: 'DM Sans', sans-serif;
+  --togo-ff-heading: 'Playfair Display', serif;
+  --togo-ff-p: 'DM Sans', sans-serif;
+  --togo-ff-outfit : 'Outfit', sans-serif;
+  --togo-ff-marcellus : 'Marcellus', serif;
+  --togo-ff-jost : 'Jost', sans-serif;
+  --togo-ff-playfair : 'Playfair Display', serif;
+  --togo-ff-otomanopee: 'Otomanopee', sans-serif;
+  --togo-ff-fontawesome: "Font Awesome 6 Pro";
+  /**
+  @color declaration
+  */
+  --togo-common-white: #FFFFFF;
+  --togo-common-black: #111111;
+  --togo-common-black-2: #1E1E1E;
+  --togo-common-red: #FF252B;
+  --togo-common-orange: #ED2B04;
+  --togo-common-yellow: #FFE453;
+  --togo-common-green: #46E86A;
+  --togo-common-brown: #664117;
+  --togo-theme-primary: #FD4621;
+  --togo-theme-secondary: #FBDFD1;
+  --togo-text-body: #333333;
+  --togo-gray-1: #DDDDDD;
+  --togo-gray-2: #EEEEEE;
+}
+
+/*# sourceMappingURL=index.css.map */

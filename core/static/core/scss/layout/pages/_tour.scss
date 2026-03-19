@@ -1,0 +1,2214 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.1 tour css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-tour{
+    &-card{
+        z-index: 0;
+        position: relative;
+        border-radius: 16px;
+        border: 1px solid var(--togo-gray-2);
+        background-color: var(--togo-common-white);
+        &:hover{
+            & .togo-tour-card{
+                &-thumb{
+                    & img{
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+        &-thumb{
+            overflow: hidden;
+            border-radius: 16px 16px 0 0;
+            & img{
+                width: 100%;
+                border-radius: 16px 16px 0 0;
+                transition: all .5s ease-in-out;
+            }
+        }
+        &-wishlist{
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 2;
+            & span{
+                height: 32px;
+                width: 32px;
+                cursor: pointer;
+                text-align: center;
+                place-content: center;
+                border-radius: 50%;
+                display: inline-grid;
+                @include togo-transition();
+                color: var(--togo-common-black);
+                background-color: var(--togo-common-white);
+                & svg{
+                    @include togo-transition();
+                }
+                &:hover{
+                    color: var(--togo-common-white);
+                    background-color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-content{
+            padding: 0 25px 25px;
+            @media #{$sm} {
+                padding: 0 20px 25px;
+            }
+        }
+        &-title{
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 10px;
+            @media #{$xs} {
+                font-size: 18px;
+            }
+            & a{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-meta{
+            margin: 0;
+            gap: 5px;
+            display: flex;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1;
+            position: relative;
+            font-family: var(--togo-ff-body);
+            &:not(:last-of-type){
+                &::after{
+                    position: absolute;
+                    content: '';
+                    top: 6px;
+                    right: -12px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: var(--togo-gray-1)
+                }
+            }
+            & svg{
+                @extend %svg-2;
+            }
+            &-wrap{
+                gap: 20px;
+                margin-bottom: 10px;
+                display: inline-flex;
+            }
+        }
+        &-price{
+            gap: 4px;
+            display: flex;
+            align-items: center;
+            &-wrap{
+                gap: 25px;
+                display: flex;
+                align-items: center;
+            }
+            &-prefix{
+                font-size: 16px;
+                line-height: 1;
+            }
+            &-regular{
+                font-size: 24px;
+                font-weight: 400;
+                @extend %svg-1;
+                color: var(--togo-common-black);
+                font-family: var(--togo-ff-outfit);
+                @media #{$xs} {
+                    font-size: 22px;
+                }
+            }
+        }
+        &-map{
+            & span{
+                width: 36px;
+                height: 36px;
+                text-align: center;
+                border-radius: 50%;
+                display: inline-grid;
+                place-content: center;
+                @include togo-transition();
+                background-color: #F9F9F9;
+                &:hover{
+                    color: var(--togo-common-white);
+                    background-color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-review{
+            position: relative;
+            line-height: 1;
+            &::after{
+                position: absolute;
+                top: -4px;
+                right: -14px;
+                height: 24px;
+                width: 1px;
+                content: '';
+                background-color: var(--togo-gray-2);
+            }
+        }
+        &-rating{
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--togo-theme-primary);
+            & svg{
+                @extend %svg-2;
+            }
+            &-count{
+                font-size: 16px;
+                color: var(--togo-common-black);
+            }
+            
+        }
+        &-sell{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            & span{
+                font-size: 16px;
+                font-weight: 400;
+                padding: 3px 13px;
+                border-radius: 50px;
+                display: inline-block;
+                letter-spacing: 0.16px;
+                background-color: #FC0;
+                color: var(--togo-common-black);
+            }
+        }
+        &-cancel{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            & span{
+                font-size: 16px;
+                font-weight: 400;
+                padding: 3px 13px;
+                border-radius: 50px;
+                display: inline-block;
+                letter-spacing: 0.16px;
+                color: var(--togo-common-black);
+                background-color: var(--togo-common-white);
+            }
+        }
+        &-offer{
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 2;
+            & span{
+                font-size: 16px;
+                font-weight: 400;
+                padding: 3px 13px;
+                border-radius: 50px;
+                display: inline-block;
+                letter-spacing: 0.16px;
+                background-color: #FF252B;
+                color: var(--togo-common-white);
+            }
+        }
+        &-active{
+            position: initial;
+            & .slider_pagination{
+                position: absolute;
+                bottom: 5px;
+                z-index: 2;
+                text-align: center;
+                & .swiper-pagination-bullet{
+                    transform: scale(.8);
+                    background-color: var(--togo-common-white);
+                    &-active{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+
+        &.style-3{
+            border: none;
+            background-color: var(--togo-common-white);
+            &:hover{
+                & .togo-tour{
+                    &-2-card-thumb{
+                        & img{
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+            & .togo-tour{
+                &-2{
+                    &-card-thumb{
+                        width: 100%;
+                        border-radius: 16px 16px 0 0;
+                        & img{
+                            border-radius: 16px 16px 0 0;
+                        }
+                    }
+                }
+                &-card{
+                    &-title{
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                    &-price{
+                        display: grid;
+                        &-btn{
+                            & .togo-btn-primary{
+                                padding: 7px 20px 7px;
+                            }
+                        }
+                    }
+                    &-price-regular{
+                        font-size: 18px;
+                        font-weight: 500;
+                        & i{
+                            font-size: 16px;
+                            font-style: normal;
+                            color: var(--togo-text-body);
+                        }
+                    }
+                }
+            }
+        }
+        &.style-9{
+            &:hover{
+                & .togo-tour{
+                    &-2-card-thumb{
+                        & img{
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+            & .togo-tour-2-card{
+                &-content{
+                    padding: 0 25px 25px;
+                    @media #{$xs} {
+                        padding: 0 20px 20px;
+                    }
+                }
+                &-title{
+                    margin-bottom: 12px;
+                }
+                &-thumb{
+                    width: 100%;
+                    border-radius: 16px 16px 0 0;
+                    & img{
+                        border-radius: 16px 16px 0 0;
+                    }
+                }
+            }
+        }
+        &.style-list{
+            display: flex;
+            align-items: center;
+            padding-right: 24px;
+            justify-content: space-between;
+            @media #{$xl,$xs} {
+                padding-right: 0;
+                padding-bottom: 20px;
+            }
+            &.tour-filter{
+                @media #{$lg,$md,$xs} {
+                    padding-right: 0;
+                    padding-bottom: 0;
+                }
+                & .togo-tour{
+                    &-list-left{
+                        @media #{$lg,$md,$xs} {
+                            flex-wrap: wrap;
+                        }
+                        @media #{$xs} {
+                            gap: 20px;
+                        }
+                    }
+                    &-2-card{
+                        &-thumb{
+                            @media #{$lg,$md,$xs} {
+                                width: 100%;
+                                max-width: 100%;
+                                border-radius: 16px;
+                            }
+                        }
+                        &-content{
+                            @media #{$lg,$md,$xs} {
+                                padding: 0 20px 20px;
+                            }
+                        }
+                    }
+                }
+            }
+            & .togo-tour{
+                &-2-card{
+                    &-thumb{
+                        max-width: 300px;
+                        border-radius: 16px 0 0 16px;
+                        @media #{$xl,$xs} {
+                            width: 100%;
+                            max-width: 100%;
+                            border-radius: 16px;
+                        }
+                        & img{
+                            width: 100%;
+                            border-radius: 16px 0 0 16px;
+                        }
+                        &:hover{
+                            & img{
+                                transform: scale(1.1);
+                            }
+                        }
+                    }
+                    &-content{
+                        width: 100%;
+                        @media #{$xl,$xs} {
+                            padding: 0 20px;
+                        }
+                    }
+                }
+            }
+            &.list-filter{
+                @media #{$xl} {
+                    padding-right: 15px;
+                }
+                @media #{$md,$xs} {
+                    flex-wrap: wrap;
+                }
+                & .togo-tour{
+                    &-list{
+                        &-left {
+                            @media #{$xl} {
+                                gap: 10px;
+                                display: flex;
+                                flex-wrap: inherit;
+                            }
+                        }
+                        &-right{
+                            @media #{$xl} {
+                                padding-left: 15px;
+                            }
+                            @media #{$md,$xs} {
+                                border: none;
+                                padding-left: 25px;
+                            }
+                        }
+                    }
+                    &-card{
+                        &-bottom{
+                            & p{
+                                & br{
+                                    @media #{$xl,$lg,$md,$xs} {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                & .togo-tour-2-card{
+                    &-title{
+                        & br{
+                            @media #{$xl,$lg,$md,$xs} {
+                                display: none;
+                            }
+                        }
+                    }
+                    &-thumb{
+                        @media #{$xl} {
+                            max-width: 300px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-btn{
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--togo-theme-primary);
+        &:hover{
+            color: var(--togo-theme-primary);
+        }
+        &.color-black{
+            color: var(--togo-common-black);
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-tour-2{
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 0px;
+        }
+    }
+    &-card{
+        height: 100%;
+        &:hover{
+            & .togo-tour-2-card-thumb{
+                & img{
+                    transform: scale(1.1);
+                }
+            }
+        }
+        &-title{
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 1.35;
+            margin-bottom: 8px;
+            color: var(--togo-common-black);
+            & br{
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+            & a{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-thumb{
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            & img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 16px;
+                transition: all .5s ease-in-out;
+            }
+            &::after{
+                position: absolute;
+                content: '';
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                height: 45%;
+                z-index: 1;
+                pointer-events: none;
+                border-radius: 0 0 16px 16px;
+                background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.30) 100%);
+            }
+            & .togo-tour-card-active{
+                & .swiper-slide{
+                    height: auto;
+                }
+            }
+        }
+        &-content{
+            & .togo-tour-card-price-regular{
+                font-size: 16px;
+                font-weight: 500;
+            }
+        }
+        &-review-box{
+            gap: 20px;
+            & .togo-tour-card-review{
+                &::after {
+                    top: 6px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: var(--togo-gray-1);
+                }
+            }
+        }
+    }
+    &-active{
+        height: 100%;
+        & .swiper-slide {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+}
+
+
+.#{$theme-prefix}-tour-3{
+    &-ptb{
+        @media #{$md} {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        @media #{$xs} {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+    }
+    &-overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: linear-gradient(180deg, #111 0%, rgba(115, 115, 115, 0.00) 100%);
+    }
+    &-shape{
+        & .shape{
+            &-1{
+                position: absolute;
+                top: -25px;
+                left: 0;
+                width: 100%;
+                @media #{$xs} {
+                    top: 0;
+                }
+                & img{
+                    width: 100%;
+                }
+            }
+            &-2{
+                position: absolute;
+                bottom: -25px;
+                left: 0;
+                width: 100%;
+                @media #{$xs} {
+                    bottom: 0;
+                }
+                & img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 0;
+        }
+        & .togo-section-title{
+            color: var(--togo-common-white);
+        }
+    }
+    &-right{
+        & .togo-destination-arrows {
+            & button{
+                color: var(--togo-common-white);
+                &:hover{
+                    color: var(--togo-common-black);
+                    background-color: var(--togo-common-white);
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-tour-4{
+    &-ptb{
+        @media #{$lg,$md,$xs} {
+            padding-top: 0;
+        }
+    }
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 20px;
+        }
+        & p{
+            & br{
+                @media #{$lg,$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-tour-5{
+    &-heading{
+        & p{
+            font-size: 18px;
+        }
+    }
+}
+
+
+.#{$theme-prefix}-tour-6{
+    &-item{
+        &:hover{
+            & .togo-tour-6{
+                &-thumb{
+                    & img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+    }
+    &-thumb{
+        position: relative;
+        overflow: hidden;
+        border-radius: 16px;
+        &::after{
+            top: 0;
+            left: 0;
+            content: '';
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border-radius: 16px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.50) 100%);   
+        }
+        & img{
+            width: 100%;
+            border-radius: 16px;
+            transition: all 0.5s ease-in-out;
+        }
+    }
+    &-content{
+        position: absolute;
+        bottom: 24px;
+        left: 24px;
+        right: 15px;
+        & .togo-tour-card{
+            &-title{
+                color: var(--togo-common-white);
+                font-family: var(--togo-ff-marcellus);
+                & a{
+                    display: inline;
+                    transition: all 0.3s linear;
+                    background-repeat: no-repeat;
+                    background-size: 0% 1px, 0 1px;
+                    background-position: 100% 100%, 0 100%;
+                    background-image: linear-gradient(currentcolor, currentcolor), linear-gradient(currentcolor, currentcolor);
+                    &:hover{
+                        color: var(--togo-common-white);
+                        background-size: 0% 1px, 100% 1px;
+                    }
+                }
+            }
+            &-price{
+                & span{
+                    color: var(--togo-common-white);
+                }
+            }
+            &-rating{
+                &-count{
+                    color: var(--togo-common-white);
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-tour{
+    &-7,
+    &-9,
+    &-11{
+        &-heading{
+            @media #{$md,$xs} {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-tour-12{
+    &-ptb{
+        @media #{$lg,$md,$xs} {
+            padding-top: 0;
+        }
+    }
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 20px;
+        }
+    }
+    &-tab{
+        &-wrapper{
+            & .togo-tour-2-card-title{
+                font-size: 16px;
+            }
+        }
+        & nav{
+            & .nav-tabs{
+                border: none;
+                & .nav-link{
+                    padding: 0;
+                    border: none;
+                    font-size: 18px;
+                    color: #555555;
+                    font-weight: 500;
+                    margin-left: 32px;
+                    position: relative;
+                    font-family: var(--togo-ff-outfit);
+                    @media #{$md,$xs} {
+                        margin-left: 0;
+                        margin-right: 25px;
+                    }
+                    @media #{$xs} {
+                        margin-bottom: 10px;
+                    }
+                    &:focus,
+                    &:hover{
+                        border: none;
+                        outline: none;
+                    }
+                    &.active{
+                        color: var(--togo-theme-primary);
+                        &.hover-line{
+                            &::after {
+                                width: 100%;
+                                right: auto;
+                                left: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-tour{
+    &-sidebar{
+        border-radius: 16px;
+        border: 1px solid #EEE;
+        background: var(--togo-common-white);
+        box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+    }
+    &-widget{
+        padding: 24px;
+        &:not(:last-of-type){
+            border-bottom: 1px solid #EEE;
+        }
+        &-title{
+            margin: 0;
+            cursor: pointer;
+            font-size: 18px;
+            position: relative;
+            transition: 0.3s ease-in;
+            &:hover{
+                color: var(--togo-theme-primary);
+            }
+            & .icon {
+                position: absolute;
+                right: 1%;
+                display: inline-block;
+                top: calc(50% - 10px);
+                transform: rotate(180deg);
+                background-color: transparent;
+                transition: transform 0.3s ease-in;
+            }
+            &.active{
+                margin-bottom: 26px;
+                & .icon{
+                    transform: rotate(0deg);
+                }
+            }
+        }
+        &-filter{
+            .ui-widget.ui-widget-content{
+                position: relative;
+                height: 6px;
+                border: 0;
+                z-index: 0;
+                border-radius: 6px;
+                background-color: #dddd;
+            }
+
+            .ui-slider-horizontal .ui-slider-range{
+                border-radius: 0;
+                background-color: var(--togo-theme-primary);
+            }
+
+            .ui-slider .ui-slider-handle {
+                position: absolute;
+                top: -9px;
+                width: 24px;
+                height: 24px;
+                padding: 0;
+                margin: 0;
+                stroke-width: 1px;
+                border-radius: 50%;
+                background: var(--togo-common-white);
+                filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.05));
+                &:focus-visible{
+                    outline: none;
+                }
+                &.ui-state-active{
+                    border: 1px solid #c5c5c5;
+                }
+            }
+            
+            & .input-range {
+                gap: 18px;
+                &-item{
+                    width: 50%;
+                    &-title{
+                        font-size: 16px;
+                        font-weight: 500;
+                        font-family: var(--togo-ff-body);
+                    }
+                    & input {
+                        height: 42px;
+                        font-size: 16px;
+                        padding: 0 12px;
+                        font-weight: 400;
+                        border-radius: 8px;
+                        border: 1px solid #DDD;
+                        background-color: transparent;
+                        color: var(--togo-text-body);
+                    }
+                }
+            }
+
+            &-checkbox{
+                & ul{
+                    & li{
+                        list-style: none;
+                        margin-bottom: 10px;
+                    }
+                }
+                & .togo-show-more,
+                & .togo-show-less{
+                    & a{
+                        font-size: 16px;
+                        font-weight: 500;
+                        overflow: hidden;
+                        position: relative;
+                        display: inline-block;
+                        color: var(--togo-common-black);
+                        & span{
+                            &::after,
+                            &::before{
+                                bottom: 1px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-grid{
+        &-top-bar{
+            @media #{$xs} {
+                gap: 20px;
+                flex-wrap: wrap;
+            }
+        }
+        &-filter{
+            &-clear{
+                flex: 0 0 auto;
+                & i{
+                    font-size: 18px;
+                    font-weight: 400;
+                    font-style: normal;
+                    display: inline-block;
+                    color: #555;
+                    & a{
+                        margin-left: 4px;
+                        color: var(--togo-common-black);
+                    }
+                }
+            }
+        }
+        &-select{
+            width: 100%;
+            display: inline-block;
+            & .nice-select{
+                font-size: 15px;
+                font-weight: 500;
+                border-radius: 21px;
+                padding-right: 40px;
+                & .list{
+                    width: 240px;
+                    padding: 10px 0;
+                    left: auto !important;
+                }
+                & .option{
+                    min-height: 30px;
+                    line-height: 30px;
+                    padding: 0 20px 0 20px;
+                    &.selected {
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+            &-right{
+                gap: 10px;
+                display: flex;
+                align-items: center;
+            }
+        }
+        &-wrapper{
+            @media #{$lg,$md,$xs} {
+                margin-bottom: 40px;
+            }
+        }
+    }
+    &-list{
+        &-left{
+            gap: 25px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            @media #{$xl,$xs} {
+                flex-wrap: wrap;
+            }
+            @media #{$xs} {
+                gap: 15px;
+            }
+        }
+        &-map{
+            &-btn{
+                & .togo-btn-primary{
+                    &.bdr-style.orange-bdr{
+                        color: var(--togo-common-black);
+                        border-color: var(--togo-common-black);
+                        &:hover{
+                            color: var(--togo-common-white);
+                            border-color: var(--togo-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+        &-right{
+            padding: 20px 0;
+            flex: 0 0 auto;
+            padding-left: 45px;
+            border-left: 1px solid #EEE;
+        }
+    }
+    &-filter{
+        &-btn{
+            & span{
+                font-size: 16px;
+                cursor: pointer;
+                font-weight: 500;
+                padding: 5px 30px;
+                border-radius: 21px;
+                display: inline-block;
+                color: var(--togo-common-black);
+                transition: all .3s ease-in-out;
+                border: 1px solid var(--togo-common-black);
+                & svg{
+                    margin-right: 4px;
+                }
+                &:hover{
+                    color: var(--togo-theme-primary);
+                    border-color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-map{
+        width: 100%;
+        height: 100%;
+        & iframe {
+            width: 100%;
+            height: 100%;
+        }
+        &-wrapper{
+            height: 100%;
+            @media #{$lg,$md,$xs} {
+                height: 650px;
+            }
+            & .togo-ct-details-map-item{
+                @media #{$xl} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-space{
+        margin-left: 220px;
+        @media #{$x4l} {
+            margin-left: 165px;
+        }
+        @media #{$x3l} {
+            margin-left: 65px;
+        }
+        @media #{$xxl,$xl,$lg,$md,$xs} {
+            margin-left: 0;
+        }
+        @media #{$lg,$md,$xs} {
+            margin-bottom: 40px;
+        }
+    }
+    &-modal{
+        &-style{
+            & .modal-dialog{
+                max-width: 750px;
+                & .modal-header{
+                    padding-bottom: 0;
+                }
+                & .modal-title{
+                    font-size: 24px;
+                }
+            }
+            &.review-box{
+                & .modal-dialog{
+                    max-width: 550px;
+                }
+            }
+        }
+        &-social{
+            &-icons{
+                & ul{
+                    display: flex;
+                    gap: 8px;
+                    flex-wrap: wrap;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    & li{
+                        list-style: none;
+                        & a{
+                            & span{
+                                width: 36px;
+                                height: 36px;
+                                border-radius: 50%;
+                                display: inline-grid;
+                                place-content: center;
+                                border: 1px solid #ddd;
+                                transition: all .3s ease-in-out;
+                                & svg{
+                                    width: 22px;
+                                }
+                                &:hover{
+                                    border-color: transparent;
+                                    color: var(--togo-common-white);
+                                    background-color: var(--togo-theme-primary);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-author{
+        &-info{
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+            &-content{
+                & span{
+                    display: block;
+                    font-size: 16px;
+                    font-weight: 400;
+                    margin-bottom: 10px;
+                    color: var(--togo-common-black);
+                    & i{
+                        font-weight: 500;
+                        font-style: normal;
+                    }
+                    & svg{
+                        @extend %svg-2;
+                        margin-right: 3px;
+                    }
+                }
+                & .bottom{
+                    & svg{
+                        @extend %svg-1;
+                        margin-right: 5px;
+                    }
+                }
+            }
+        }
+        &-thumb{
+            & img{
+                border-radius: 50%;
+            }
+            &-wrap{
+                display: flex;
+                gap: 12px;
+            }
+            &-content{
+                & span{
+                    font-size: 18px;
+                    font-weight: 500;
+                    margin-bottom: 3px;
+                    display: inline-block;
+                    color: var(--togo-common-black);
+                    font-family: var(--togo-ff-outfit);
+                    & svg{
+                        margin-left: 2px;
+                    }
+                }
+                & p{
+                    font-size: 14px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+}
+
+.togo{
+    &-from-checkbox{
+        & input{
+            display: none;
+            &:checked {
+                & ~ label{
+                    &::before {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                    &::after {
+                        border-color: var(--togo-common-black);
+                    }
+                }
+            }
+        }
+        & label{
+            z-index: 1;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 400;
+            position: relative;
+            padding-left: 26px;
+            color: var(--togo-text-body);
+            &::before{
+                position: absolute;
+                content: url("../img/icon/check.svg");
+                top: 4px;
+                left: 0;
+                width: 18px;
+                height: 18px;
+                line-height: 16px;
+                text-align: center;
+                visibility: hidden;
+                opacity: 0;
+                filter: invert(1);
+                @include togo-transition();
+            }
+            &::after{
+                position: absolute;
+                content: "";
+                top: 4px;
+                left: 0;
+                width: 18px;
+                height: 18px;
+                line-height: 16px;
+                text-align: center;
+                z-index: -1;
+                border-radius: 4px;
+                @include togo-transition();
+                border: 1.5px solid #DDDDDD;
+                background: var(--togo-common-white);
+            }
+            & br{
+                @media #{$lg,$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-rating{
+        &-progress{
+            &-item{
+                @media #{$xs} {
+                    margin-bottom: 15px;
+                }
+                &-text{
+                    display: flex;
+                    margin-bottom: 4px;
+                    align-items: center;
+                    justify-content: space-between;
+                    & span{
+                        font-size: 16px;
+                        font-weight: 500;
+                    }
+                }
+                &-bar{
+                    width: 100%;
+                    border-radius: 4px;
+                    background-color: #EEE;
+                }
+                &-single{
+                    height: 6px;
+                    border-radius: 4px;
+                    background-color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-product{
+        &-quantity{
+            display: flex;
+            position: relative;
+            align-items: center;
+            & .togo-cart-input{
+                padding: 0;
+                width: 34px;
+                height: 20px;
+                border: none;
+                text-align: center;
+                pointer-events: none;
+            }
+        }
+    }
+    &-cart{
+        &-incrise{
+            &.togo-item-plus,
+            &.togo-item-minus{
+                position: static;
+                width: 18px;
+                height: 18px;
+                cursor: pointer;
+                border-radius: 50%;
+                text-align: center;
+                display: inline-grid;
+                place-content: center;
+                transform: translateY(0);
+                color: var(--togo-common-black);
+                border: 1px solid var(--togo-common-black);
+                & svg{
+                    width: 10px;
+                    transform: translateY(0px);
+                }
+                &:hover{
+                    color: var(--togo-common-black);
+                }
+            }
+        }
+        
+    }
+    &-checkout{
+        &-box{
+            border-radius: 16px;
+            padding: 24px 24px 4px;
+            border: 1px solid #EEE;
+            &.togo-checkout-payment{
+                padding-bottom: 4px;
+            }
+        }
+        &-contact{
+            &-title{
+                font-size: 18px;
+            }
+            &-form{
+                & .togo-contact-input{
+                    & label{
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        &-service{
+            &-bdr{
+                margin-bottom: 15px;
+                border-bottom: 1px solid #EEE;
+            }
+            &-item{
+                align-items: center;
+                justify-content: space-between;
+                @media #{$xs} {
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+                &-content{
+                    & span{
+                        font-size: 16px;
+                        font-weight: 500;
+                        color: var(--togo-common-black);
+                    }
+                    & p{
+                        font-size: 14px;
+                    }
+                }
+                &-left{
+                    display: flex;
+                    gap: 12px;
+                    & .togo-radio-group{
+                        transform: translateY(7px);
+                    }
+                }
+                &-right{
+                    & > span{
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 5px;
+                        display: inline-block;
+                        color: var(--togo-common-black);
+                    }
+                }
+            }
+        }
+        &-payment{
+            &-item{
+                display: flex;
+                gap: 12px;
+                align-items: center;
+                padding-bottom: 20px;
+                & .togo-radio-group{
+                    transform: translateY(3px);
+                }
+                &-title{
+                    font-size: 16px;
+                    font-weight: 500;
+                    display: inline-block;
+                    color: var(--togo-common-black);
+                    & svg{
+                        margin-left: 5px;
+                        @extend %svg-2;
+                    }
+                }
+            }
+        }
+        &-book-btn{
+            & p{
+                & a{
+                    color: var(--togo-common-black);
+                }
+            }
+        }
+        &-summary{
+            &-wrap{
+                padding: 24px;
+                border-radius: 16px;
+                border: 1px solid #EEE;
+                background: var(--togo-common-white);
+                box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.05);
+                & .checkout-summary{
+                    border: none;
+                    background-color: transparent;
+                    & .togo-tour-list-left{
+                        gap: 12px;
+                        & .togo-tour-2-card{
+                            &-thumb{
+                                height: 96px;
+                                min-width: 96px;
+                                display: inline-block;
+                            }
+                            &-title{
+                                & br{
+                                    @media #{$xl,$lg} {
+                                        display: none;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                & .togo-tour-list-left{
+                    @media #{$xl} {
+                        flex-wrap: nowrap;
+                        align-items: center;
+                    }
+                    @media #{$lg} {
+                        flex-wrap: wrap;
+                    }
+                }
+            }
+            &-option{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                & > span{
+                    font-size: 16px;
+                    display: inline-block;
+                    color: var(--togo-common-black);
+                    @media #{$xl,$lg} {
+                        font-size: 15px;
+                    }
+                    & svg{
+                        margin-right: 4px;
+                    }
+                }
+                & a{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: var(--togo-theme-primary);
+                }
+            }
+            &-price{
+                &-item{
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    & p{
+                        margin: 0;
+                        &.text{
+                            font-size: 18px;
+                            font-weight: 500;
+                            color: var(--togo-common-black);
+                            font-family: var(--togo-ff-outfit);
+                        }
+                    }
+                    & span{
+                        font-size: 16px;
+                        font-weight: 500;
+                        display: inline-block;
+                        color: var(--togo-common-black);
+                    }
+                }
+            }
+            &-promo{
+                & a{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-success{
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #46E86A;
+            &-thumb{
+                &-wrap{
+                    gap: 30px;
+                    align-items: center;
+                    @media #{$xs} {
+                        gap: 10px;
+                        flex-wrap: wrap;
+                    }
+                }
+                &-title{
+                    font-size: 28px;
+                    margin-bottom: 4px;
+                }
+                &-content{
+                    & p{
+                        & a{
+                            font-size: 16px;
+
+                            color: var(--togo-theme-primary);
+                        }
+                    }
+                }
+            }
+            &-list{
+                & ul{
+                    display: inline-block;
+                    & li{
+                        width: 50%;
+                        float: left;
+                        font-size: 16px;
+                        font-weight: 400;
+                        list-style: none;
+                        margin-bottom: 5px;
+                        color: var(--togo-text-body);
+                        @media #{$xs} {
+                            width: 100%;
+                        }
+                        & span{
+                            font-weight: 500;
+                            color: var(--togo-common-black);
+                        }
+                    }
+                }
+            }
+            &-info{
+                padding: 24px;
+                border-radius: 16px;
+                border: 1px solid #EEE;
+                & .togo-checkout-success-list{
+                    & ul{
+                        & li{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-radio-group{
+        & .custom-radio {
+            position: relative;
+            display: inline-flex;
+            cursor: pointer;
+            & input {
+                position: absolute;
+                opacity: 0;
+                pointer-events: none;
+                &:checked + span::after {
+                    content: "";
+                    width: 7px;
+                    height: 7px;
+                    background: #000;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                }
+            }
+            & span {
+                width: 18px;
+                height: 18px;
+                border: 1px solid #000;
+                border-radius: 50%;
+                position: relative;
+                display: inline-block;
+                &::after {
+                    transition: transform 0.2s ease, opacity 0.2s ease;
+                }
+            }
+        }
+    }
+    &-partner{
+        &-info{
+            &-des{
+                & span{
+                    font-size: 16px;
+                    display: block;
+                    font-weight: 400;
+                    margin-bottom: 8px;
+                    & i{
+                        font-weight: 500;
+                        font-style: normal;
+                    }
+                }
+            }
+        }
+        &-gallery{
+            &-thumb{
+                & img{
+                    width: 100%;
+                    border-radius: 16px;
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-tour-details{
+    &-top{
+        &-title{
+            font-size: 34px;
+            margin-bottom: 10px;
+        }
+        &-share{
+            & span{
+                width: 36px;
+                height: 36px;
+                margin-left: 8px;
+                border-radius: 50%;
+                text-align: center;
+                display: inline-grid;
+                place-content: center;
+                border: 1px solid #DDD;
+                transition: all .3s ease-in-out;
+                color: var(--togo-common-black);
+                &:hover{
+                    color: var(--togo-common-white);
+                    border-color: var(--togo-theme-primary);
+                    background-color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-left{
+            @media #{$md,$xs} {
+                padding-bottom: 20px;
+            }
+        }
+    }
+    &-box{
+        @media #{$md,$xs} {
+            margin-bottom: 40px;
+        }
+    }
+    &-gallery{
+        &-thumb{
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            & img{
+                width: 100%;
+                border-radius: 8px;
+                transition: all .5s ease-in-out;
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+            &.h-fix{
+                height: 595px;
+                @media #{$xxl,$xl,$lg,$md,$xs} {
+                    height: auto;
+                }
+                & img{
+                    height: 100%;
+                }
+            }
+        }
+        &-video{
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            & a{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                text-align: center;
+                display: inline-grid;
+                place-content: center;
+                transition: all .3s ease-in-out;
+                color: var(--togo-common-black);
+                background-color: rgba($color: #ffff, $alpha: 0.9);
+                &:hover{
+                    transform: scale(1.1);
+                }
+            }
+        }
+        &-btn{
+            position: absolute;
+            bottom: 32px;
+            right: 32px;
+            & a{
+                font-size: 16px;
+                font-weight: 400;
+                padding: 7px 18px;
+                border-radius: 20px;
+                display: inline-block;
+                color: var(--togo-common-black);
+                background-color: rgba($color: #ffff, $alpha: 0.9);
+            }
+        }
+    }
+    &-about{
+        & ul{
+            & li{
+                list-style: none;
+                margin-bottom: 20px;
+                & span{
+                    font-size: 16px;
+                    display: inline-flex;
+                    color: var(--togo-common-black);
+                    position: relative;
+                    &::before{
+                        position: absolute;
+                        bottom: -4px;
+                        left: 4px;
+                        width: 28px;
+                        height: 28px;
+                        content: '';
+                        border-radius: 50%;
+                        display: inline-block;
+                        background-color: rgba($color: #FD46211A, $alpha: 0.1);
+                    }
+                    & svg{
+                        width: 28px;
+                        margin-right: 8px;
+                    }
+                    & i{
+                        font-weight: 500;
+                        font-style: normal;
+                    }
+                }
+            }
+        }
+    }
+    &-title{
+        &.fs-28{
+            font-size: 28px;
+        }
+    }
+    &-text{
+        & p{
+            & a{
+                font-weight: 500;
+                text-decoration: underline;
+                color: var(--togo-common-black);
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+            & br{
+                @media #{$xl,$lg,$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-bdr{
+        border-bottom: 1px solid #EEE;
+    }
+    &-list{
+        & ul{
+            display: inline-block;
+            & li{
+                gap: 10px;
+                font-size: 16px;
+                display: flex;
+                list-style: none;
+                font-weight: 500;
+                margin-bottom: 12px;
+                color: var(--togo-common-black);
+            }
+        }
+        & .incluid{
+            & li{
+                width: 50%;
+                float: left;
+                font-weight: 400;
+                font-family: var(--togo-ff-p);
+                @media #{$xs} {
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &-map{
+        & iframe{
+            width: 100%;
+        }
+    }
+    &-faq{
+        &.togo-faq-wrapper {
+            & .accordion-items{
+                border-radius: 8px;
+                padding-left: 20px;
+                margin-bottom: 10px;
+                border: 1px solid #EEE;
+            }
+        }
+        &.faq{
+            & .accordion-items{
+                background-color: var(--togo-common-white);
+            }
+        }
+    }
+    &-service{
+        &-wrap{
+            gap: 10px;
+        }
+        &-item{
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #EEE;
+            @media #{$xl} {
+                padding: 15px;
+            }
+        }
+        &-title{
+            font-size: 16px;
+        }
+        &-content{
+            & p{
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+        }
+        &-price{
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--togo-common-black);
+        }
+    }
+    &-review{
+        &-wrapper{
+            display: flex;
+            border-radius: 8px;
+            border: 1px solid #EEE;
+            @media #{$xs} {
+                flex-wrap: wrap;
+            }
+        }
+        &-left{
+            width: 200px;
+            flex: 0 0 auto;
+            padding: 32px 24px;
+            border-right: 1px solid #EEE;
+            @media #{$xs} {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #EEE;
+            }
+            & .rating{
+                font-size: 28px;
+                font-weight: 500;
+                margin-bottom: 5px;
+                display: inline-block;
+                color: var(--togo-theme-primary);
+                font-family: var(--togo-ff-outfit);
+                & svg{
+                    @extend %svg-4;
+                }
+                & p{
+                    margin: 0;
+                    font-size: 18px;
+                    display: inline-block;
+                    transform: translateX(-4px);
+                    color: var(--togo-text-body);
+                }
+                &-title{
+                    font-size: 18px;
+                    margin-bottom: 6px;
+                    display: inline-block;
+                }
+            }
+        }
+        &-right{
+            width: 100%;
+            padding: 32px 24px;
+            & .rating-title{
+                font-size: 18px;
+            }
+        }
+        &-item{
+            &-user{
+                gap: 12px;
+                display: flex;
+                margin-bottom: 10px;
+                align-items: center;
+                &-content{
+                    & h4{
+                        font-size: 16px;
+                        margin-bottom: 4px;
+                    }
+                    & p{
+                        margin: 0;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+        &-text{
+            & a{
+                font-weight: 500;
+                text-decoration: underline;
+                color: var(--togo-common-black);
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+            & br{
+                @media #{$xl,$lg,$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-booking{
+        &-item{
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+            &-sub{
+                font-size: 16px;
+                margin-bottom: 4px;
+                display: inline-block;
+                color: var(--togo-common-black);
+            }
+            &-title{
+                display: block;
+                margin-bottom: 8px;
+                & del{
+                    color: #555;
+                }
+                & span{
+                    font-size: 16px;
+                    font-weight: 400;
+                    display: inline-block;
+                    color: var(--togo-text-body);
+                    font-family: var(--togo-ff-p);
+                }
+            }
+            &-text{
+                font-size: 14px;
+                & a{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: var(--togo-common-black);
+                }
+            }
+            &-from{
+                display: flex;
+                padding: 0 10px;
+                position: relative;
+                border-radius: 8px;
+                align-items: center;
+                border: 1px solid #DDD;
+                &::after{
+                    position: absolute;
+                    content: '';
+                    width: 1px;
+                    height: 100%;
+                    top: 0;
+                    left: 50%;
+                    background-color: #ddd;
+                    transform: translateX(-50%);
+                }
+                & .datepicker{
+                    right: 0;
+                    top: 60px;
+                }
+            }
+            &-input{
+                width: 50%;
+                display: flex;
+                align-items: center;
+                & span{
+                    display: inline-block;
+                    transform: translateX(18px);
+                }
+                & input{
+                    border: none;
+                    border-radius: 0;
+                }
+            }
+            & .togo-tour{
+                &-card-offer{
+                    left: auto;
+                    right: 24px;
+                }
+            }
+            &-contact{
+                & p{
+                    color: #555;
+                }
+                & .togo-contact{
+                    &-input {
+                        & input{
+                            height: 48px;
+                        }
+                        & textarea{
+                            height: 150px;
+                        }
+                    }
+                }
+            }
+            &-check{
+                & ul{
+                    & li{
+                        display: flex;
+                        align-items: center;
+                        padding-bottom: 15px;
+                        justify-content: space-between;
+                        &:not(:last-of-type){
+                            margin-bottom: 15px;
+                            border-bottom: 1px solid #DDDDDD;
+                        }
+                        & > span{
+                            font-size: 16px;
+                            font-weight: 500;
+                            display: inline-block;
+                            color: var(--togo-common-black);
+                        }
+                    }
+                }
+            }
+        }
+        &-list{
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+            & h5{
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            & ul{
+                & li{
+                    gap: 8px;
+                    font-size: 16px;
+                    display: flex;
+                    list-style: none;
+                    &:not(:last-of-type){
+                        margin-bottom: 10px;
+                    }
+                    & span{
+                        @extend %svg-2;
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+        &-info{
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.05);
+            & h5{
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            & a{
+                font-size: 16px;
+                font-weight: 500;
+                display: block;
+                font-family: var(--togo-ff-p);
+                color: var(--togo-theme-primary);
+                &:not(:last-of-type){
+                    margin-bottom: 10px;
+                }
+                & span{
+                    @extend %svg-3;
+                    margin-right: 4px;
+                    display: inline-block;
+                }
+            }
+        }
+        &-tab{
+            & .nav{
+                padding-bottom: 4px;
+                border-bottom: 1px solid #EEEEEE;
+                & .nav-item{
+                    width: 50%;
+                    padding: 0 50px;
+                    & .nav-link{
+                        border: none;
+                        font-size: 16px;
+                        font-weight: 500;
+                        text-transform: uppercase;
+                        color: var(--togo-text-body);
+                        &.active{
+                            color: var(--togo-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-slide{
+        border-radius: 8px;
+        & img{
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+    }
+    &-arrows{
+        left: 0;
+        top: 50%;
+        z-index: 2;
+        width: 100%;
+        position: absolute;
+        transform: translateY(-50%);
+        @media #{$xs} {
+            display: none;
+        }
+        & button{
+            height: 36px;
+            width: 36px;
+            display: grid;
+            border-radius: 50%;
+            text-align: center;
+            place-content: center;
+            display: inline-block;
+            color: var(--togo-common-black);
+            border: 1px solid var(--togo-gray-2);
+            background-color: rgba($color: #fff, $alpha: 0.9);
+        }
+        & .togo-tour{
+            &-prev{
+                left: 30px;
+                position: absolute;
+                @media #{$xxl,$xl,$lg,$md,$xs} {
+                    left: 0;
+                }
+            }
+            &-next{
+                right: 30px;
+                position: absolute;
+                @media #{$xxl,$xl,$lg,$md,$xs} {
+                    right: 0;
+                }
+            }
+        }
+    }
+    &-related-ptb{
+        border-top: 1px solid #EEE;
+    }
+    &-2{
+        & .togo-tour-details{
+            &-gallery-thumb{
+                height: 100%;
+                @media #{$md,$xs} {
+                    height: auto;
+                }
+                & img{
+                    height: 100%;
+                    object-fit: cover;
+                }
+                &.adjuct-h{
+                    height: 49%;
+                    @media #{$xs} {
+                        height: 47%;
+                    }
+                }
+            }
+        }
+    }
+    &-3{
+        & .togo-tour-details{
+            &-slider-wrapper{
+                height: 405px;
+                & .togo-tour-active-3{
+                    height: 100%;
+                    & .togo-tour-details-slide{
+                        height: 100%;
+                        & img{
+                            height: 100%;
+                            object-fit: cover;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-4{
+        & .togo-tour-details{
+            &-gallery-4{
+                width: 100%;
+                height: 292px;
+                overflow: hidden;
+                border-radius: 8px;
+                position: relative;
+                & img{
+                    width: 100%;
+                    border-radius: 8px;
+                    transition: all .5s ease-in-out;
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            &-gallery-thumb.h-fix{
+                height: 595px;
+                @media #{$md,$xs} {
+                    height: auto;
+                }
+            }
+        }
+    }
+    &-6{
+        & .togo-tour-details{
+            &-slider-wrapper{
+                height: 650px;
+                @media #{$lg,$md,$xs} {
+                    height: auto;
+                }
+                & .togo-tour-active{
+                    height: 100%;
+                }
+            }
+        }
+    }
+}
+

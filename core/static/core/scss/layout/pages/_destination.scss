@@ -1,0 +1,503 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.8 destination css
+/*----------------------------------------*/
+
+
+.#{$theme-prefix}-destination{
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 0px;
+        }
+        & .togo-section-title{
+            margin-bottom: 15px;
+        }
+        & p{
+            font-size: 18px;
+            & br{
+                @media #{$xl,$lg,$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-item{
+        &:hover{
+            & .togo-destination-item{
+                &-thumb{
+                    & img{
+                        transform: scale(1.2);
+                    }
+                }
+            }
+        }
+        &-thumb{
+            overflow: hidden;
+            border-radius: 16px;
+            & img{
+                width: 100%;
+                border-radius: 16px;
+                transition: all .5s ease-in-out;
+            }
+        }
+        &-title{
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 4px;
+            font-family: var(--togo-ff-outfit);
+            & a{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-count{
+            font-size: 16px;
+            line-height: 1;
+        }
+        &-content{
+            padding: 24px 0 0;
+        }
+        &.style-3{
+            position: relative;
+            & .togo-destination{
+                &-item{
+                    &-wrap{
+                        left: 20px;
+                        right: 20px;
+                        bottom: 20px;
+                        z-index: 1;
+                        margin: 0 auto;
+                        position: absolute;
+                        align-items: center;
+                    }
+                    &-thumb{
+                        position: relative;
+                        ::after {
+                            position: absolute;
+                            content: "";
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 45%;
+                            z-index: 1;
+                            border-radius: 0 0 16px 16px;
+                            background: linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.30) 100%);
+                        }
+                    }
+                    &-title{
+                        font-size: 24px;
+                        font-weight: 500;
+                        color: var(--togo-common-white);
+                    }
+                    &-count{
+                        color: var(--togo-common-white);
+                    }
+                    &-content{
+                        padding: 0;
+                    }
+                }
+                &-3{
+                    &-btn{
+                        & a{
+                            display: inline-grid;
+                            place-content: center;
+                            text-align: center;
+                            width: 32px;
+                            height: 32px;
+                            border-radius: 50%;
+                            color: var(--togo-common-white);
+                            border: 1px solid var(--togo-common-white);
+                            & span{
+                                @extend %svg-1;
+                                display: inline-block;
+                            }
+                            &:hover{
+                                transform: rotate(45deg);
+                                border-color: transparent;
+                                background-color: var(--togo-theme-primary);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-arrows{
+        gap: 12px;
+        & button{
+            height: 36px;
+            width: 36px;
+            display: grid;
+            border-radius: 50%;
+            text-align: center;
+            place-content: center;
+            color: var(--togo-common-black);
+            border: 1px solid var(--togo-gray-2);
+            box-shadow: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.05));
+            &:hover{
+                color: #999999;
+            }
+        }
+    }
+
+    &-2-slider{
+        &-wrapper{
+            & .togo-destination-item-title{
+                font-size: 24px;
+                font-weight: 500;
+            }
+        }
+    }
+
+    
+    &-3-slider{
+        &-wrapper{
+            & .togo-tour-2-active{
+                & .swiper-wrapper{
+                    & .swiper-slide{
+                        &:nth-child(odd){
+                            margin-top: 100px;
+                            @media #{$lg,$md,$xs} {
+                                margin-top: 0;
+                            }
+                            & .togo-destination-item.style-3{
+                                transform: translateY(-20px);
+                                @media #{$lg,$md,$xs} {
+                                    transform: translateY(0);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    }}
+}
+
+
+
+.#{$theme-prefix}-destination-4{
+    &-ptb{
+        @media #{$lg} {
+            padding-bottom: 80px;
+        }
+        @media #{$md,$xs} {
+            padding-top: 0px;
+            padding-bottom: 80px;
+        }
+    }
+    &-heading{
+        padding-left: 300px;
+        padding-right: 130px;
+        @media #{$x3l} {
+            padding-left: 200px;
+        }
+        @media #{$xxl,$xl,$lg} {
+            padding-left: 50px;
+            padding-right: 15px;
+            margin-bottom: 0;
+        }
+        @media #{$md} {
+            padding-left: 25px;
+            padding-right: 15px;
+        }
+        @media #{$xs} {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+    }
+    &-slider{
+        &-wrapper{
+            &::after{
+                position: absolute;
+                top: -99px;
+                right: 8px;
+                content: '';
+                height: calc(100% + 150px);
+                width: calc(100% - 130px);
+                background-color: #FFF1F0;
+                border-radius: 16px 0 0 16px ;
+                @media #{$md,$xs} {
+                    content: none;
+                }
+            }
+        }
+        &-arrow{
+            position: absolute;
+            top: -60px;
+            z-index: 2;
+            right: 40px;
+            & button{
+                background-color: var(--togo-common-white);
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-destination-7{
+    &-heading{
+        @media #{$xl,$lg,$md,$xs} {
+            margin-bottom: 50px;
+        }
+        @media #{$xs} {
+            padding: 0 30px;
+        }
+        & p{
+            & br{
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-item{
+        @media #{$xs} {
+            margin-bottom: 20px;
+        }
+        & img{
+            width: 100%;
+            min-height: 390px;
+        }
+        & .rds{
+            &-1{
+                border-radius: 200px 200px 16px 16px;
+            }
+            &-2{
+                border-radius: 16px 200px 200px 16px;
+            }
+            &-3{
+                border-radius: 266px;
+            }
+            &-4{
+                border-radius: 16px 200px 200px 16px;
+            }
+            &-5{
+                border-radius: 266px;
+            }
+            &-6{
+                border-radius: 200px 16px 16px 200px;
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-destination-8{
+    &-ptb{
+        @media #{$xs} {
+            padding-top: 80px;
+            padding-bottom: 80px;
+        }
+    }
+    &-bg{
+        position: relative;
+        &::after{
+            top: 0;
+            left: 0;
+            width: 100%;
+            content: '';
+            height: 100%;
+            position: absolute;
+            background-color: rgba(0, 0, 0, 0.50);
+        }
+    }
+    &-heading{
+        & p{
+            color: var(--togo-common-white);
+        }
+    }
+    &-item{
+        &:hover{
+            & .togo-destination-8-item{
+                &-thumb{
+                    & img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        &-thumb{
+            overflow: hidden;
+            border-radius: 16px;
+            position: relative;
+            &::before{
+                content: '';
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 25%;
+                z-index: 1;
+                position: absolute;
+                pointer-events: none;
+                border-radius: 0 0 16px 16px;
+                background: linear-gradient(180deg, rgba(17, 17, 17, 0.00) 0%, rgba(17, 17, 17, 0.40) 100%);
+            }
+            & img{
+                width: 100%;
+                border-radius: 16px;
+                transition: all .5s ease-in-out;
+            }
+        }
+        &-content{
+            position: absolute;
+            bottom: 25px;
+            left: 0;
+            right: 0;
+            z-index: 1;
+            margin: 0 auto;
+            text-align: center;
+        }
+        &-title{
+            font-size: 20px;
+            font-weight: 500;
+            color: var(--togo-common-white);
+            font-family: var(--togo-ff-jost);
+        }
+    }
+    &-slider{
+        &-wrapper{
+            margin-right: -300px;
+            @media #{$xs} {
+                margin-right: 0;
+            }
+            & .togo-des-dot{
+                gap: 10px;
+                display: flex;
+                margin-top: 40px;
+                align-items: center;
+                justify-content: center;
+                @media #{$xl,$lg,$md,$xs} {
+                    justify-content: start;
+                }
+                 & .swiper-pagination-bullet {
+                     opacity: 1;
+                     width: 8px;
+                     height: 8px;
+                     transition: .3s;
+                     background-color : #656868;
+                    &.swiper-pagination-bullet-active {
+                        width: 10px;
+                        height: 10px;
+                        background-color: var(--togo-common-white);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-destination-9{
+    &-heading{
+        @media #{$md,$xs} {
+            margin: 0;
+        }
+    }
+    &-item{
+        gap: 30px;
+        border-radius: 16px;
+        border: 1px solid #EEE;
+        @media #{$lg} {
+            gap: 5px;
+        }
+        @media #{$md} {
+            gap: 20px;
+        }
+        &:hover{
+            & .togo-destination-9-item{
+                &-thumb{
+                    & img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        &-thumb{
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px 0px 0px 16px;
+            & img{
+                width: 100%;
+                transition: all .5s ease-in-out;
+                border-radius: 16px 0px 0px 16px;
+            }
+            & .shape-right{
+                position: absolute;
+                right: 0;
+                left: auto;
+                top: 0;
+                height: 100%;
+                width: 100px;
+                pointer-events: none;
+            }
+        }
+        &-content{
+            & p{
+                margin: 0;
+            }
+        }
+        &-title{
+            font-size: 20px;
+            margin-bottom: 4px;
+            &.fs-18{
+                font-size: 18px;
+            }
+        }
+        &.style-2{
+            border: none;
+            @media #{$lg} {
+                gap: 20px;
+            }
+            & .togo-destination-9-item{
+                &-thumb{
+                    border-radius: 50%;
+                    & img{
+                        border-radius: 50%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-destination-11{
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 0;
+        }
+    }
+    &-wrapper{
+        & .togo-trand-7-item{
+            &-title{
+                font-size: 24px;
+            }
+            &-thumb{
+                    border-radius: 16px;
+                & img{
+                    border-radius: 16px;
+                }
+                &::after{
+                    border-radius: 16px;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.#{$theme-prefix}-destination-12{
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 0;
+        }
+    }
+}

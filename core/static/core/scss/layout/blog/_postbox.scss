@@ -1,0 +1,72 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  5.1 Postbox css
+/*----------------------------------------*/
+
+
+.togo-postbox{
+    &-box{
+        @media #{$md,$xs} {
+            padding-bottom: 80px;
+        }
+    }
+    &-details{
+        &-wrapper{
+            margin-bottom: 60px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #edf0f2;
+        }
+        &-tags{
+            & span{
+                font-size: 16px;
+                position: relative;
+                display: inline-block;
+                text-transform: uppercase;
+                &:not(:last-of-type){
+                    margin-right: 15px;
+                    padding-right: 15px;
+                    &::after{
+                        position: absolute;
+                        top: 50%;
+                        right: 0;
+                        height: 5px;
+                        width: 5px;
+                        content: '';
+                        border-radius: 50%;
+                        transform: translateY(-50%);
+                        background-color: var(--togo-text-body);
+                    }
+                }
+            }
+        }
+        &-title{
+            font-size: 48px;
+            font-weight: 600;
+            @media #{$md} {
+                font-size: 42px;
+            }
+            @media #{$xs} {
+                font-size: 32px;
+                & br{
+                    display: none;
+                }
+            }
+        }
+        &-thumb{
+            & img{
+                border-radius: 16px;
+            }
+        }
+        &-text{
+            & p{
+                padding-bottom: 5px;
+            }
+        }
+        &-related{
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #edf0f2;
+        }
+    }
+}

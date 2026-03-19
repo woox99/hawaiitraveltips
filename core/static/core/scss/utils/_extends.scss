@@ -1,0 +1,39 @@
+@use './mixins' as *;
+
+%include-bg{
+	@include togo-background();
+}
+
+%transition{
+	@include togo-transition();
+}
+
+// svg
+
+%svg-1{
+	@include togo-transform(translateY(-1px));
+}
+
+%svg-2{
+	@include togo-transform(translateY(-2px));
+}
+
+%svg-3{
+	@include togo-transform(translateY(-3px));
+}
+
+%svg-4{
+	@include togo-transform(translateY(-4px));
+}
+
+
+/* transform */
+%translateY2{
+	@include togo-transform(translateY(-50%));
+}
+%translateX2{
+	@include togo-transform(translateX(-50%));
+}
+%translate2{
+	@include togo-transform(translate(-50%, -50%));
+}

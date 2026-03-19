@@ -1,0 +1,1287 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  9.0 Dashboard css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-dashboard{
+    &-wrapper{
+        width: 100%;
+        display: flex;
+        position: relative;
+        @media #{$xs} {
+            flex-wrap: wrap-reverse;
+        }
+    }
+    &-sidebar{
+        width: 250px;
+        height: auto;
+        padding: 26px;
+        flex: 0 0 250px;
+        border-right: 1px solid #eeee;
+        background-color: var(--togo-common-white);
+        @media #{$md} {
+            width: 220px;
+            flex: 0 0 220px;
+        }
+        @media #{$xs} {
+            width: 100%;
+            flex: 0 0 100%;
+        }
+        @media #{$xs} {
+            display: none;
+        }
+        &.sidebar-collapsed{
+            width: 45px;
+            flex: 0 0 45px;
+            padding: 26px 8px;
+            & .togo-dashboard{
+                &-nav{
+                    &-menu {
+                        padding: 0;
+                        & a{
+                            font-size: 0;
+                        }
+                    }
+                    &-logo{
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &-close{
+        & span{
+            width: 25px;
+            cursor: pointer;
+            display: inline-block;
+            @include togo-transition();
+            &:hover{
+                color: var(--togo-theme-primary);
+            }
+            & svg{
+                transition: transform 0.3s ease;
+                &.rotate{
+                    transform: scaleX(-1);
+                }
+            }
+        }
+    }
+    &-nav{
+        &-top{
+            margin-bottom: 35px;
+        }
+        &-menu{
+            padding: 12px;
+            & a{
+                font-size: 16px;
+                font-weight: 500;
+                display: block;
+                transition: none;
+                color: var(--togo-common-black);
+                &:not(:last-of-type){
+                    margin-bottom: 20px;
+                }
+                &:hover,
+                &.active{
+                    color: var(--togo-theme-primary);
+                }
+                & .togo-svg-icon{
+                    width: 24px;
+                    @extend %svg-1;
+                    margin-right: 4px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    &-main-wrap{
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+    }
+    &-account{
+        &-title{
+            font-size: 30px;
+        }
+        &-box{
+            height: 100%;
+            padding: 24px;
+            border-radius: 16px;
+            background: var(--togo-common-white);
+            @media #{$xl,$lg,$md,$xs} {
+                height: auto;
+            }
+        }
+        &-card{
+            &-thumb{
+                overflow: hidden;
+                text-align: center;
+                & img{
+                    width: 100%;
+                    border-radius: 8px;
+                }
+            }
+            &-title{
+                font-size: 18px;
+                font-weight: 500;
+                margin-bottom: 10px;
+                font-family: var(--togo-ff-outfit);
+                & br{
+                    @media #{$lg,$md,$xs} {
+                        display: none;
+                    }
+                }
+            }
+            &-meta{
+                & span{
+                    font-size: 16px;
+                    color: #333;
+                    display: block;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                    font-family: var(--togo-ff-outfit);
+                    & svg{
+                        margin-right: 5px;
+                    }
+                }
+            }
+            &-btns{
+                gap: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                & .togo-btn-primary{
+                    &.green{
+                        background-color: #34C759;
+                    }
+                }
+            }
+        }
+        &-book{
+            &-item {
+                gap: 15px;
+                display: flex;
+                padding: 20px 0;
+                align-items: flex-start;
+                border-bottom: 1px solid #eee;
+                @media #{$lg,$md,$xs} {
+                    flex-wrap: wrap;
+                }
+            }
+            &-thumb {
+                width: 80px;
+                height: 80px;
+                flex-shrink: 0;
+                & img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                }
+            }
+            &-content {
+                flex-grow: 1;
+            }
+            &-title {
+                font-size: 18px;
+                font-weight: 500;
+                line-height: 1.4;
+                color: #333;
+                margin: 0 0 10px 0;
+                font-family: var(--togo-ff-outfit);
+            }
+            &-info {
+                font-size: 16px;
+                color: #333;
+                display: flex;
+                gap: 8px;
+                flex-wrap: wrap;
+                align-items: center;
+                font-family: var(--togo-ff-p);
+                & .separator {
+                    color: #ccc;
+                }
+            }
+            &-action {
+                text-decoration: none;
+                font-weight: 500;
+                transition: 0.3s;
+                color: var(--togo-theme-primary);
+                &:hover {
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-header{
+        display: flex;
+        align-items: center;
+        padding: 16px 24px;
+        justify-content: space-between;
+        border-bottom: 1px solid #eeee;
+        background-color: var(--togo-common-white);
+        &-back{
+            & a{
+                font-size: 16px;
+                font-weight: 500;
+                cursor: pointer;
+                @include togo-transition();
+                color: var(--togo-common-black);
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-right{
+            gap: 20px;
+            align-items: center;
+            display: inline-flex;
+        }
+        &-author{
+            & .togo-header-user-thumb{
+                position: relative;
+                &:hover{
+                    & .togo-header-user-submenu {
+                        opacity: 1;
+                        visibility: visible;
+                        transform: translateY(0);
+                    }
+                }
+            }
+        }
+        &-notifi{
+            @media #{$xs} {
+                display: none;
+            }
+            & button{
+                position: relative;
+                &::after{
+                    position: absolute;
+                    top: -4px;
+                    right: -4px;
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    background-color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-wrap{
+        border-radius: 16px;
+        padding: 30px 30px 50px;
+        background: var(--togo-common-white);
+        @media #{$xl,$lg,$md,$xs} {
+            overflow-x: scroll;
+        }
+    }
+    &-booking{
+        &-tab{
+            & nav{
+                & .nav-tabs{
+                    gap: 32px;
+                    border: none;
+                    @media #{$md,$xs} {
+                        gap: 20px;
+                    }
+                    & .nav-link{
+                        padding: 0;
+                        line-height: 1;
+                        font-size: 18px;
+                        font-weight: 500;
+                        color: #555555;
+                        border: 1px solid transparent;
+                        &.active{
+                            color: var(--togo-theme-primary);
+                            border-bottom: 1px solid currentColor;
+                        }
+                        &:hover{
+                            color: var(--togo-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+        &-h{
+            &-wrap{
+                padding: 30px;
+                border-radius: 16px;
+                background: var(--togo-common-white);
+                & .togo-checkout-summary-wrap{
+                    box-shadow: none;
+                }
+            }
+            &-info{
+                @media #{$lg,$md,$xs} {
+                    margin-bottom: 40px;
+                }
+                &-title{
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 18px;
+                    display: inline-block;
+                    text-transform: uppercase;
+                    color: var(--togo-common-black);
+                }
+                &-list{
+                    & ul{
+                        & li{
+                            gap: 5px;
+                            display: flex;
+                            font-size: 16px;
+                            font-weight: 500;
+                            list-style: none;
+                            margin-bottom: 10px;
+                            color: var(--togo-common-black);
+                            & span{
+                                font-weight: 400;
+                                display: inline-block;
+                                color: var(--togo-text-body);
+                            }
+                        }
+                    }
+                }
+                &-btn{
+                    & .togo-btn-primary{
+                        background-color: #FFE453;
+                        color: var(--togo-common-black);
+                    }
+                }
+            }
+        }
+    }
+    &-table{
+        & ul{
+            display: inline-block;
+            @media #{$md} {
+                width: 100%;
+            }
+            & li{
+                list-style: none;
+                border-bottom: 1px solid #DDD;
+            }
+        }
+        &-head{
+            padding: 12px 0;
+        }
+        &-item{
+            padding: 20px 0 24px;
+        }
+        &-title{
+            font-size: 16px;
+            font-weight: 500;
+            color: #555;
+            text-transform: uppercase;
+        }
+        &-card{
+            gap: 12px;
+            display: flex;
+            align-items: center;
+            @media #{$lg,$md,$xs} {
+                flex-wrap: wrap;
+            }
+            &-thumb{
+                height: 96px;
+                max-width: 96px;
+                & img{
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: 8px;
+                }
+            }
+            &-title{
+                font-size: 18px;
+                font-weight: 500;
+                color: #333;
+                margin: 0;
+                line-height: 1.3;
+                & a{
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+        }
+        &-date{
+            font-size: 16px;
+        }
+        &-price{
+            font-size: 16px;
+            font-weight: 500;
+            color: var(--togo-common-black);
+        }
+        &-status{
+            font-size: 16px;
+            & span{
+                width: 12px;
+                height: 12px;
+                margin-right: 4px;
+                border-radius: 50%;
+                display: inline-block;
+                background-color: #ddd;
+                &.complete{
+                    background-color: #46E86A;
+                }
+                &.pending{
+                    background-color: #FFE453;
+                }
+                &.reject{
+                    background-color: #FF252B;
+                }
+            }
+        }
+        &-row{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            @media #{$md} {
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+        }
+        &-data{
+            &-1{
+                width: 80px;
+                flex: 0 0 auto;
+                @media #{$lg,$md} {
+                    width: 60px;
+                }
+            }
+            &-2{
+                width: 430px;
+                flex: 0 0 auto;
+                @media #{$xxl} {
+                    width: 335px;
+                }
+                @media #{$xl} {
+                    width: 320px;
+                }
+                @media #{$lg,$md,$xs} {
+                    width: 200px;
+                }
+            }
+            &-3{
+                width: 180px;
+                flex: 0 0 auto;
+                @media #{$xl} {
+                    width: 140px;
+                }
+                @media #{$lg} {
+                    width: 115px;
+                }
+                @media #{$md} {
+                    width: 100px;
+                }
+            }
+            &-4{
+                width: 130px;
+                flex: 0 0 auto;
+                @media #{$xl} {
+                    width: 80px;
+                }
+                @media #{$lg,$md} {
+                    width: 60px;
+                }
+            }
+            &-5{
+                width: 220px;
+                flex: 0 0 auto;
+                @media #{$xxl} {
+                    width: 200px;
+                }
+                @media #{$xl} {
+                    width: 150px;
+                }
+                @media #{$lg,$md} {
+                    width: 100px;
+                }
+            }
+            &-6{
+                width: 90px;
+                flex: 0 0 auto;
+                @media #{$xl} {
+                    width: 70px;
+                }
+                @media #{$lg,$md} {
+                    width: 50px;
+                }
+            }
+        }
+        &-empty{
+            padding-top: 160px;
+            padding-bottom: 160px;
+        }
+        &.partner-booking{
+            & .togo-dashboard-table{
+                &-row{
+                    @media #{$xl,$lg} {
+                        gap: 10px;
+                        flex-wrap: wrap;
+                    }
+                }
+                &-data{
+                    &-3{
+                        width: 150px;
+                        @media #{$xxl} {
+                            width: 95px;
+                        }
+                    }
+                    &-4{
+                        @media #{$xxl} {
+                            width: 95px;
+                        }
+                    }
+                    &-5{
+                        width: 150px;
+                        @media #{$xxl} {
+                            width: 95px;
+                        }
+                    }
+                    &-6{
+                        width: 180px;
+                        @media #{$xxl} {
+                            width: 150px;
+                        }
+                    }
+                    &-7{
+                        width: 150px;
+                    }
+                    &-8{
+                        width: 150px;
+                    }
+                }
+                &-card-title{
+                    & br{
+                        @media #{$xxl,$xl,$lg,$md,$xs} {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            &.coupon-style{
+                & .togo-dashboard-table{
+                   &-data{
+                      &-1{
+                        width: 150px;
+                      }
+                      &-3{
+                        width: 220px;
+                      }
+                      &-4{
+                        width: 170px;
+                        @media #{$xxl} {
+                            width: 120px;
+                        }
+                      }
+                      &-6{
+                        width: 170px;
+                      }
+                   }
+                }
+                & ul{
+                    & li{
+                        &:last-child{
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+        &.earnign-style{
+            & ul{
+                width: 100%;
+                @media #{$xxl} {
+                }
+            }
+            & .togo-dashboard-table{
+                &-data{
+                    &-1{
+                        width: 150px;
+                        @media #{$xxl,$xl} {
+                            width: 100px;
+                        }
+                        @media #{$lg} {
+                            width: 80px;
+                        }
+                    }
+                    &-2{
+                        @media #{$xxl} {
+                            width: 290px;
+                        }
+                        @media #{$xl} {
+                            width: 200px;
+                        }
+                        @media #{$lg} {
+                            width: 150px;
+                        }
+                    }
+                    &-4{
+                        width: 250px;
+                        @media #{$xl} {
+                            width: 200px;
+                        }
+                        @media #{$lg} {
+                            width: 150px;
+                        }
+                    }
+                    &-5{
+                        width: 250px;
+                        @media #{$xl} {
+                            width: 200px;
+                        }
+                        @media #{$lg} {
+                            width: 150px;
+                        }
+                    }
+                    &-6{
+                        width: 175px;
+                        @media #{$lg} {
+                            width: 150px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-invoice{
+        &-bill{
+            display: flex;
+            justify-content: space-between;
+            @media #{$xs} {
+                gap: 30px;
+                flex-wrap: wrap;
+                padding-bottom: 20px;
+            }
+        }
+        &-info{
+            &-title{
+                font-size: 18px;
+                font-weight: 500;
+                margin-bottom: 12px;
+                display: inline-block;
+                color: var(--togo-common-black);
+                font-family: var(--togo-ff-outfit);
+            }
+            & ul{
+                display: block;
+                & li{
+                    list-style: none;
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 8px;
+                    & span{
+                        font-weight: 400;
+                        margin-left: 5px;
+                    }
+                }
+            }
+            &.total-style{
+                & ul{
+                    margin-left: -130px;
+                    & li{
+                        & span{
+                            width: 80px;
+                            margin-left: 0;
+                            margin-right: 50px;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+            &.pb-95{
+                @media #{$xs} {
+                    padding-bottom: 20px;
+                }
+            }
+        }
+        &-part{
+            display: flex;
+            padding: 18px 24px;
+            justify-content: space-between;
+            & .togo-dashboard-invoice{
+                &-info-title{
+                    margin-bottom: 0;
+                    text-transform: uppercase;
+                }
+            }
+        }
+        &-payment{
+            &-wrap{
+                gap: 110px;
+                display: flex;
+                @media #{$lg,$md} {
+                    gap: 55px;
+                }
+                @media #{$xs} {
+                    gap: 20px;
+                    flex-wrap: wrap;
+                }
+            }
+            & .text-up{
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+            &-item{
+                & .togo-dashboard-invoice{
+                    &-info-title{
+                        margin-bottom: 5px;
+                    }
+                }
+            }
+            &-btn{
+                gap: 15px;
+                display: flex;
+                @media #{$xs} {
+                    flex-wrap: wrap;
+                }
+            }
+        }
+        &-left{
+            @media #{$xs} {
+                padding-top: 0;
+                padding-left: 0;
+            }
+        }
+        &-right{
+            width: 224px;
+            @media #{$lg,$md,$xs} {
+                width: auto;
+            }
+        }
+    }
+    &-review{
+        &-item{
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            &-title{
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--togo-common-black);
+                & span{
+                    font-weight: 400;
+                    margin-right: 5px;
+                    color: var(--togo-text-body);
+                }
+                & svg{
+                    @extend %svg-2;
+                }
+            }
+            &-btn{
+                & a{
+                    font-size: 16px;
+                    font-weight: 400;
+                    padding: 6px 17px;
+                    border-radius: 30px;
+                    display: inline-block;
+                    background-color: #46E86A;
+                    color: var(--togo-common-black);
+                    &.wait{
+                        background-color: #FFE453;
+                    }
+                }
+            }
+            &-rating{
+                & svg{
+                    color: var(--togo-theme-primary);
+                }
+            }
+            &-content{
+                & p{
+                    & br{
+                        @media #{$xs} {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            &-top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                @media #{$xs} {
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+            }
+            &-thumb{
+                gap: 10px;
+                display: flex;
+                & img{
+                    border-radius: 8px;
+                }
+            }
+            &-btns{
+                gap: 24px;
+                display: flex;
+                & button{
+                    font-size: 16px;
+                    font-weight: 500;
+                    line-height: 2;
+                    color: var(--togo-common-black);
+                    &.delete,
+                    &.update{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+            &-bottom{
+                display: flex;
+                align-items: end;
+                justify-content: space-between;
+                @media #{$xs} {
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+        &-update{
+            padding: 15px;
+            &-title{
+                font-size: 16px;
+                font-weight: 500;
+                margin-bottom: 10px;
+                display: inline-block;
+                color: var(--togo-common-black);
+            }
+            &-list{
+                & ul{
+                    & li{
+                        width: 50%;
+                        float: left;
+                        list-style: none;
+                        margin-bottom: 24px;
+                    }
+                }
+            }
+            &-input{
+                & .togo-contact-input {
+                    & textarea{
+                        height: 200px;
+                    }
+                }
+            }
+            &-rating{
+                & p{
+                    font-weight: 500;
+                    margin-bottom: 2px;
+                    color: var(--togo-common-black);
+                }
+            }
+            &-upload{
+                & .upload-btn{
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 8px;
+                    display: inline-grid;
+                    place-content: center;
+                    border: 1px dashed #DDD;
+                    & #file-input{
+                        display: none;
+                    }
+                    & label{
+                        padding: 38px;
+                        cursor: pointer;
+                        &:hover{
+                            color: var(--togo-theme-primary);
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-setting{
+        &-wrap{
+            width: 700px;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            @media #{$md,$xs} {
+                width: auto;
+            }
+        }
+        &-info{
+            &-top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+            &-thumb{
+                gap: 12px;
+                display: flex;
+                align-items: center;
+                & img{
+                    width: 70px;
+                    height: 70px;
+                    object-fit: cover;
+                    border-radius: 50%;
+                }
+                &-content{
+                    & span{
+                        font-size: 16px;
+                        font-weight: 400;
+                        margin-bottom: 2px;
+                        display: inline-block;
+                        color: var(--togo-common-black);
+                    }
+                    & p{
+                        font-size: 14px;
+                        margin: 0;
+                    }
+                }
+            }
+            &-up{
+                & .upload-btn{
+                    & #file-input{
+                        display: none;
+                    }
+                    & label{
+                        font-size: 16px;
+                        font-weight: 500;
+                        cursor: pointer;
+                        @include togo-transition();
+                        color: var(--togo-theme-primary);
+                        &:hover{
+                            text-decoration: none;
+                        }
+                    }
+                    & .line-border{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-dashboard-partner{
+    &-account{
+        &-fact{
+            &-item{
+                padding: 26px;
+                border-radius: 16px;
+                & .fact{
+                    &-title{
+                        font-size: 16px;
+                        font-weight: 500;
+                        margin-bottom: 14px;
+                        display: inline-block;
+                        text-transform: uppercase;
+                        color: var(--togo-common-black);
+                        & svg{
+                            margin-right: 6px;
+                        }
+                    }
+                    &-price{
+                        margin: 0;
+                    }
+                }
+            }
+        }
+        &-history{
+            padding: 25px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            @media #{$xl,$lg,$md,$xs} {
+                overflow-x: scroll;
+            }
+            & .togo-dashboard-table{
+                & .togo-dashboard-table{
+                    &-title{
+                        color: var(--togo-common-black);
+                    }
+                    &-data{
+                        &-2{
+                            width: 475px;
+                            @media #{$lg} {
+                                width: 410px;
+                            }
+                        }
+                        &-5{
+                            width: 170px;
+                            @media #{$lg} {
+                                width: 110px;
+                            }
+                        }
+                    }
+                }
+            }
+            & h4{
+                flex: 0 0 auto;
+            }
+            & .togo-tour-grid-select{
+                width: 145px;
+            }
+            &-top{
+                flex-wrap: wrap;
+            }
+        }
+        &-btn{
+            & a{
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--togo-theme-primary);
+            }
+        }
+        &-static{
+            & .chart-box{
+                width: 100%;
+                display: inline-block;
+                #chart{
+                    min-height: 270px;
+                    @media #{$xl,$xs} {
+                        min-height: 225px;
+                    }
+                }
+            }
+            &-d{
+                @media #{$xl,$xs} {
+                    gap: 10px;
+                    flex-wrap: wrap;
+                }
+            }
+        }
+        &-n-item {
+            display: flex;
+            padding: 20px 0;
+            gap: 15px;
+            align-items: flex-start;
+            border-bottom: 1px solid #f1f1f1;
+            &-thumb {
+                width: 45px;
+                height: 45px;
+                border-radius: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #000;
+                font-size: 18px;
+                flex-shrink: 0;
+                background-color: #DEE7FF;
+                &.yellow{
+                    background-color: #FFF6E4;
+                }
+                &.paste{
+                    background: rgba(0, 182, 122, 0.36);
+                }
+            }
+            &-content {
+                flex-grow: 1;
+            }
+            &-title {
+                font-size: 16px;
+                font-weight: 700;
+                margin: 0 0 4px 0;
+                font-family: var(--togo-ff-p);
+            }
+            &-desc {
+                font-size: 16px;
+                font-weight: 600;
+                color: #333333;
+                margin: 0 0 3px 0;
+                font-family: var(--togo-ff-p);
+            }
+            &-time {
+                font-size: 14px;
+                color: #777;
+                font-weight: 500;
+                font-style: italic;
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+        }
+    }
+    &-table{
+        &-payment{
+            & span{
+                font-size: 16px;
+                font-weight: 400;
+                padding: 4px 16px;
+                border-radius: 30px;
+                display: inline-block;
+                background-color: #EAF8E7;
+                color: var(--togo-common-black);
+                &.p{
+                    background-color: #FFF6E4;
+                }
+            }
+            & i{
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 500;
+                color: #1EE0AC;
+                padding-left: 20px;
+                position: relative;
+                &::after{
+                    top: 6px;
+                    left: 5px;
+                    width: 8px;
+                    height: 8px;
+                    content: '';
+                    position: absolute;
+                    border-radius: 50%;
+                    display: inline-block;
+                    background-color: currentColor;
+                }
+            }
+        }
+        &-guest{
+            & span{
+                font-size: 16px;
+                font-weight: 400;
+                display: block;
+            }
+        }
+        &-coupon{
+            font-size: 16px;
+            font-weight: 500;
+            border-radius: 16px;
+            padding: 8px 14px;
+            background: #FFEAE6;
+            color: var(--togo-text-body);
+            border: 1px dashed #FD4621;
+        }
+        &-action{
+            gap: 30px;
+            display: flex;
+            & button{
+                color: var(--togo-common-black);
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-booking{
+        &-wrap{
+            padding: 25px;
+            overflow: hidden;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            background: var(--togo-common-white);
+            @media #{$xl,$lg,$md,$xs} {
+                overflow-x: scroll;
+            }
+        }
+    }
+    &-earning{
+        &-fact{
+            & .togo-dashboard-partner{
+                &-account-fact-item{
+                    border-radius: 16px;
+                    border: 1px solid #111;
+                    background: var(--togo-common-white);
+                    & .fact-title{
+                        text-transform: capitalize;
+                        & button{
+                            position: relative;
+                            margin-left: 5px;
+                            &:hover{
+                                & .togo-action-tooltip{
+                                    opacity: 1;
+                                    visibility: visible;
+                                    transform: translateX(-50%) translateY(-12px);
+                                }
+                            }
+                            & svg{
+                                margin: 0;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-graph{
+            &-top{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+        &-chart{
+            gap: 44px;
+            display: flex;
+            & span{
+                font-size: 16px;
+                font-weight: 500;
+                position: relative;
+                display: inline-block;
+                color: var(--togo-common-black);
+                &::before{
+                    position: absolute;
+                    content: '';
+                    top: 5px;
+                    left: -22px;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    background-color: #999;
+                }
+                &.red{
+                    &::before{
+                        content: '';
+                        background-color: #FD4621;
+                    }
+                }
+            }
+        }
+    }
+    &-tourmanage{
+        &-title{
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        & .togo-contact-input{
+            & textarea{
+                height: 250px;
+            }
+        }
+        &-btns{
+            gap: 10px;
+            display: flex;
+            justify-content: end;
+        }
+    }
+}
+
+
+.#{$theme-prefix}-action-tooltip{
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    opacity: 0;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    border-radius: 4px;
+    text-align: center;
+    width: max-content;
+    visibility: hidden;
+    color: var(--togo-common-white);
+    background-color: var(--togo-common-black);
+    transform: translateX(-50%) translateY(-6px);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24), -webkit-transform 0.3s cubic-bezier(0.71, 1.7, 0.77, 1.24);
+    &::before {
+        position: absolute;
+        content: "";
+        bottom: -5px;
+        left: 50%;
+        width: 0;
+        height: 0;
+        transform: translateX(-50%);
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid var(--togo-common-black);
+    }
+}

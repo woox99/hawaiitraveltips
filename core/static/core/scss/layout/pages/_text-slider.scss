@@ -1,0 +1,101 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.5 text slider css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-text-slider{
+    &-item{
+        display: flex;
+        gap: 15px;
+        & span{
+            font-size: 16px;
+            font-weight: 500;
+            display: inline-block;
+            color: var(--togo-common-brown);
+            font-family: var(--togo-ff-playfair);
+        }
+    }
+    &-bg{
+        &-wrapper{
+            z-index: 0;
+            position: relative;
+            transform: translateY(-30px);
+        }
+        &-item{
+            & span{
+                font-size: 100px;
+                font-weight: 700;
+                color: #F9F6F3;
+                font-family: var(--togo-ff-body);
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-text-2{
+    &-slider{
+        &-bg{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 60px;
+            width: 100%;
+            z-index: 0;
+            transform: rotate(-1deg);
+            background-color: var(--togo-common-black);
+        }
+        &-wrapper{
+            position: relative;
+            padding: 17px 0;
+            z-index: 1;
+        }
+        &-item{
+            & span{
+                font-size: 18px;
+                font-weight: 500;
+                margin-right: 20px;
+                display: inline-block;
+                color: var(--togo-common-white);
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-text-marquee{
+    &-wrapper{
+        & .togo-marquee {
+            width: 100%;
+            overflow: hidden;
+            padding: 10px 0;
+            background: rgba(234, 225, 210, 0.20);
+            &-inner {
+                display: flex;
+                gap: 38px;
+                white-space: nowrap;
+                will-change: transform;
+            }
+            &-item {
+                position: relative;
+                font-size: 16px;
+                font-weight: 500;
+                flex-shrink: 0;
+                color: var(--togo-common-brown);
+                font-family: var(--togo-ff-playfair);
+                &::after{
+                    content: '';
+                    width: 6px;
+                    height: 6px;
+                    top: 10px;
+                    right: -22px;
+                    position: absolute;
+                    border-radius: 50%;
+                    background-color: var(--togo-common-brown);
+                }
+            }
+        }
+    }
+
+}

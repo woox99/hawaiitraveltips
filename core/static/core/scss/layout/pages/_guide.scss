@@ -1,0 +1,317 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.2 guide css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-guide{
+    &-heading{
+        @media #{$md,$xs} {
+            margin-bottom: 0px;
+        }
+    }
+    &-item{
+        border-radius: 16px;
+        padding: 16px 16px 37px;
+        background: rgba(234, 225, 210, 0.20);
+        &-icon{
+            display: inline-grid;
+            height: 60px;
+            width: 60px;
+            place-content: center;
+            border-radius: 50%;
+            background-color: var(--togo-common-white);
+        }
+        &-content{
+            & p{
+                margin: 0;
+                color: var(--togo-common-black);
+            }
+        }
+        &-title{
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            font-family: var(--togo-ff-body);
+            @media #{$xs} {
+                font-size: 35px;
+            }
+            & i{
+                font-style: normal;
+            }
+        }
+        &-thumb{
+            height: 100%;
+            flex: 0 0 auto;
+            @media #{$md,$xs} {
+                width: 100%;
+            }
+            & img{
+                height: 100%;
+                border-radius: 16px;
+                @media #{$md,$xs} {
+                    width: 100%;
+                }
+            }
+        }
+        &-text{
+            & span{
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 10px;
+                display: inline-block;
+                font-family: var(--togo-ff-outfit);
+            }
+            & p{
+                margin-bottom: 10px;
+            }
+        }
+        &-wrap{
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding: 25px 40px 25px 15px;
+            justify-content: space-between;
+            @media #{$md,$xs} {
+                padding: 25px 0px 35px 15px;
+            }
+        }
+        &-shape{
+            position: absolute;
+            bottom: 8%;
+            right: 3%;
+            @media #{$xs} {
+                right: -4%;
+                bottom: 12%;
+            }
+            &-main{
+                width: 102px;
+                display: inline-block;
+            }
+            &-ani{
+                position: absolute;
+                top: -30px;
+                left: -27px;
+                animation: rotate2 4s linear infinite;
+            }
+        }
+        &.card-style-2{
+            display: flex;
+            max-height: 402px;
+            padding: 24px 30px 38px 15px;
+            justify-content: space-between;
+            @media #{$md,$xs} {
+                flex-wrap: wrap;
+                max-height: inherit;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-guide-2{
+    &-shape{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+        & img{
+            width: calc(52%);
+        }
+        @media #{$xs} {
+            display: none;
+        }
+    }
+    &-wrapper{
+        display: flex;
+        align-items: center;
+        padding-right: 68px;
+        @media #{$xxl} {
+            padding-right: 30px;
+        }
+        @media #{$md,$xs} {
+            margin-bottom: 40px;
+        }
+        @media #{$xl,$lg,$md,$xs} {
+            padding-right: 0;
+        }
+        @media #{$xs} {
+            display: inherit;
+        }
+    }
+    &-roted-text{
+        margin-right: 45px;
+        padding-top: 60px;
+        padding-right: 45px;
+        padding-bottom: 60px;
+        border-right: 1px solid var(--togo-gray-1);
+        @media #{$xl} {
+            margin-right: 40px;
+            padding-right: 45px;
+        }
+        @media #{$lg,$md} {
+            margin-right: 25px;
+            padding-right: 25px;
+            padding-top: 20px;
+            padding-bottom: 0;
+        }
+        @media #{$xs} {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+        & p{
+            font-size: 18px;
+            font-weight: 500;
+            margin: 0;
+            margin-top: 8px;
+            text-transform: uppercase;
+            writing-mode: sideways-rl;
+            color: var(--togo-theme-primary);
+            @media #{$xs} {
+                margin: 0;
+                margin-bottom: 15px;
+                writing-mode: inherit;
+            }
+        }
+    }
+    &-thumb{
+        &-wrapper{
+            gap: 8px;
+        }
+        &-1{
+            border-radius: 16px 0 0 16px;
+            & img{
+                border-radius: 16px 0 0 16px;
+            }
+        }
+        &-2{
+            border-radius: 0 16px 16px 0;
+            & img{
+                border-radius: 0 16px 16px 0;
+            }
+        }
+        &-shape{
+            position: absolute;
+            top: 50%;
+            left: 60%;
+            transform: translate(-50%, -50%);
+            @media #{$lg,$xs} {
+                transform: scale(0.7) translate(-70%, -68%);
+            }
+        }
+    }
+    &-btn{
+        &-box{
+            gap: 22px;
+            @media #{$md} {
+                gap: 6px;
+            }
+            @media #{$xs} {
+                flex-wrap: wrap;
+            }
+            & .togo-btn-tel{
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--togo-common-black);
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-guide-3{
+    &-shape{
+        &-1{
+            position: absolute;
+            top: 0;
+            left: 0;
+            @media #{$xs} {
+                display: none;
+            }
+        }
+    }
+    &-thumb{
+        &-wrapper{
+            display: flex;
+            & .togo-guide-item-shape{
+                position: absolute;
+                bottom: 20%;
+                right: auto;
+                left: 20%;
+                z-index: 2;
+            }
+        }
+        &-1{
+            height: 100%;
+            overflow: hidden;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            background-position: center center;
+            mask-image: url(../img/guide/home-3/thumb-mask-1.png);
+            -webkit-mask-image: url(../img/guide/home-3/thumb-mask-1.png);
+        }
+        &-2{
+            margin-left: -175px;
+            height: 100%;
+            overflow: hidden;
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            background-position: center center;
+            mask-image: url(../img/guide/home-3/thumb-mask-2.png);
+            -webkit-mask-image: url(../img/guide/home-3/thumb-mask-2.png);
+            @media #{$xs} {
+                margin-left: -85px;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-guide-8{
+    &-shape{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        @media #{$xs} {
+            display: none;
+        }
+    }
+    &-heading-wrap{
+        & p{
+            & br{
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-item{
+        padding: 70px 34px;
+        border-radius: 16px;
+        background-color: #F0F8FF;
+        @media #{$lg,$md} {
+            padding: 45px 35px;
+        }
+        @media #{$xs} {
+            padding: 35px 30px;
+        }
+        &-title{
+            font-size: 18px;
+            font-weight: 500;
+            font-family: var(--togo-ff-jost);
+        }
+        &-shape{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            &.top{
+                top: 0;
+            }
+        }
+    }
+}

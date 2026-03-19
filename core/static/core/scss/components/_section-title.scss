@@ -1,0 +1,131 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.8 Section Title
+/*----------------------------------------*/
+
+
+.#{$theme-prefix}-section{
+    &-subtitle{
+        font-size: 16px;
+        font-weight: 400;
+        display: inline-block;
+        text-transform: uppercase;
+        color: var(--togo-theme-primary);
+        &.color{
+            &-white{
+                color: var(--togo-common-white);
+            }
+            &-black{
+                color: var(--togo-common-black);
+            }
+        }
+        &.ff{
+            &-jost{
+                color: var(--togo-text-body);
+                font-family: var(--togo-ff-jost);
+                & img{
+                    @extend %svg-4;
+                    margin-right: 4px;
+                    animation: rotate2 4s linear infinite;
+                }
+            }
+        }
+    }
+    &-title{
+        font-size: 34px;
+        font-weight: 500;
+        line-height: 1.2;
+        margin-bottom: 30px;
+        color: var(--togo-common-black);
+        font-family: var(--togo-ff-outfit);
+        @media #{$xs} {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+        & br{
+            @media #{$md,$xs} {
+                display: none;
+            }
+        }
+        &.ff{
+            &-playfair{
+                font-family: var(--togo-ff-playfair);
+            }
+            &-marcellus{
+                font-family: var(--togo-ff-marcellus);
+            }
+            &-jost{
+                font-family: var(--togo-ff-jost);
+            }
+            &-outfit{
+                font-family: var(--togo-ff-outfit);
+            }
+        }
+        &.fs{
+            &-28{
+                font-size: 28px;
+            }
+            &-36{
+                font-size: 36px;
+            }
+            &-46{
+                font-size: 46px;
+                @media #{$xl} {
+                    font-size: 42px;
+                }
+                @media #{$lg,$md} {
+                    font-size: 40px;
+                }
+                @media #{$xs} {
+                    font-size: 34px;
+                }
+                & br{
+                    @media #{$lg,$md,$xs} {
+                        display: none;
+                    }
+                }
+            }
+            &-56{
+                font-size: 56px;
+                @media #{$xl,$lg} {
+                    font-size: 50px;
+                }
+                @media #{$md} {
+                    font-size: 46px;
+                }
+                @media #{$xs} {
+                    font-size: 34px;
+                }
+            }
+            &-64{
+                font-size: 64px;
+                @media #{$xxl,$xl} {
+                    font-size: 55px;
+                }
+                @media #{$lg} {
+                    font-size: 50px;
+                }
+                @media #{$md} {
+                    font-size: 46px;
+                }
+                @media #{$xs} {
+                    font-size: 36px;
+                }
+            }
+        }
+        &.fw{
+            &-400{
+                font-weight: 400;
+            }
+            &-600{
+                font-weight: 600;
+            }
+        }
+        &.color{
+            &-white{
+                color: var(--togo-common-white);
+            }
+        }
+    }
+}

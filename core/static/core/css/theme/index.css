@@ -1,0 +1,801 @@
+@charset "UTF-8";
+/***************************************************
+	Template Name: Togo – Travel & Tour Booking HTML Template
+	Author: Ib themes
+	Support: #
+	Description: Togo – Travel & Tour Booking HTML Template
+	Version: 1.0
+****************************************************/
+/*----------------------------------------*/
+/*  1.1 Theme Default
+/*----------------------------------------*/
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Marcellus&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap");
+a,
+button,
+p,
+input,
+select,
+textarea,
+li,
+.transition-3 {
+  -webkit-transition: all 0.3s ease-out;
+  -moz-transition: all 0.3s ease-out;
+  -ms-transition: all 0.3s ease-out;
+  -o-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+}
+
+/* transform */
+@font-face {
+  font-family: "Otomanopee";
+  src: url("../fonts/OtomanopeeOne-Regular.ttf");
+  src: url("../fonts/OtomanopeeOne-Regular.ttf") format("embedded-opentype"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff2"), url("../fonts/OtomanopeeOne-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+:root {
+  /**
+  @font family declaration
+  */
+  --togo-ff-body: 'DM Sans', sans-serif;
+  --togo-ff-heading: 'Playfair Display', serif;
+  --togo-ff-p: 'DM Sans', sans-serif;
+  --togo-ff-outfit : 'Outfit', sans-serif;
+  --togo-ff-marcellus : 'Marcellus', serif;
+  --togo-ff-jost : 'Jost', sans-serif;
+  --togo-ff-playfair : 'Playfair Display', serif;
+  --togo-ff-otomanopee: 'Otomanopee', sans-serif;
+  --togo-ff-fontawesome: "Font Awesome 6 Pro";
+  /**
+  @color declaration
+  */
+  --togo-common-white: #FFFFFF;
+  --togo-common-black: #111111;
+  --togo-common-black-2: #1E1E1E;
+  --togo-common-red: #FF252B;
+  --togo-common-orange: #ED2B04;
+  --togo-common-yellow: #FFE453;
+  --togo-common-green: #46E86A;
+  --togo-common-brown: #664117;
+  --togo-theme-primary: #FD4621;
+  --togo-theme-secondary: #FBDFD1;
+  --togo-text-body: #333333;
+  --togo-gray-1: #DDDDDD;
+  --togo-gray-2: #EEEEEE;
+}
+
+@media (min-width: 1400px) {
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1265px;
+  }
+  .container-1440 {
+    max-width: 1465px;
+  }
+  .container-1640 {
+    max-width: 1640px;
+  }
+  .container-1850 {
+    max-width: 1850px;
+  }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/*---------------------------------
+	typography css start 
+---------------------------------*/
+body {
+  font-size: 14px;
+  line-height: 26px;
+  font-weight: normal;
+  color: var(--togo-text-body);
+  font-family: var(--togo-ff-body);
+}
+
+img {
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0px;
+  font-weight: 500;
+  line-height: 1.2;
+  -webkit-transition: color 0.3s ease-out;
+  -moz-transition: color 0.3s ease-out;
+  -ms-transition: color 0.3s ease-out;
+  -o-transition: color 0.3s ease-out;
+  transition: color 0.3s ease-out;
+  color: var(--togo-common-black);
+  font-family: var(--togo-ff-outfit);
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 36px;
+}
+
+h3 {
+  font-size: 28px;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h5 {
+  font-size: 20px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+p {
+  font-size: 16px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  line-height: 1.55;
+  color: var(--togo-text-body);
+  font-family: var(--togo-ff-p);
+}
+
+a:not([href]):not([class]),
+a:not([href]):not([class]):hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:focus,
+.button:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+a:focus,
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+a,
+button {
+  color: inherit;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+input[type=number],
+input[type=password],
+input[type=url],
+textarea {
+  outline: none;
+  height: 56px;
+  width: 100%;
+  line-height: 56px;
+  font-size: 14px;
+  padding-left: 26px;
+  padding-right: 26px;
+  color: var(--togo-common-black);
+  border: 1px solid var(--togo-common-black);
+  background-color: var(--togo-common-white);
+}
+input[type=text]::-webkit-input-placeholder,
+input[type=email]::-webkit-input-placeholder,
+input[type=tel]::-webkit-input-placeholder,
+input[type=number]::-webkit-input-placeholder,
+input[type=password]::-webkit-input-placeholder,
+input[type=url]::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: var(--togo-common-black);
+}
+input[type=text]::-moz-placeholder,
+input[type=email]::-moz-placeholder,
+input[type=tel]::-moz-placeholder,
+input[type=number]::-moz-placeholder,
+input[type=password]::-moz-placeholder,
+input[type=url]::-moz-placeholder,
+textarea::-moz-placeholder { /* Firefox 19+ */
+  color: var(--togo-common-black);
+}
+input[type=text]:-moz-placeholder,
+input[type=email]:-moz-placeholder,
+input[type=tel]:-moz-placeholder,
+input[type=number]:-moz-placeholder,
+input[type=password]:-moz-placeholder,
+input[type=url]:-moz-placeholder,
+textarea:-moz-placeholder { /* Firefox 4-18 */
+  color: var(--togo-common-black);
+}
+input[type=text]:-ms-input-placeholder,
+input[type=email]:-ms-input-placeholder,
+input[type=tel]:-ms-input-placeholder,
+input[type=number]:-ms-input-placeholder,
+input[type=password]:-ms-input-placeholder,
+input[type=url]:-ms-input-placeholder,
+textarea:-ms-input-placeholder { /* IE 10+  Edge*/
+  color: var(--togo-common-black);
+}
+input[type=text]::placeholder,
+input[type=email]::placeholder,
+input[type=tel]::placeholder,
+input[type=number]::placeholder,
+input[type=password]::placeholder,
+input[type=url]::placeholder,
+textarea::placeholder { /* MODERN BROWSER */
+  color: var(--togo-common-black);
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
+input[type=number]:focus,
+input[type=password]:focus,
+input[type=url]:focus,
+textarea:focus {
+  border-color: var(--togo-common-black);
+}
+input[type=text]:focus::placeholder,
+input[type=email]:focus::placeholder,
+input[type=tel]:focus::placeholder,
+input[type=number]:focus::placeholder,
+input[type=password]:focus::placeholder,
+input[type=url]:focus::placeholder,
+textarea:focus::placeholder {
+  opacity: 0;
+}
+
+textarea {
+  line-height: 1.4;
+  padding-top: 17px;
+  padding-bottom: 17px;
+}
+
+input[type=color] {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  border-radius: 50%;
+}
+
+*::-moz-selection {
+  background: var(--togo-common-black);
+  color: var(--togo-common-white);
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: var(--togo-common-black);
+  color: var(--togo-common-white);
+  text-shadow: none;
+}
+
+::selection {
+  background: var(--togo-common-black);
+  color: var(--togo-common-white);
+  text-shadow: none;
+}
+
+*::-moz-placeholder {
+  color: var(--togo-common-black);
+  font-size: 16px;
+  opacity: 1;
+}
+
+*::placeholder {
+  color: var(--togo-common-black);
+  font-size: 16px;
+  opacity: 1;
+}
+
+/*---------------------------------
+    1.2 Common Classes
+---------------------------------*/
+.w-img img {
+  width: 100%;
+}
+
+.m-img img {
+  max-width: 100%;
+}
+
+.fix {
+  overflow: hidden;
+}
+
+.clear {
+  clear: both;
+}
+
+.z-index-1 {
+  position: relative;
+  z-index: 1;
+}
+
+.z-index-2 {
+  position: relative;
+  z-index: 2;
+}
+
+.z-index-3 {
+  position: relative;
+  z-index: 3;
+}
+
+.z-index-4 {
+  position: relative;
+  z-index: 4;
+}
+
+.z-index-5 {
+  position: relative;
+  z-index: 5;
+}
+
+.z-index-6 {
+  position: relative;
+  z-index: 6;
+}
+
+.z-index-7 {
+  position: relative;
+  z-index: 7;
+}
+
+.z-index-8 {
+  position: relative;
+  z-index: 8;
+}
+
+.z-index-9 {
+  position: relative;
+  z-index: 9;
+}
+
+.z-index-10 {
+  position: relative;
+  z-index: 10;
+}
+
+.gx-5 {
+  --bs-gutter-x: 5px;
+}
+
+.gx-10 {
+  --bs-gutter-x: 10px;
+}
+
+.gx-20 {
+  --bs-gutter-x: 20px;
+}
+
+.gx-30 {
+  --bs-gutter-x: 30px;
+}
+
+.gx-40 {
+  --bs-gutter-x: 40px;
+}
+
+.gx-45 {
+  --bs-gutter-x: 45px;
+}
+@media (max-width: 767px) {
+  .gx-45 {
+    --bs-gutter-x: 0px;
+  }
+}
+
+.gx-50 {
+  --bs-gutter-x: 50px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
+  .gx-50 {
+    --bs-gutter-x: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .gx-50 {
+    --bs-gutter-x: 0px;
+  }
+}
+
+.gx-60 {
+  --bs-gutter-x: 60px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px) {
+  .gx-60 {
+    --bs-gutter-x: 24px;
+  }
+}
+@media (max-width: 767px) {
+  .gx-60 {
+    --bs-gutter-x: 15px;
+  }
+}
+
+.gx-70 {
+  --bs-gutter-x: 70px;
+}
+
+.gx-80 {
+  --bs-gutter-x: 80px;
+}
+
+.gx-90 {
+  --bs-gutter-x: 90px;
+}
+
+.gx-100 {
+  --bs-gutter-x: 100px;
+}
+
+.overflow-y-visible {
+  overflow-x: hidden;
+  overflow-y: visible;
+}
+
+.p-relative {
+  position: relative;
+}
+
+.p-absolute {
+  position: absolute;
+}
+
+.bg-pos {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+p.fs-18 {
+  font-size: 18px;
+}
+p.ff-jost {
+  font-family: var(--togo-ff-jost);
+}
+p.ff-outfit {
+  font-family: var(--togo-ff-outfit);
+}
+p.color-white {
+  color: var(--togo-common-white);
+}
+
+/* dropcap */
+.togo-dropcap::first-letter {
+  float: left;
+  width: 65px;
+  height: 85px;
+  font-size: 90px;
+  line-height: 0.8;
+  font-weight: 500;
+  margin-right: 5px;
+  text-align: center;
+  line-height: inherit;
+  text-transform: capitalize;
+  color: var(--togo-common-white);
+  font-family: var(--togo-ff-body);
+}
+
+.togo-slide-transtion {
+  -webkit-transition-timing-function: linear;
+  transition-timing-function: linear;
+}
+.togo-slide-transtion .swiper-slide {
+  width: auto;
+}
+
+.togo-line-anim {
+  display: inline;
+  transition: all 0.3s linear;
+  background-repeat: no-repeat;
+  background-size: 0% 1px, 0 1px;
+  background-position: 100% 100%, 0 100%;
+  background-image: linear-gradient(currentcolor, currentcolor), linear-gradient(currentcolor, currentcolor);
+}
+.togo-line-anim:hover {
+  background-size: 0% 1px, 100% 1px;
+}
+
+a.line-border,
+button.line-border {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+a.line-border:hover span::after,
+button.line-border:hover span::after {
+  transform: translate(1rem);
+}
+a.line-border:hover span::before,
+button.line-border:hover span::before {
+  transform: translate(calc(100% + 1rem));
+}
+a.line-border span,
+button.line-border span {
+  position: relative;
+  overflow: hidden;
+}
+a.line-border span::before, a.line-border span::after,
+button.line-border span::before,
+button.line-border span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0.2em;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  transition: transform 0.5s cubic-bezier(0.59, 0.23, 0.22, 0.96);
+}
+a.line-border span::before,
+button.line-border span::before {
+  left: 0;
+}
+a.line-border span::after,
+button.line-border span::after {
+  left: -1rem;
+  transform: translate(-100%);
+}
+a.hover-line,
+button.hover-line {
+  position: relative;
+}
+a.hover-line::after,
+button.hover-line::after {
+  content: "";
+  bottom: 2px;
+  right: 0;
+  width: 0;
+  height: 1px;
+  position: absolute;
+  transition: 0.3s ease-in-out;
+  background-color: currentColor;
+}
+a.hover-line:hover::after,
+button.hover-line:hover::after {
+  width: 100%;
+  right: auto;
+  left: 0;
+}
+
+.datepicker {
+  background: #fff;
+  border-radius: 24px;
+  padding: 25px;
+  max-width: 700px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+.datepicker__topbar, .datepicker__info {
+  display: none !important;
+}
+.datepicker__inner {
+  padding: 0;
+  color: #222;
+  width: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+.datepicker__nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1;
+}
+.datepicker__nav button {
+  background: #fff;
+  border: 1px solid #eee;
+  color: #333;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.datepicker__nav button:hover {
+  background: #f5f5f5;
+  border-color: #ddd;
+}
+.datepicker__months {
+  gap: 35px;
+  display: flex;
+  justify-content: space-between;
+}
+.datepicker__month {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+}
+.datepicker__month caption,
+.datepicker__month th.month-name {
+  font-size: 16px;
+  font-weight: 600;
+  padding-bottom: 20px;
+  color: #222;
+}
+.datepicker__month-button {
+  height: 36px;
+  width: 36px;
+  display: inline-grid;
+  text-align: center;
+  place-content: center;
+  border-radius: 50%;
+  border: 1px solid #eeeeee;
+  background-color: var(--togo-common-white);
+}
+.datepicker__month-button::after {
+  transform: translate(0px, -6px);
+}
+.datepicker__month-button:hover {
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+}
+.datepicker__month-caption {
+  border: none;
+}
+.datepicker__month th {
+  font-size: 18px;
+  font-weight: 600;
+  padding-bottom: 15px;
+  text-transform: capitalize;
+  color: var(--togo-common-black);
+}
+.datepicker__month th.datepicker__week-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+.datepicker__month th.datepicker__week-days {
+  color: #666;
+  text-transform: capitalize;
+}
+.datepicker__month td {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  color: #333;
+  position: relative;
+}
+.datepicker__month td:hover {
+  background-color: #f5f5f5;
+}
+.datepicker__month td.active, .datepicker__month td.-selected- {
+  background: #000 !important;
+  color: #fff !important;
+  font-weight: 500;
+}
+.datepicker__month-day--today {
+  font-weight: bold;
+  color: var(--togo-common-white) !important;
+  background-color: var(--togo-theme-primary);
+}
+.datepicker__month-day--today:hover {
+  background-color: #000;
+}
+.datepicker__month.-in-range- {
+  background: #f8f8f8;
+  border-radius: 0 !important;
+  color: #000;
+}
+.datepicker__buttons {
+  display: flex;
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+.datepicker__buttons button {
+  background: transparent;
+  color: #000;
+  border: none;
+  padding: 5px 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.datepicker__buttons button:hover {
+  color: #444;
+}
+
+.datepicker__month td.active,
+.datepicker__month td.-selected- {
+  color: #fff !important;
+  font-weight: 500;
+}
+
+.datepicker__month-day--first-day-selected,
+.datepicker__month-day--last-day-selected {
+  background-color: var(--togo-theme-primary) !important;
+  color: #fff !important;
+}
+
+.datepicker__month-day--selected,
+.datepicker__month-day--hovering {
+  background-color: rgba(253, 70, 33, 0.2);
+  color: #fff;
+}
+
+.datepicker__month-day--today {
+  font-weight: bold;
+  color: var(--togo-common-white) !important;
+  background-color: var(--togo-theme-primary);
+}
+
+#chart {
+  min-height: 450px;
+}
+
+.togo-pagination nav ul {
+  display: flex;
+  align-items: center;
+}
+.togo-pagination nav ul li {
+  list-style: none;
+  margin-right: 5px;
+  display: inline-block;
+}
+.togo-pagination nav ul li a {
+  height: 36px;
+  width: 36px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 50%;
+  text-align: center;
+  display: inline-grid;
+  place-content: center;
+  color: var(--togo-common-black);
+}
+.togo-pagination nav ul li a.next {
+  border: 1px solid rgba(238, 238, 238, 0.9);
+}
+.togo-pagination nav ul li a.active, .togo-pagination nav ul li a:hover {
+  color: var(--togo-common-white);
+  background-color: var(--togo-theme-primary);
+}
+
+/*# sourceMappingURL=index.css.map */

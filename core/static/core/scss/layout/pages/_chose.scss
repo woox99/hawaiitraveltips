@@ -1,0 +1,336 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.3 chose css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-chose{
+    &-ptb{
+        @media #{$xs} {
+            padding-bottom: 0;
+        }
+    }
+    &-shape{
+        &-box{
+            @media #{$xs} {
+                display: none;
+            }
+            & .shape{
+                &-1{
+                    position: absolute;
+                    bottom: 0;
+                    left: 25%;
+                    z-index: -1;
+                    @media #{$lg} {
+                        left: 20%;
+                    }
+                    @media #{$md} {
+                        bottom: 20%;
+                    }
+                }
+                &-2{
+                    position: absolute;
+                    bottom: 0;
+                    right: 25%;
+                    z-index: -1;
+                    @media #{$xl,$lg} {
+                        right: 15%;
+                    }
+                    @media #{$md} {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+    &-item{
+        padding-left: 80px;
+        @media #{$xxl,$xl} {
+            padding-left: 40px;
+        }
+        @media #{$lg,$md,$xs} {
+            padding-left: 0px;
+        }
+        &-title{
+            font-size: 20px;
+            line-height: 1;
+        }
+        & p{
+            & br{
+                @media #{$xxl,$xl,$lg,$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+        &.chose-style{
+            &-2{
+                & .togo-chose-item-icon{
+                    max-height: 50px;
+                    min-width: 52px;
+                }
+            }
+        }
+    }
+    &-roted-text{
+        position: relative;
+        font-size: 20px;
+        font-weight: 500;
+        z-index: 1;
+        writing-mode: vertical-rl;
+        color: var(--togo-common-black);
+        font-family: var(--togo-ff-playfair);
+        background-color: var(--togo-common-white);
+        transform: rotate(180deg) translate(0px, -70px);
+        @media #{$lg,$md,$xs} {
+            margin-bottom: 30px;
+            writing-mode: inherit;
+            transform: rotate(0) translate(0 , 0);
+        }
+        &::before{
+            content: "";
+            height: 52px;
+            width: 1px;
+            bottom: -60px;
+            right: 13px;
+            z-index: -1;
+            position: absolute;
+            background-color: var(--togo-common-black);
+        }
+        &::after{
+            content: "";
+            height: 52px;
+            width: 1px;
+            top: -60px;
+            right: 13px;
+            z-index: -1;
+            position: absolute;
+            background-color: var(--togo-common-black);
+        }
+        &::after,
+        &::before{
+            @media #{$lg,$md,$xs} {
+                content: none;
+            }
+        }
+    }
+    &-heading{
+        @media #{$lg,$md,$xs} {
+            padding-left: 0;
+        }
+    }
+}
+
+
+.#{$theme-prefix}-community{
+    &-ptb{
+        @media #{$lg} {
+            padding-top: 150px;
+            padding-bottom: 150px;
+        }
+        @media #{$md,$xs} {
+            padding-top: 120px;
+            padding-bottom: 120px;
+        }
+    }
+    &-bg{
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        &::after{
+            position: absolute;
+            content: '';
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.60);
+        }
+    }
+    &-heading{
+        & .togo-section-title{
+            margin-bottom: 15px;
+            color: var(--togo-common-white);
+            & span{
+                position: absolute;
+                bottom: -20px;
+                left: 40%;
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+        & p{
+            margin-bottom: 22px;
+            color: var(--togo-common-white);
+        }
+    }
+    &-input{
+        &-icon{
+            position: absolute;
+            top: 16px;
+            left: 25px;
+        }
+        & input{
+            height: 60px;
+            font-size: 16px;
+            padding-left: 55px;
+            padding-right: 55px;
+            border-radius: 50px;
+            border-color: transparent;
+            background: var(--togo-common-white);
+            &:focus{
+                border-color: var(--togo-theme-primary);
+            }
+        }
+        & .togo-footer-widget-input-btn{
+            top: 15px;
+        }
+    }
+    &-3{
+        &-bg{
+            position: relative;
+            &::after{
+                position: absolute;
+                content: '';
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                z-index: 0;
+                background: rgba(17, 17, 17, 0.30);
+            }
+            &-shape{
+                & .shape{
+                    &-1{
+                        position: absolute;
+                        top: -25px;
+                        left: 0;
+                        z-index: 1;
+                        width: 100%;
+                        @media #{$md,$xs} {
+                            top: -7px;
+                        }
+                        & img{
+                            width: 100%;
+                        }
+                    }
+                    &-2{
+                        position: absolute;
+                        bottom: -25px;
+                        left: 0;
+                        z-index: 1;
+                        width: 100%;
+                        @media #{$md,$xs} {
+                            bottom: -5px;
+                        }
+                        & img{
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-chose-3{
+    &-heading{
+        padding: 20px 0 8px;
+        padding-left: 25px;
+        border-left: 4px solid var(--togo-common-black);
+        @media #{$md,$xs} {
+            margin-bottom: 40px;
+        }
+        & .togo-section-title{
+            @media #{$xl,$lg,$md} {
+                font-size: 30px;
+            }
+            @media #{$xs} {
+                font-size: 26px;
+            }
+        }
+    }
+    &-item{
+        @media #{$xl,$lg,$md,$xs} {
+            padding-left: 0;
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-chose-9{
+    &-item{
+        &:hover{
+            & .togo-chose-9-item-thumb{
+                & img{
+                    transform: scale(1.1);
+                }
+            }
+        }
+        &-thumb{
+            position: relative;
+            overflow: hidden;
+            &::after{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 100%;
+                content: '';
+                pointer-events: none;
+                background-color: rgba(0, 0, 0, 0.20);
+            }
+            & img{
+                width: 100%;
+                height: 100%;
+                height: 405px;
+                object-fit: cover;
+                transition: all .5s ease-in-out;
+                @media #{$x3l} {
+                    height: 380px;
+                }
+                @media #{$xxl,$xl,$lg} {
+                    height: 330px;
+                }
+                @media #{$xs} {
+                    height: 300px;
+                }
+            }
+        }
+        &-content{
+            top: 50%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            position: absolute;
+            text-align: center;
+            transform: translateY(-50%);
+        }
+        &-title{
+            color: var(--togo-common-white);
+            @media #{$lg,$xs} {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-chose-12{
+    &-shape{
+        position: absolute;
+        top: 10%;
+        right: 17%;
+        @media #{$xxl} {
+            right: 7%;
+        }
+        @media #{$xl} {
+            right: 5%;
+        }
+        @media #{$lg,$md,$xs} {
+            display: none;
+        }
+    }
+}

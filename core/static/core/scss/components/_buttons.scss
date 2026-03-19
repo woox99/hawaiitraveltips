@@ -1,0 +1,65 @@
+@use '../utils' as *;
+
+/*----------------------------------------*/
+/*  2.2 Buttons
+/*----------------------------------------*/
+
+.togo-btn{
+	&-primary{
+		font-size: 16px;
+		font-weight: 500;
+		border-radius: 50px;
+		display: inline-block;
+		padding: 8px 26px 8px;
+		@include togo-transition();
+		color: var(--togo-common-white);
+		background-color: var(--togo-theme-primary);
+		& span{
+			@extend %svg-2;
+			line-height: 1;
+			margin-right: 4px;
+			display: inline-block;
+		}
+		&:hover{
+			color: var(--togo-common-white);
+			background-color: var(--togo-common-orange);
+		}
+
+		&.bdr-style{
+			background-color: transparent;
+			color: var(--togo-common-white);
+			border: 1px solid var(--togo-common-white);
+			&:hover{
+				border-color: transparent;
+				background-color: var(--togo-common-orange);
+			}
+			&.orange-bdr{
+				color: var(--togo-theme-primary);
+				border-color: var(--togo-theme-primary);
+				@media #{$lg} {
+					padding: 8px 18px 8px;
+				}
+				&:hover{
+					color: var(--togo-common-white);
+				}
+			}
+			&-black{
+				background-color: transparent;
+				color: var(--togo-common-black);
+				border: 1px solid var(--togo-common-black);
+				&:hover{
+					border-color: transparent;
+					color: var(--togo-common-white);
+					background-color: var(--togo-theme-primary);
+				}
+			}
+		}
+		&.btn-white-bg{
+			color: var(--togo-common-black);
+			background-color: var(--togo-common-white);
+			&:hover{
+				background-color: rgba($color: #fff, $alpha: 0.8);
+			}
+		}
+	}
+}

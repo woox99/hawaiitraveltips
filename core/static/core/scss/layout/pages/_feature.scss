@@ -1,0 +1,72 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  8.8 feature css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-feature{
+    &-6{
+        &-wrapper{
+            & .row {
+                & [class*="col-"]:not(:last-of-type){
+                    border-right: 1px solid #EEEEEE;
+                    @media #{$md,$xs} {
+                        border: none;
+                    }
+                }
+            }
+        }
+        &-item{
+            &.plr{
+                padding-left: 50px;
+                @media #{$lg,$md} {
+                    padding-left: 10px;
+                }
+                @media #{$xs} {
+                    padding-left: 0;
+                }
+            }
+            &-icon{
+                & span{
+                    margin-bottom: 30px;
+                    display: inline-block;
+                }
+            }
+            &-title{
+                font-size: 24px;
+                font-weight: 400;
+                color: var(--togo-text-body);
+                font-family: var(--togo-ff-marcellus);
+            }
+            &-content{
+                & p{
+                    & br{
+                        @media #{$xl,$lg,$md,$xs} {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-feature{
+    &-11{
+        &-item{
+            gap: 24px;
+            display: flex;
+            align-items: center;
+            &-title{
+                font-size: 20px;
+                color: var(--togo-common-white);
+            }
+            &-content{
+                & p{
+                    margin: 0;
+                    color: var(--togo-common-white);
+                }
+            }
+        }
+    }
+}

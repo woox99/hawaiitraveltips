@@ -1,0 +1,755 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  3.1 Header Style 1
+/*----------------------------------------*/
+
+.#{$theme-prefix}-header{
+    &-ptb{
+        @media #{$lg,$md,$xs}{
+            padding: 10px 0;
+        }
+    }
+    &-wrapper{
+        padding: 0 50px;
+        @media #{$xxl} {
+            padding: 0 30px;
+        }
+        @media #{$lg,$md,$xs} {
+            padding: 20px 20px;
+        }
+    }
+    &-menu{
+        position: relative;
+        & > nav{
+            & > ul{
+                & > li{
+                    margin: 0 11px;
+                    list-style: none;
+                    position: relative;
+                    display: inline-block;
+                    @media #{$xl} {
+                        margin: 0 8px;
+                    }
+                    & > a{
+                        padding: 21px 0;
+                        font-size: 16px;
+                        font-weight: 500;
+                        display: inline-block;
+                        color: var(--togo-common-black);
+                    }
+                    &.p-static{
+                        position: static;
+                    }
+                    &.togo-dropdown{
+                        & > a{
+                            &::after {
+                                content: "\f107";
+                                font-size: 14px;
+                                font-weight: 300;
+                                margin-left: 4px;
+                                display: inline-block;
+                                color: var(--togo-common-black);
+                                transition: all 0.3s 0s ease-out;
+                                font-family: var(--togo-ff-fontawesome);
+                            }
+                        }
+                        &:hover > a {
+                            color: var(--togo-theme-primary);
+                            &::after {
+                                transform: rotate(-180deg);
+                                color: var(--togo-theme-primary);
+                            }
+                        }
+                    }
+                    & .togo-submenu{
+                        position: absolute;
+                        left: 0;
+                        width: 240px;
+                        z-index: 99;
+                        padding: 16px 0;
+                        text-align: start;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: all .3s;
+                        top: calc(100% + 20px);
+                        transform: translateY(10px);
+                        border: 1px solid #eeeeee;
+                        border-radius: 0 0 16px 16px;
+                        background: var(--togo-common-white);
+                        box-shadow: 1px 9px 26px 0px rgba(0,0,0,.04);
+                        @media #{$xl} {
+                            width: 200px;
+                        }
+                        & li{
+                            width: 100%;
+                            padding: 0 20px;
+                            list-style: none;
+                            position: relative;
+                            &:not(:last-of-type){
+                                margin-bottom: 12px;
+                            }
+                            & a{
+                                position: relative;
+                                font-size: 16px;
+                                font-weight: 500;
+                                line-height: 1;
+                                width: 100%;
+                                display: inline-block;
+                                color: var(--togo-common-black);
+                                @media #{$x3l,$xxl,$xl}{
+                                    font-size: 14px;
+                                }
+                            }
+                            & .togo-submenu{
+                                left: 100%;
+                                top: calc(100% + 10px);
+                            }
+                            &.togo-dropdown{
+                                & > a{
+                                    &::after {
+                                        position: absolute;
+                                        right: 0;
+                                        content: "\f105";
+                                        font-size: 14px;
+                                        font-weight: 400;
+                                        margin-left: 4px;
+                                        display: inline-block;
+                                        color: var(--togo-common-black);
+                                        transition: all 0.3s 0s ease-out;
+                                        font-family: var(--togo-ff-fontawesome);
+                                    }
+                                }
+                                &:hover > a {
+                                    &::after {
+                                        transform: rotate(90deg);
+                                    }
+                                }
+                            }
+                            &:hover,
+                            &.active{
+                                & > a{
+                                    padding-left: 5px;
+                                    color: var(--togo-theme-primary);
+                                }
+                                & > .togo-submenu{
+                                    top: -15px;
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                    }
+                    & .togo-megamenu{
+                        position: absolute;
+                        left: 0;
+                        opacity: 0;
+                        z-index: 99;
+                        width: 1175px;
+                        text-align: start;
+                        visibility: hidden;
+                        transition: all .3s;
+                        top: calc(100% + 20px);
+                        padding: 16px 24px 16px 0;
+                        transform: translateY(10px);
+                        border: 1px solid #eeeeee;
+                        border-radius: 0 0 16px 16px;
+                        background: var(--togo-common-white);
+                        box-shadow: 1px 9px 26px 0px rgba(0,0,0,.04);
+                        @media #{$x3l} {
+                            width: 1050px;
+                        }
+                        @media #{$xxl} {
+                            width: 1012px;
+                            left: -120px;
+                        }
+                        @media #{$xl} {
+                            width: 930px;
+                            left: -120px;
+                        }
+                    }
+                    &:hover > {
+                        & .togo-submenu,
+                        & .togo-megamenu{
+                            top: 100%;
+                            opacity: 1;
+                            visibility: visible;
+                            pointer-events: all;
+                            transform: translateY(0);
+                        }
+                    }
+                    &.active > a {
+                        color: var(--togo-theme-primary) !important;
+                        &::after {
+                            transform: rotate(-180deg);
+                            color: var(--togo-theme-primary) !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-logo{
+        & img {
+            max-width: inherit;
+        }
+    }
+    &-cart{
+        &-btn{
+            &:hover{
+                color: var(--togo-theme-primary);
+            }
+        }
+    }
+    &-user{
+        position: relative;
+        @include togo-transition();
+        &:hover{
+            cursor: pointer;
+            color: var(--togo-theme-primary);
+            & .togo-header-user{
+                &-submenu{
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0);
+                }
+            }
+        }
+        &-submenu{
+            position: absolute;
+            top: 100%;
+            bottom: auto;
+            right: 0;
+            opacity: 0;
+            left: auto;
+            z-index: 9;
+            width: 220px;
+            padding: 20px;
+            text-align: start;
+            visibility: hidden;
+            @include togo-transition();
+            transform: translateY(10px);
+            border-radius: 0 0 16px 16px;
+            border: 1px solid var(--togo-gray-2);
+            background-color: var(--togo-common-white);
+            box-shadow: 1px 9px 26px 0px rgba(0,0,0,.04);
+        }
+        &-thumb{
+            & a{
+                display: block;
+                &:hover{
+                    & span{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+                & img{
+                    border-radius: 50%;
+                }
+                & span{
+                    font-size: 16px;
+                    font-weight: 500;
+                    display: inline-block;
+                    @include togo-transition();
+                    color: var(--togo-common-black);
+                }
+            }
+        }
+        &-menu{
+            & a{
+                font-size: 16px;
+                font-weight: 500;
+                display: block;
+                color: var(--togo-common-black);
+                &:not(:last-of-type){
+                    margin-bottom: 10px;
+                }
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+                & .togo-svg-icon{
+                    width: 24px;
+                    @extend %svg-1;
+                    margin-right: 5px;
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    &-style{
+        &-1{
+            margin-left: -20px;
+            @media #{$x3l,$xxl,$lg,$md,$xs} {
+                margin-left: 20px;
+            }
+            @media #{$xl} {
+                margin-left: 0;
+            }
+        }
+        &-2{
+            @media #{$xxl} {
+                margin-left: 25px;
+            }
+            & .togo-header-menu {
+                & > nav {
+                    & > ul {
+                        & > li {
+                            & > a{
+                                color: var(--togo-common-white);
+                            }
+                            &.togo-dropdown {
+                                & > a{
+                                    &::after{
+                                        color: var(--togo-common-white);
+                                    }
+                                }
+                                &:hover > a {
+                                    color: var(--togo-theme-primary);
+                                    &::after {
+                                        transform: rotate(-180deg);
+                                        color: var(--togo-theme-primary);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-4{
+            & .togo-header-menu {
+                & > nav {
+                    & > ul {
+                        & > li {
+                            & > a{
+                                color: var(--togo-common-white);
+                            }
+                            &.togo-dropdown {
+                                & > a{
+                                    &::after{
+                                        color: var(--togo-common-white);
+                                    }
+                                }
+                                &:hover > a {
+                                    color: var(--togo-common-white);
+                                    &::after {
+                                        transform: rotate(-180deg);
+                                        color: var(--togo-common-white);
+                                    }
+                                }
+                            }
+                            &.active > a {
+                                color: var(--togo-common-white) !important;
+                                &::after {
+                                    color: var(--togo-common-white) !important;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-2{
+        &-top{
+            padding: 7px 50px;
+            @media #{$xl,$lg,$md} {
+                padding: 7px 30px;
+            }
+            @media #{$xs} {
+                padding: 0 20px;
+            }
+            &-info{
+                & a{
+                    color: var(--togo-common-white);
+                    & svg{
+                        @extend %svg-1;
+                    }
+                    &:not(:last-of-type){
+                        margin-right: 15px;
+                    }
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+            &-text{
+                & p{
+                    margin: 0;
+                    font-weight: 500;
+                    color: var(--togo-common-white);
+                    @media #{$lg} {
+                        font-size: 13px;
+                    }
+                    & a{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+            &-border{
+                border-bottom: 1px solid #7f7e79;
+            }
+            &-social{
+                & a{
+                    color: var(--togo-common-white);
+                    &:not(:last-of-type){
+                        margin-right: 10px;
+                    }
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+            &.header-style-4{
+                padding: 0px 50px;
+                & .togo-header-2-top{
+                    &-info {
+                        & a{
+                            color: var(--togo-common-black);
+                            &:hover{
+                                color: var(--togo-theme-primary);
+                            }
+                        }
+                    }
+                    &-text{
+                        & p{
+                            color: var(--togo-common-black);
+                            @media #{$xl} {
+                                font-size: 15px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-3{
+        &-cart-btn{
+            color: var(--togo-common-black);
+            & span{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-bar{
+            color: var(--togo-common-black);
+            & .togo-offcanvas-3-open-btn{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-4{
+        &-top{
+            &-right{
+                padding: 9px 0;
+                padding-right: 12px;
+                & .togo-header-4{
+                    &-user{
+                        padding-left: 12px;
+                        margin-left: 12px;
+                        border-left: 1px solid #EEEEEE;
+                    }
+                    &-cart-btn{
+                        padding-left: 12px;
+                        margin-left: 12px;
+                        padding-right: 12px;
+                        border-left: 1px solid #EEEEEE;
+                        border-right: 1px solid #EEEEEE;
+                    }
+                }
+                & .togo-footer-copyright-currence-btn{
+                    padding-left: 12px;
+                    border-left: 1px solid #EEEEEE;
+                }
+            }
+        }
+    }
+    &-6{
+        &-style{
+            @media #{$x3l,$xxl,$lg,$md,$xs} {
+                margin-left: 20px;
+            }
+            & .togo-header-menu {
+                & > nav{
+                    & > ul{
+                        & > li{
+                            margin: 0 8px;
+                        }
+                    }
+                }
+            }
+        }
+        &-top{
+            padding: 20px 0;
+            &-content{
+                & span{
+                    display: block;
+                    line-height: 1;
+                    color: var(--togo-common-white);
+                }
+                & a{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: var(--togo-common-white);
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+            &-right{
+                display: flex;
+                & .togo-header-6-top-content{
+                    &:not(:last-of-type){
+                        margin-right: 24px;
+                        padding-right: 24px;
+                        border-right: 1px solid rgba($color: #EEEEEE, $alpha: 0.5);
+                    }
+                }
+                
+                &.style-7{
+                    & .togo-header-6-top{
+                        &-content {
+                            & span{
+                                color: var(--togo-text-body);
+                            }
+                            & a{
+                                color: var(--togo-common-black);
+                                &:hover{
+                                    color: var(--togo-theme-primary);
+                                }
+                            }
+                            &:not(:last-of-type){
+                                border: none;
+                                margin-right: 0;
+                                padding-right: 0;
+                            }
+                            &:nth-child(2n){
+                                margin-left: 24px;
+                                padding-left: 24px;
+                                border-left: 1px solid #EEEEEE;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-wrapper{
+            border-radius: 33px;
+            background: #FFFBF8;
+            padding: 0 15px 0 40px;
+            @media #{$lg,$md,$xs} {
+                margin-top: 20px;
+                padding: 15px 15px 15px 40px;
+            }
+        }
+        &-user{
+            & span{
+                color: var(--togo-common-black);
+            }
+        }
+    }
+    &-7{
+        &-wrapper{
+            padding: 0 34px;
+            border-top: 1px solid #EEEEEE;
+            border-bottom: 1px solid #EEEEEE;
+            @media #{$lg,$md,$xs} {
+                padding: 22px 34px;
+            }
+        }
+        &-style{
+            & .togo-header-menu > nav > ul > li .togo-megamenu{
+                @media #{$xxl,$xl} {
+                    left: 0;
+                }
+            }
+        }
+    }
+    &-8{
+        &-style{
+            & .togo-header-menu > nav > ul > li .togo-megamenu{
+                @media #{$xxl,$xl} {
+                    left: 0;
+                }
+            }
+        }
+    }
+    &-10{
+        &-right{
+            & .togo-header{
+                &-cart-btn{
+                    color: var(--togo-common-white);
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+                &-user{
+                    color: var(--togo-common-white);
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+        }
+    }
+    &-11{
+        &-style{
+            margin-left: -20px;
+            @media #{$x3l,$xxl,$lg,$md,$xs} {
+                margin-left: 20px;
+            }
+        }
+        &-right{
+            & .togo-header{
+                &-cart-btn{
+                    color: var(--togo-common-black);
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+                &-user{
+                    color: var(--togo-common-black);
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.togo{
+    &-hdr{
+        &-transparent{
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 9;
+            width: 100%;
+        }
+        &-fixed{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 55;
+        }
+        &-bdr{
+            border-bottom: 1px solid #EEEEEE;
+        }
+    }
+    &-megamenu{
+        &-nav{
+            display: flex;
+            height: 100%;
+            padding: 0 26px;
+            flex-direction: column;
+            border-right: 1px solid #EEE;
+            justify-content: space-between;
+            @media #{$lg,$md,$xs} {
+                padding: 0;
+                display: block;
+                margin-bottom: 20px;
+            }
+            & ul{
+                display: block;
+                & li{
+                    list-style: none;
+                    &:not(:last-of-type){
+                        margin-bottom: 10px;
+                    }
+                    &:hover,
+                    &.active{
+                        & a{
+                            color: var(--togo-theme-primary);
+                        }
+                    }
+                    & a{
+                        font-size: 16px;
+                        font-weight: 500;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        color: var(--togo-common-black);
+                        & span{
+                            display: inline-block;
+                            & svg{
+                                width: 18px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &-banner{
+            border-radius: 8px;
+            padding: 24px 24px 50px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            &-title{
+                font-size: 24px;
+                font-weight: 600;
+                color: var(--togo-common-white);
+                @media #{$xl} {
+                    font-size: 22px;
+                }
+            }
+            & p{
+                padding-bottom: 20px;
+                color: var(--togo-common-white);
+            }
+        }
+        &-destination{
+            &-wrap{
+                opacity: 0;
+                transform: translateX(10px);
+                transition: all 0.25s ease-in-out;
+                &.show {
+                    opacity: 1;
+                    transform: translateX(0px);
+                }
+            }
+            &-title{
+                font-size: 16px;
+                font-weight: 500;
+                color: #555;
+                margin-bottom: 18px;
+                display: inline-block;
+                text-transform: uppercase;
+            }
+            &-item{
+                gap: 12px;
+                display: flex;
+                align-items: center;
+                &:hover{
+                    & .togo-megamenu-destination-thumb{
+                        & img{
+                            transform: scale(1.1);
+                        }
+                    }
+                }
+            }
+            &-thumb{
+                overflow: hidden;
+                border-radius: 50%;
+                & img{
+                    border-radius: 50%;
+                    transition: all .5s ease-in-out;
+                }
+            }
+            &-content{
+                & a{
+                    font-size: 16px;
+                    font-weight: 500;
+                    color: var(--togo-common-black);
+                    &:hover{
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+        }
+    }
+}
+

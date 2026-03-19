@@ -1,0 +1,189 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  4.2 offcanvas scss
+/*----------------------------------------*/
+
+
+.offcanvas{
+    &-area{
+        &.opened {
+            & .offcanvas-wrapper{
+                @include togo-transform(translateX(0));
+            }
+            & .cart-wrapper{
+                @include togo-transform(translateX(0));
+            }
+        }
+    }
+    &-wrapper {
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100vh;
+        z-index: 999;
+        padding: 40px;
+        overflow-y: scroll;
+        transition: all .3s;
+        background: #FFF;
+        scrollbar-width: none;
+        overscroll-behavior-y: contain;
+        @include togo-transform(translateX(calc(100% + 80px)));
+        @media #{$xs} {
+            width: 100%;
+        }
+        @media #{$sm} {
+            width: 400px;
+        }
+    }
+    &-top {
+        margin-bottom: 50px;
+    }
+    &-close {
+        &-btn {
+            color: rgba($color: #000, $alpha: 1);
+            &:hover {
+                opacity: 1;
+                @include togo-transform(rotate(90deg));
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-offcanvas{
+    &-hamburger{
+        &-btn{
+            height: 40px;
+            width: 40px;
+            border-radius: 6px;
+            line-height: 38px;
+            text-align: center;
+            transition: 0.3s linear;
+            border: 1px solid rgba(3, 31, 66, 0.2);
+            background-color: var(--togo-common-white);
+        }
+    }
+}
+
+
+.cart{
+    &-area{
+        &.opened {
+            & .cart-wrapper{
+                @include togo-transform(translateX(0));
+            }
+        }
+    }
+    &-wrapper{
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 350px;
+        height: 100vh;
+        z-index: 999;
+        overflow-y: scroll;
+        transition: all .3s;
+        background: #FFF;
+        scrollbar-width: none;
+        overscroll-behavior-y: contain;
+        @include togo-transform(translateX(calc(-100% - 80px)));
+        @media #{$xs} {
+            width: 100%;
+        }
+        @media #{$sm} {
+            width: 300px;
+        }
+    }
+    &-top{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 24px;
+        height: 55px;
+        box-shadow: 0px 5px 15px -5px rgba(0,0,0,.12);
+    }
+    &-title{
+        font-size: 20px;
+        font-weight: 600;
+    }
+    &-close{
+        & button{
+            transform: scale(.7);
+            &:hover{
+                transform: scale(.7) rotate(90deg);
+            }
+        }
+    }
+    &-empty{
+        &-content{
+            display: flex;
+            align-items: center;
+            padding: 40px 24px;
+            flex-direction: column;
+            justify-content: center;
+        }
+        &-icon{
+            margin-bottom: 15px;
+        }
+        &-title{
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        &-text{
+            margin-bottom: 10px;
+            & p{
+                font-size: 15px;
+                text-align: center;
+            }
+        }
+    }
+}
+
+
+
+.filter{
+    &-area{
+        &.opened {
+            & .filter-wrapper{
+                @include togo-transform(translateX(0));
+            }
+        }
+    }
+    &-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 350px;
+        height: 100vh;
+        z-index: 999;
+        overflow-y: scroll;
+        transition: all .3s;
+        background: #FFF;
+        scrollbar-width: none;
+        overscroll-behavior-y: contain;
+        @include togo-transform(translateX(calc(-100% - 80px)));
+        @media #{$xs} {
+            width: 300px;
+        }
+    }
+}
+
+
+.body-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.45s ease-in-out;
+    background: rgba(24, 24, 24, 0.4);
+    &.opened {
+        opacity: 1;
+        visibility: visible;
+    }
+}

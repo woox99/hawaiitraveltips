@@ -1,0 +1,465 @@
+@use "../utils" as *;
+/*---------------------------------
+    1.2 Common Classes
+---------------------------------*/
+.w-img {
+	& img {
+		width: 100%;
+	}
+}
+.m-img {
+	& img {
+		max-width: 100%;
+	}
+}
+.fix {
+	overflow: hidden;
+}
+.clear {
+	clear: both;
+}
+
+.z-index-1 {
+	position: relative;
+	z-index: 1;
+}
+.z-index-2 {
+	position: relative;
+	z-index: 2;
+}
+.z-index-3 {
+	position: relative;
+	z-index: 3;
+}
+.z-index-4 {
+	position: relative;
+	z-index: 4;
+}
+.z-index-5 {
+	position: relative;
+	z-index: 5;
+}
+.z-index-6 {
+	position: relative;
+	z-index: 6;
+}
+.z-index-7 {
+	position: relative;
+	z-index: 7;
+}
+.z-index-8 {
+	position: relative;
+	z-index: 8;
+}
+.z-index-9 {
+	position: relative;
+	z-index: 9;
+}
+.z-index-10 {
+	position: relative;
+	z-index: 10;
+}
+
+.gx-5 {
+	--bs-gutter-x: 5px;
+}
+.gx-10 {
+	--bs-gutter-x: 10px;
+}
+.gx-20 {
+	--bs-gutter-x: 20px;
+}
+.gx-30 {
+	--bs-gutter-x: 30px;
+}
+.gx-40 {
+	--bs-gutter-x: 40px;
+}
+.gx-45 {
+	--bs-gutter-x: 45px;
+	@media #{$xs} {
+		--bs-gutter-x: 0px;
+	}
+}
+.gx-50 {
+	--bs-gutter-x: 50px;
+	@media #{$lg,$md} {
+		--bs-gutter-x: 24px;
+	}
+	@media #{$xs} {
+		--bs-gutter-x: 0px;
+	}
+}
+.gx-60 {
+	--bs-gutter-x: 60px;
+	@media #{$lg,$md} {
+		--bs-gutter-x: 24px;
+	}
+	@media #{$xs} {
+		--bs-gutter-x: 15px;
+	}
+}
+.gx-70 {
+	--bs-gutter-x: 70px;
+}
+.gx-80 {
+	--bs-gutter-x: 80px;
+}
+.gx-90 {
+	--bs-gutter-x: 90px;
+}
+.gx-100 {
+	--bs-gutter-x: 100px;
+}
+
+.overflow-y-visible {
+	overflow-x: hidden;
+	overflow-y: visible;
+}
+.p-relative {
+	position: relative;
+}
+.p-absolute {
+	position: absolute;
+}
+.bg-pos {
+	@include togo-background();
+}
+
+p {
+	&.fs-18 {
+		font-size: 18px;
+	}
+	&.ff {
+		&-jost {
+			font-family: var(--togo-ff-jost);
+		}
+		&-outfit {
+			font-family: var(--togo-ff-outfit);
+		}
+	}
+	&.color {
+		&-white {
+			color: var(--togo-common-white);
+		}
+	}
+}
+
+/* dropcap */
+.togo-dropcap {
+	&::first-letter {
+		float: left;
+		width: 65px;
+		height: 85px;
+		font-size: 90px;
+		line-height: 0.8;
+		font-weight: 500;
+		margin-right: 5px;
+		text-align: center;
+		line-height: inherit;
+		text-transform: capitalize;
+		color: var(--togo-common-white);
+		font-family: var(--togo-ff-body);
+	}
+}
+
+.togo-slide-transtion {
+	-webkit-transition-timing-function: linear;
+	transition-timing-function: linear;
+	& .swiper-slide {
+		width: auto;
+	}
+}
+
+.togo-line-anim {
+	display: inline;
+	transition: all 0.3s linear;
+	background-repeat: no-repeat;
+	background-size:
+		0% 1px,
+		0 1px;
+	background-position:
+		100% 100%,
+		0 100%;
+	background-image: linear-gradient(currentcolor, currentcolor), linear-gradient(currentcolor, currentcolor);
+	&:hover {
+		background-size:
+			0% 1px,
+			100% 1px;
+	}
+}
+
+a,
+button {
+	&.line-border {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		&:hover {
+			& span {
+				&::after {
+					transform: translate(1rem);
+				}
+				&::before {
+					transform: translate(calc(100% + 1rem));
+				}
+			}
+		}
+		& span {
+			position: relative;
+			overflow: hidden;
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				display: block;
+				bottom: 0.2em;
+				width: 100%;
+				height: 1px;
+				background-color: currentColor;
+				transition: transform 0.5s cubic-bezier(0.59, 0.23, 0.22, 0.96);
+			}
+			&::before {
+				left: 0;
+			}
+			&::after {
+				left: calc(-1 * 1rem);
+				transform: translate(-100%);
+			}
+		}
+	}
+	&.hover-line {
+		position: relative;
+		&::after {
+			content: "";
+			bottom: 2px;
+			right: 0;
+			width: 0;
+			height: 1px;
+			position: absolute;
+			transition: 0.3s ease-in-out;
+			background-color: currentColor;
+		}
+		&:hover {
+			&::after {
+				width: 100%;
+				right: auto;
+				left: 0;
+			}
+		}
+	}
+}
+
+.datepicker {
+	background: #fff;
+	border-radius: 24px;
+	padding: 25px;
+	max-width: 700px;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+	&__topbar,
+	&__info {
+		display: none !important;
+	}
+	&__inner {
+		padding: 0;
+		color: #222;
+		width: 100%;
+		position: relative;
+		transition: all 0.3s ease;
+		display: inline-block;
+	}
+
+	&__nav {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		z-index: 1;
+
+		button {
+			background: #fff;
+			border: 1px solid #eee;
+			color: #333;
+			width: 36px;
+			height: 36px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			cursor: pointer;
+			transition: all 0.2s;
+
+			&:hover {
+				background: #f5f5f5;
+				border-color: #ddd;
+			}
+		}
+	}
+
+	&__months {
+		gap: 35px;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__month {
+		border-collapse: collapse;
+		width: 100%;
+		text-align: center;
+		caption,
+		th.month-name {
+			font-size: 16px;
+			font-weight: 600;
+			padding-bottom: 20px;
+			color: #222;
+		}
+		&-button {
+			height: 36px;
+			width: 36px;
+			display: inline-grid;
+			text-align: center;
+			place-content: center;
+			border-radius: 50%;
+			border: 1px solid #eeeeee;
+			background-color: var(--togo-common-white);
+			&::after {
+				transform: translate(0px, -6px);
+			}
+			&:hover {
+				box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+			}
+		}
+		&-caption {
+			border: none;
+		}
+
+		th {
+			font-size: 18px;
+			font-weight: 600;
+			padding-bottom: 15px;
+			text-transform: capitalize;
+			color: var(--togo-common-black);
+
+			&.datepicker__week {
+				&-name {
+					font-size: 14px;
+					font-weight: 500;
+				}
+				&-days {
+					color: #666;
+					text-transform: capitalize;
+				}
+			}
+		}
+
+		td {
+			cursor: pointer;
+			transition: all 0.2s ease;
+			font-size: 14px;
+			color: #333;
+			position: relative;
+			&:hover {
+				background-color: #f5f5f5;
+			}
+
+			&.active,
+			&.-selected- {
+				background: #000 !important;
+				color: #fff !important;
+				font-weight: 500;
+			}
+		}
+		&-day--today {
+			font-weight: bold;
+			color: var(--togo-common-white) !important;
+			background-color: var(--togo-theme-primary);
+			&:hover {
+				background-color: #000;
+			}
+		}
+
+		&.-in-range- {
+			background: #f8f8f8;
+			border-radius: 0 !important;
+			color: #000;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		margin-top: 20px;
+		justify-content: flex-end;
+
+		button {
+			background: transparent;
+			color: #000;
+			border: none;
+			padding: 5px 10px;
+			font-size: 15px;
+			font-weight: 600;
+			cursor: pointer;
+			text-decoration: underline;
+
+			&:hover {
+				color: #444;
+			}
+		}
+	}
+}
+.datepicker__month td.active,
+.datepicker__month td.-selected- {
+	color: #fff !important;
+	font-weight: 500;
+}
+.datepicker__month-day--first-day-selected,
+.datepicker__month-day--last-day-selected {
+	background-color: var(--togo-theme-primary) !important;
+	color: #fff !important;
+}
+.datepicker__month-day--selected,
+.datepicker__month-day--hovering {
+	background-color: rgba(253, 70, 33, 0.2);
+	color: #fff;
+}
+.datepicker__month-day--today {
+	font-weight: bold;
+	color: var(--togo-common-white) !important;
+	background-color: var(--togo-theme-primary);
+}
+#chart {
+	min-height: 450px;
+}
+
+.togo-pagination {
+	& nav {
+		& ul {
+			display: flex;
+			align-items: center;
+			& li {
+				list-style: none;
+				margin-right: 5px;
+				display: inline-block;
+				& a {
+					height: 36px;
+					width: 36px;
+					font-size: 16px;
+					font-weight: 500;
+					border-radius: 50%;
+					text-align: center;
+					display: inline-grid;
+					place-content: center;
+					color: var(--togo-common-black);
+					&.next {
+						border: 1px solid rgba($color: #eee, $alpha: 0.9);
+					}
+					&.active,
+					&:hover {
+						color: var(--togo-common-white);
+						background-color: var(--togo-theme-primary);
+					}
+				}
+			}
+		}
+	}
+}

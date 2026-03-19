@@ -1,0 +1,105 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  5.3 Sidebar css
+/*----------------------------------------*/
+
+.togo-sidebar{
+    &-box{
+        @media #{$md,$xs} {
+            padding-bottom: 80px;
+        }
+    }
+    &-widget{
+        &-title{
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--togo-common-black);
+        }
+    }
+    &-search{
+        &-input{
+            position: relative;
+            & input{
+                height: 54px;
+                border-radius: 8px;
+                padding-right: 60px;
+                border-color: #DDD;
+                color: var(--togo-common-black);
+                background: var(--togo-common-white);
+                &:focus{
+                    border-color: var(--togo-theme-primary);
+                }
+            }
+            & button{
+                position: absolute;
+                top: 50%;
+                right: 25px;
+                transform: translateY(-50%);
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+    &-post{
+        &-title{
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: inline-block;
+            &:hover{
+                color: var(--togo-theme-primary);
+            }
+        }
+    }
+    &-item{
+        gap: 30px;
+        @media #{$lg,$md,$xs} {
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        &:hover{
+            & .togo-sidebar-item{
+                &-thumb{
+                    & img{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+        }
+        &-thumb{
+            width: 340px;
+            height: 240px;
+            flex: 0 0 auto;
+            overflow: hidden;
+            border-radius: 16px;
+            @media #{$lg,$md,$xs} {
+                width: 100%;
+                height: 300px;
+            }
+            & img{
+                width: 100%;
+                height: 100%;
+                border-radius: 16px;
+                transition: all .5s ease-in-out;
+                @media #{$lg,$md,$xs} {
+                    object-fit: cover;
+                }
+            }
+        }
+        &-tag{
+            font-size: 16px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+        &-title{
+            margin-bottom: 15px;
+            & a{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+    }
+}

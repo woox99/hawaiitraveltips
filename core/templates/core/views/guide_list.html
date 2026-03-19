@@ -1,0 +1,207 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Togo – Travel & Tour Booking HTML Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/swiper-bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/font-awesome-pro.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+
+    <style>
+        .excerpt{
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
+
+</head>
+
+
+
+<body data-bg-color="#FBFBFB">
+
+
+    <!-- Loader Start -->
+    {% include 'core/components/loader.html' %}
+    <!-- Loader End -->
+
+
+    <!-- back btn start -->
+    {% include 'core/components/back-to-start.html' %}
+    <!-- back btn end -->
+
+
+    <!-- offcanvus-area-start -->
+    {% include 'core/components/offcanvas.html' %}
+    <!-- offcanvus-area-end -->
+
+    <!-- header -->
+    {% include 'core/components/header.html' %}
+    <!-- header -->
+
+
+    <div id="has-smooth">
+        <div id="has-smooth-wrap">
+
+            <main>
+
+
+                <!-- blog sidebar area start -->
+                <div class="togo-blog-sidebar-ptb pt-120 pb-120">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8">
+                                <div class="togo-sidebar-box">
+                                    <div class="togo-sidebar-item-wrap">
+                                        {% for post in wp_posts %}
+                                        <div class="togo-sidebar-item d-flex align-items-center mb-50">
+                                            <div class="togo-sidebar-item-thumb">
+                                                <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">
+                                                    <img src="{{post.jetpack_featured_media_url}}" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="togo-sidebar-item-content">
+                                                {% for tag in post.tag_names|slice:":3" %}
+                                                <span class="togo-sidebar-item-tag bg-light px-2 rounded">{{tag}} </span>
+                                                {% endfor %}
+                                                <h4 class="togo-sidebar-item-title">
+                                                    <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">{{post.title.rendered|safe}}</a>
+                                                </h4>
+                                                <div class="excerpt">{{post.excerpt.rendered|safe}}</div>
+                                                <a class="togo-tour-btn line-border mt-10" href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">
+                                                    <span>
+                                                        Read More
+                                                    </span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- pagination -->
+                                    <!-- <div class="row">
+                                        <div class="togo-tour-pagination mt-20">
+                                            <div class="col-lg-12">
+                                                <div class="togo-pagination">
+                                                    <nav>
+                                                        <ul>
+                                                            <li><a class="active" href="blog-sidebar.html">
+                                                                    1
+                                                                </a></li>
+                                                            <li><a href="blog-sidebar.html">
+                                                                    2
+                                                                </a></li>
+                                                            <li><a href="blog-sidebar.html">
+                                                                    3
+                                                                </a></li>
+                                                            <li><a href="blog-sidebar.html">
+                                                                    ...
+                                                                </a></li>
+                                                            <li><a href="blog-sidebar.html">
+                                                                    6
+                                                                </a></li>
+                                                            <li><a href="blog-sidebar.html" class="next">
+                                                                    <span>
+                                                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                                                            width="7" height="13" viewBox="0 0 7 13"
+                                                                            fill="none">
+                                                                            <path d="M0.75 11.75L6.25 6.25L0.75 0.75"
+                                                                                stroke="currentColor" stroke-width="1.5"
+                                                                                stroke-linecap="round"
+                                                                                stroke-linejoin="round"></path>
+                                                                        </svg>
+                                                                    </span>
+                                                                </a></li>
+                                                        </ul>
+                                                    </nav>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="togo-sidebar-wrapper">
+                                    <div class="togo-sidebar-widget mb-30">
+                                        <h4 class="togo-sidebar-widget-title">Search</h4>
+                                        <div class="togo-sidebar-search">
+                                            <form action="#">
+                                                <div class="togo-sidebar-search-input">
+                                                    <input type="text" placeholder="Search...">
+                                                    <button type="submit">
+                                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                            xmlns="http://www.w3.org/2000/svg">
+                                                            <path
+                                                                d="M18.9999 19L14.6499 14.65M17 9C17 13.4183 13.4183 17 9 17C4.58172 17 1 13.4183 1 9C1 4.58172 4.58172 1 9 1C13.4183 1 17 4.58172 17 9Z"
+                                                                stroke="currentcolor" stroke-opacity="0.8"
+                                                                stroke-width="2" stroke-linecap="round"
+                                                                stroke-linejoin="round"></path>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="togo-sidebar-widget mb-30">
+                                        <h4 class="togo-sidebar-widget-title">Recent Posts</h4>
+                                        <div class="togo-sidebar-post-wrap">
+                                            {% for post in wp_posts|slice:":5" %}
+                                            <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}" class="togo-sidebar-post-title">{{post.title.rendered|safe}}</a>
+                                            {%endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="togo-sidebar-widget mb-30">
+                                        <h4 class="togo-sidebar-widget-title">Recent Comments</h4>
+                                        <div class="togo-sidebar-comment">
+                                            <p>No comments to show.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- blog sidebar area end -->
+
+                {% include 'core/components/community.html' %}
+
+            </main>
+
+            {% include 'core/components/footer.html' %}
+
+        </div>
+    </div>
+
+
+    <!-- JS here -->
+    <script src="{% static 'core/js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap-bundle.js' %}"></script>
+    <script src="{% static 'core/js/swiper-bundle.js' %}"></script>
+    <script src="{% static 'core/js/magnific-popup.js' %}"></script>
+    <script src="{% static 'core/js/nice-select.js' %}"></script>
+    <script src="{% static 'core/js/purecounter.js' %}"></script>
+    <script src="{% static 'core/js/incluid-bundle.js' %}"></script>
+    <script src="{% static 'core/js/fecha.js' %}"></script>
+    <script src="{% static 'core/js/hotel-datepicker.js' %}"></script>
+    <script src="{% static 'core/js/range-slider.js' %}"></script>
+    <script src="{% static 'core/js/scripts.js' %}"></script>
+
+</body>
+
+</html>

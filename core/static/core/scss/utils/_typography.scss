@@ -1,0 +1,41 @@
+
+// font url
+
+$font-url: 'https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Marcellus&family=Outfit:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Jost:ital,wght@0,100..900;1,100..900&display=swap';
+
+@font-face {
+    font-family: 'Otomanopee';
+    src: url('../fonts/OtomanopeeOne-Regular.ttf');
+    src: url('../fonts/OtomanopeeOne-Regular.ttf') format('embedded-opentype'),
+    url('../fonts/OtomanopeeOne-Regular.ttf') format('woff'),
+    url('../fonts/OtomanopeeOne-Regular.ttf') format('woff2'),
+    url('../fonts/OtomanopeeOne-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+// font family
+$font-family: (
+    'ff': (
+        'body': "'DM Sans', sans-serif",
+        'heading': "'Playfair Display', serif",
+        'p': "'DM Sans', sans-serif",
+        'outfit ': "'Outfit', sans-serif",
+        'marcellus ': "'Marcellus', serif",
+        'jost ': "'Jost', sans-serif",
+        'playfair ': "'Playfair Display', serif",
+        'otomanopee': "'Otomanopee', sans-serif",
+        'fontawesome': '"Font Awesome 6 Pro"',
+    )
+);
+
+// font size
+$font-size: (
+    'fz': (
+        'body': 14px,
+        'p': 16px,
+    )
+);
+
+

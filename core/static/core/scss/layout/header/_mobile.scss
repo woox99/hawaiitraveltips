@@ -1,0 +1,190 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  3.2 Mobile Style
+/*----------------------------------------*/
+
+.togo-mobilemenu-content {
+
+    .togo-submenu {
+        display: none;
+    }
+
+    ul {
+        position: static;
+        display: block;
+        box-shadow: none;
+
+        li {
+            list-style: none;
+            position: relative;
+            width: 100%;
+            padding: 0;
+
+            &:not(:last-child) a {
+                border-bottom: 1px solid rgba(#EAEBED, 0.7);
+            }
+
+            &.togo-dropdown {
+
+                > a {
+                    position: relative;
+
+                    .dropdown-toggle-btn {
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        width: 30px;
+                        height: 30px;
+                        font-size: 16px;
+                        text-align: center;
+                        line-height: 28px;
+                        transform: translateY(-15px);
+                        color: var(--togo-common-black);
+                        border: 1px solid rgba(234, 235, 237, 0.7);
+                        z-index: 1;
+
+                        i {
+                            @include togo-transition();
+                        }
+
+                        &.dropdown-opened i {
+                            @include togo-transform(rotate(90deg));
+                        }
+
+                        &:hover {
+                            background-color: var(--togo-theme-primary);
+                            border-color: var(--togo-theme-primary);
+                            color: var(--togo-common-white);
+
+                            i {
+                                color: var(--togo-common-white);
+                            }
+                        }
+                    }
+
+                    &.expanded {
+                        color: var(--togo-theme-primary);
+
+                        .dropdown-toggle-btn.dropdown-opened {
+                            background-color: var(--togo-theme-primary);
+                            border-color: var(--togo-theme-primary);
+                            color: var(--togo-common-white);
+
+                            i {
+                                color: var(--togo-common-white);
+                            }
+                        }
+                    }
+                }
+
+                &:hover > a::after {
+                    color: var(--togo-theme-green);
+                }
+            }
+
+            &:last-child a span {
+                border-bottom: 0;
+            }
+
+            > a {
+                display: block;
+                font-size: 16px;
+                font-weight: 500;
+                position: relative;
+                padding: 10px 20px 10px 0;
+                color: var(--togo-common-black);
+
+                > i {
+                    width: 11%;
+                    font-size: 21px;
+                    line-height: 1;
+                    margin-right: 13px;
+                    display: inline-block;
+                    @include togo-transform(translateY(4px));
+                }
+
+                svg {
+                    transform: togo-translateY(2px);
+                }
+            }
+
+            img {
+                width: 100%;
+            }
+
+            ul {
+                padding: 0;
+
+                li {
+                    padding: 0;
+
+                    a {
+                        width: 93%;
+                        padding: 10px 20px 10px 0;
+                        margin-left: auto;
+                        text-shadow: none !important;
+                    }
+
+                    li a {
+                        width: 88%;
+                    }
+
+                    li li a {
+                        width: 83%;
+                    }
+
+                    li li li a {
+                        width: 68%;
+                    }
+                }
+            }
+
+            &:hover > a {
+                color: var(--togo-theme-primary);
+
+                &::after,
+                .dropdown-toggle-btn i {
+                    color: var(--togo-theme-primary);
+                }
+            }
+
+            .mega-menu,
+            .mobile-slide {
+                position: static;
+                min-width: 100%;
+                display: none;
+                padding: 0;
+                visibility: visible;
+                opacity: 1;
+                box-shadow: none;
+
+                li {
+                    float: none;
+                    width: 100%;
+                    padding: 0;
+
+                    &:hover a .dropdown-toggle-btn {
+                        color: var(--togo-theme-primary);
+                    }
+                }
+            }
+        }
+    }
+
+    & .togo-megamenu{
+        &-nav {
+            padding: 0;
+            display: block;
+            margin-bottom: 20px;
+        }
+        &-banner{
+            display: none;
+        }
+    }
+
+    /* Disable transitions for nested ul/li */
+    *ul,
+    *li {
+        transition: none !important;
+    }
+}

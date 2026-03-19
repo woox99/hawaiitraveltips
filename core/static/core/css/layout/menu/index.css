@@ -1,0 +1,329 @@
+/* transform */
+@font-face {
+  font-family: "Otomanopee";
+  src: url("../fonts/OtomanopeeOne-Regular.ttf");
+  src: url("../fonts/OtomanopeeOne-Regular.ttf") format("embedded-opentype"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff2"), url("../fonts/OtomanopeeOne-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+:root {
+  /**
+  @font family declaration
+  */
+  --togo-ff-body: 'DM Sans', sans-serif;
+  --togo-ff-heading: 'Playfair Display', serif;
+  --togo-ff-p: 'DM Sans', sans-serif;
+  --togo-ff-outfit : 'Outfit', sans-serif;
+  --togo-ff-marcellus : 'Marcellus', serif;
+  --togo-ff-jost : 'Jost', sans-serif;
+  --togo-ff-playfair : 'Playfair Display', serif;
+  --togo-ff-otomanopee: 'Otomanopee', sans-serif;
+  --togo-ff-fontawesome: "Font Awesome 6 Pro";
+  /**
+  @color declaration
+  */
+  --togo-common-white: #FFFFFF;
+  --togo-common-black: #111111;
+  --togo-common-black-2: #1E1E1E;
+  --togo-common-red: #FF252B;
+  --togo-common-orange: #ED2B04;
+  --togo-common-yellow: #FFE453;
+  --togo-common-green: #46E86A;
+  --togo-common-brown: #664117;
+  --togo-theme-primary: #FD4621;
+  --togo-theme-secondary: #FBDFD1;
+  --togo-text-body: #333333;
+  --togo-gray-1: #DDDDDD;
+  --togo-gray-2: #EEEEEE;
+}
+
+/*----------------------------------------*/
+/*  4.2 offcanvas scss
+/*----------------------------------------*/
+.offcanvas-area.opened .offcanvas-wrapper {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+.offcanvas-area.opened .cart-wrapper {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+.offcanvas-wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  z-index: 999;
+  padding: 40px;
+  overflow-y: scroll;
+  transition: all 0.3s;
+  background: #FFF;
+  scrollbar-width: none;
+  overscroll-behavior-y: contain;
+  -webkit-transform: translateX(calc(100% + 80px));
+  -moz-transform: translateX(calc(100% + 80px));
+  -ms-transform: translateX(calc(100% + 80px));
+  -o-transform: translateX(calc(100% + 80px));
+  transform: translateX(calc(100% + 80px));
+}
+@media (max-width: 767px) {
+  .offcanvas-wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .offcanvas-wrapper {
+    width: 400px;
+  }
+}
+.offcanvas-top {
+  margin-bottom: 50px;
+}
+.offcanvas-close-btn {
+  color: black;
+}
+.offcanvas-close-btn:hover {
+  opacity: 1;
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.togo-offcanvas-hamburger-btn {
+  height: 40px;
+  width: 40px;
+  border-radius: 6px;
+  line-height: 38px;
+  text-align: center;
+  transition: 0.3s linear;
+  border: 1px solid rgba(3, 31, 66, 0.2);
+  background-color: var(--togo-common-white);
+}
+
+.cart-area.opened .cart-wrapper {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+.cart-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100vh;
+  z-index: 999;
+  overflow-y: scroll;
+  transition: all 0.3s;
+  background: #FFF;
+  scrollbar-width: none;
+  overscroll-behavior-y: contain;
+  -webkit-transform: translateX(calc(-100% - 80px));
+  -moz-transform: translateX(calc(-100% - 80px));
+  -ms-transform: translateX(calc(-100% - 80px));
+  -o-transform: translateX(calc(-100% - 80px));
+  transform: translateX(calc(-100% - 80px));
+}
+@media (max-width: 767px) {
+  .cart-wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+  .cart-wrapper {
+    width: 300px;
+  }
+}
+.cart-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  height: 55px;
+  box-shadow: 0px 5px 15px -5px rgba(0, 0, 0, 0.12);
+}
+.cart-title {
+  font-size: 20px;
+  font-weight: 600;
+}
+.cart-close button {
+  transform: scale(0.7);
+}
+.cart-close button:hover {
+  transform: scale(0.7) rotate(90deg);
+}
+.cart-empty-content {
+  display: flex;
+  align-items: center;
+  padding: 40px 24px;
+  flex-direction: column;
+  justify-content: center;
+}
+.cart-empty-icon {
+  margin-bottom: 15px;
+}
+.cart-empty-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.cart-empty-text {
+  margin-bottom: 10px;
+}
+.cart-empty-text p {
+  font-size: 15px;
+  text-align: center;
+}
+
+.filter-area.opened .filter-wrapper {
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -ms-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+.filter-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 350px;
+  height: 100vh;
+  z-index: 999;
+  overflow-y: scroll;
+  transition: all 0.3s;
+  background: #FFF;
+  scrollbar-width: none;
+  overscroll-behavior-y: contain;
+  -webkit-transform: translateX(calc(-100% - 80px));
+  -moz-transform: translateX(calc(-100% - 80px));
+  -ms-transform: translateX(calc(-100% - 80px));
+  -o-transform: translateX(calc(-100% - 80px));
+  transform: translateX(calc(-100% - 80px));
+}
+@media (max-width: 767px) {
+  .filter-wrapper {
+    width: 300px;
+  }
+}
+
+.body-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.45s ease-in-out;
+  background: rgba(24, 24, 24, 0.4);
+}
+.body-overlay.opened {
+  opacity: 1;
+  visibility: visible;
+}
+
+/*----------------------------------------*/
+/*  4.1 Mobile Menu
+/*----------------------------------------*/
+.togo-offcanvas-menu {
+  margin-bottom: 80px;
+}
+.togo-offcanvas-menu ul {
+  list-style: none;
+}
+.togo-offcanvas-menu ul li {
+  position: relative;
+}
+.togo-offcanvas-menu ul li > a {
+  padding: 10px 0;
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+}
+.togo-offcanvas-menu ul li.active > a {
+  color: var(--togo-common-black);
+}
+.togo-offcanvas-menu ul li.active > .togo-menu-close i {
+  top: 10px;
+  -webkit-transform: rotate(135deg);
+  -moz-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  -o-transform: rotate(135deg);
+  transform: rotate(135deg);
+}
+.togo-offcanvas-menu ul li .submenu {
+  display: none;
+}
+.togo-offcanvas-menu ul li .submenu .submenu {
+  margin-left: 30px;
+}
+.togo-offcanvas-menu .togo-megamenu-wrapper.megamenu-white-bg {
+  backdrop-filter: none;
+  background: transparent;
+  box-shadow: none;
+}
+.togo-offcanvas-menu .mega-menu {
+  width: auto;
+  opacity: 1;
+  visibility: visible;
+  transition: none;
+  position: static;
+  display: none;
+  -webkit-transform: perspective(0) rotateX(0);
+  -moz-transform: perspective(0) rotateX(0);
+  -ms-transform: perspective(0) rotateX(0);
+  -o-transform: perspective(0) rotateX(0);
+  transform: perspective(0) rotateX(0);
+}
+.togo-offcanvas-menu .togo-megamenu-list ul li {
+  padding: 0;
+}
+.togo-offcanvas-menu .togo-megamenu-list ul li a {
+  font-size: 17px;
+  padding: 12px 20px;
+}
+.togo-offcanvas-menu .togo-submenu > li > a {
+  padding: 8px 20px;
+  border-radius: 10px;
+  font-size: 17px;
+}
+.togo-offcanvas-menu .togo-submenu > li > a:hover {
+  background-color: #f8f8fb;
+  color: var(--togo-common-black);
+}
+.togo-offcanvas-menu .togo-megamenu-box {
+  padding: 20px 0;
+}
+.togo-offcanvas-menu .togo-megamenu-box li a {
+  font-size: 17px;
+  padding: 8px 20px;
+  border-radius: 10px;
+}
+.togo-offcanvas-menu .togo-megamenu-box li a:hover {
+  background-color: #f8f8fb;
+  color: var(--togo-common-black);
+}
+
+.togo-menu-close {
+  position: absolute;
+  right: 7px;
+  top: 12px;
+}
+.togo-menu-close i {
+  transition: all 0.3s;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/*# sourceMappingURL=index.css.map */

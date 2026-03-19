@@ -1,0 +1,673 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    {% block meta %}
+    <!-- <title>Togo – Travel & Tour Booking HTML Template</title> -->
+    <!-- <meta name="description" content=""> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+    {% endblock %}
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/logo/favicon.png' %}">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/swiper-bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/font-awesome-pro.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+
+    <style>
+        * {
+            /* border: 1px solid red; */
+        }
+    
+        .togo-hero-3-item {
+            padding-top: 200px;
+        }
+        .togo-tour-card-thumb img {
+            aspect-ratio: 5/3;
+            object-fit: cover;
+        }
+        .togo-tour-card-desc {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+
+    <!-- Loader Start -->
+    {% include 'core/components/loader.html' %}
+    <!-- Loader End -->
+
+
+    <!-- back btn start -->
+    {% include 'core/components/back-to-start.html' %}
+    <!-- back btn end -->
+
+
+    <!-- offcanvus-area-start -->
+    {% include 'core/components/offcanvas.html' %}
+    <!-- offcanvus-area-end -->
+
+    <!-- header -->
+    {% include 'core/components/header.html' %}
+    <!-- header -->
+
+
+    <div id="has-smooth">
+        <div id="has-smooth-wrap">
+
+            <main>
+
+                <!-- hero area start -->
+                <div class="togo-hero-3-ptb">
+                    <div class="togo-hero-3-wrapper p-relative">
+                        <div class="togo-hero-3-bottom-shape">
+                            <img src="{% static 'core/img/hero/home-3/bg-hero-shape.png' %}" alt="">
+                        </div>
+                        <div class="swiper togo-hero-2-active">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="togo-hero-3-item togo-hero-hight">
+                                        <div class="container container-1440">
+                                            <div class="row">
+                                                <div class="col-lg-8">
+                                                    <div class="togo-hero-2-heading">
+                                                        <h1 class="togo-hero-2-title">Experience the Magic, <br> of
+                                                            O'ahu.</h1>
+                                                        <p class="fs-18">Book tours, explore beaches, and experience
+                                                            paradise.</p>
+                                                        <div class="togo-hero-3-btn">
+                                                            <a class="togo-btn-primary" href="tour-list.html">View
+                                                                Tours</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="togo-hero-2-bg" data-background="{% static 'core/img/oahu.webp' %}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- hero area end -->
+
+
+                <!-- offer area start -->
+                <div class="togo-offer-ptb fix p-relative pt-80 pb-130">
+                    <div class="togo-offer-shape" data-speed=".9">
+                        <img src="{% static 'core/img/offer/offer-plain.svg' %}" alt="">
+                    </div>
+                    <div class="container container-1440">
+                        <div class="row gx-50">
+                            <div class="col-lg-6">
+                                <div class="togo-offer-thumb-main mb-40 fade-anim" data-delay=".3"
+                                    data-fade-from="left">
+                                    <div class="togo-offer-thumb">
+                                        <img src="{% static 'core/img/offer/offer-thumb-1.jpg' %}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="togo-offer-heading pt-40 fade-anim" data-delay=".3" data-fade-from="right">
+                                    <h3 class="togo-section-title ff-playfair fw-600 mb-35">Exciting outdoor actvities
+                                        <br> we
+                                        offer in O'ahu
+                                    </h3>
+                                    <div class="togo-offer-item-wrap">
+                                        <div class="row row-cols-sm-2 row-cols-1">
+                                            <div class="col">
+                                                <div class="togo-offer-item mb-30">
+                                                    <div class="togo-offer-item-icon">
+                                                        <img src="{% static 'core/img/offer/offer-icon.svg' %}" alt="">
+                                                    </div>
+                                                    <div class="togo-offer-item-content">
+                                                        <h3 class="togo-offer-item-title">Kayaking</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="togo-offer-item mb-30">
+                                                    <div class="togo-offer-item-icon">
+                                                        <img src="{% static 'core/img/offer/offer-icon-2.svg' %}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="togo-offer-item-content">
+                                                        <h3 class="togo-offer-item-title">Climbing</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="togo-offer-item mb-30">
+                                                    <div class="togo-offer-item-icon">
+                                                        <img src="{% static 'core/img/offer/offer-icon-3.svg' %}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="togo-offer-item-content">
+                                                        <h3 class="togo-offer-item-title">Hiking</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="togo-offer-item mb-30">
+                                                    <div class="togo-offer-item-icon">
+                                                        <img src="{% static 'core/img/offer/offer-icon-4.svg' %}"
+                                                            alt="">
+                                                    </div>
+                                                    <div class="togo-offer-item-content">
+                                                        <h3 class="togo-offer-item-title">Mountain biking</h3>
+                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="togo-offer-btn-box">
+                                        <a class="togo-btn-primary" href="contact.html">Explore Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- offer area end -->
+
+
+                <!-- popular tours area start -->
+                <div class="togo-tour-5-ptb pb-60">
+                    <div class="container container-1440">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="togo-tour-5-heading text-center mb-40">
+                                    <h4 class="togo-section-title ff-marcellus mb-1 fade-anim" data-delay=".3">Explore
+                                        Popular
+                                        Tours in O'ahu</h4>
+                                    <div class="togo-tour-5-text fade-anim" data-delay=".5">
+                                        <p>Get started with handpicked top rated activities from Waikiki to the North
+                                            Shore.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <!-- Booking Card -->
+                            {% for booking in bookings %}
+                            <div class="col-xl-3 col-lg-4 col-sm-6">
+                                <div class="togo-tour-card mb-24">
+                                    <div class="togo-tour-card-thumb p-relative mb-20">
+                                        <a href="tour-details-1.html">
+                                            <img src="{{ booking.image_URL }}" alt="{{ booking.title }}">
+                                        </a>
+                                        <div class="togo-tour-card-wishlist">
+                                            <span>
+                                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M7.75 3.5C5.12665 3.5 3 5.75956 3 8.54688C3 14.125 12 20.5 12 20.5C12 20.5 21 14.125 21 8.54688C21 5.09375 18.8734 3.5 16.25 3.5C14.39 3.5 12.7796 4.63593 12 6.2905C11.2204 4.63593 9.61003 3.5 7.75 3.5Z"
+                                                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                                        stroke-linejoin="round" />
+                                                </svg>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="togo-tour-card-content">
+                                        <h4 class="togo-tour-card-title">
+                                            <a href="tour-details-1.html">{{ booking.title }}</a>
+                                        </h4>
+                                        <div class="togo-tour-card-meta-wrap">
+                                            <h5 class="togo-tour-card-meta">
+                                                <span><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        viewBox="0 0 18 18" fill="none">
+                                                        <path
+                                                            d="M9.41993 15.6155C9.16852 15.7948 8.83148 15.7948 8.58007 15.6155C4.95853 13.033 1.11418 7.72283 5.00003 3.88596C6.06088 2.83847 7.49972 2.25 9 2.25C10.5003 2.25 11.9391 2.83847 13 3.88596C16.8858 7.72283 13.0415 13.033 9.41993 15.6155Z"
+                                                            stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                        <path
+                                                            d="M9 9C9.82843 9 10.5 8.32843 10.5 7.5C10.5 6.67157 9.82843 6 9 6C8.17157 6 7.5 6.67157 7.5 7.5C7.5 8.32843 8.17157 9 9 9Z"
+                                                            stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg></span>
+                                                {{booking.city}}
+                                            </h5>
+                                            <h5 class="togo-tour-card-meta">
+                                                <span>
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                                                        viewBox="0 0 18 18" fill="none">
+                                                        <path d="M9 4.5V9L7.125 12" stroke="currentColor"
+                                                            stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                        <circle cx="9" cy="9" r="6.75" stroke="currentColor"
+                                                            stroke-width="1.5" stroke-linecap="round"
+                                                            stroke-linejoin="round" />
+                                                    </svg>
+                                                </span>
+                                                {{booking.duration}}
+                                            </h5>
+                                        </div>
+                                        <div class="togo-tour-card-desc mb-25">
+                                            <p>{{booking.details}}</p>
+                                        </div>
+                                        <div class="togo-tour-card-price-wrap mb-25">
+                                            {% if booking.company_rating %}
+                                            <div class="togo-tour-card-review">
+                                                <span class="togo-tour-card-rating">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
+                                                        viewBox="0 0 15 15" fill="none">
+                                                        <path
+                                                            d="M8.14444 1.1255C7.86859 0.624834 7.13922 0.624834 6.86337 1.1255C6.7131 1.39824 6.56892 1.67464 6.43102 1.95452C5.99678 2.83586 5.62475 3.75175 5.3205 4.69678C5.21642 5.02005 4.90717 5.24456 4.55323 5.25396C3.71798 5.27613 2.88426 5.34486 2.05751 5.46154C1.82139 5.49487 1.58653 5.53196 1.35299 5.57276C0.77229 5.67422 0.554393 6.33631 0.966756 6.7398C1.06082 6.83184 1.15568 6.92312 1.25133 7.01361C1.96657 7.6903 2.72579 8.32337 3.52443 8.90839C3.79989 9.11016 3.91312 9.45632 3.80784 9.77228C3.47801 10.7622 3.22274 11.7847 3.04848 12.8337C3.01353 13.0441 2.98184 13.2555 2.95346 13.4679C2.87786 14.0339 3.48427 14.4336 4.01063 14.1638C4.19851 14.0675 4.38474 13.9685 4.56925 13.8669C5.4158 13.401 6.22628 12.8802 6.99559 12.3096C7.29418 12.0881 7.71363 12.0881 8.01222 12.3096C8.78154 12.8802 9.59201 13.401 10.4386 13.8669C10.6231 13.9685 10.8093 14.0675 10.9972 14.1638C11.5235 14.4336 12.13 14.0339 12.0543 13.4679C12.026 13.2555 11.9943 13.0441 11.9593 12.8337C11.7851 11.7847 11.5298 10.7622 11.2 9.77228C11.0947 9.45632 11.2079 9.11016 11.4834 8.90839C12.282 8.32337 13.0412 7.6903 13.7565 7.01361C13.8521 6.92312 13.947 6.83184 14.0411 6.7398C14.4534 6.3363 14.2355 5.67422 13.6548 5.57276C13.4213 5.53196 13.1864 5.49487 12.9503 5.46154C12.1236 5.34486 11.2898 5.27613 10.4546 5.25396C10.1006 5.24456 9.79139 5.02005 9.68732 4.69678C9.38306 3.75175 9.01104 2.83586 8.57679 1.95452C8.43889 1.67464 8.29472 1.39824 8.14444 1.1255Z"
+                                                            fill="currentColor" stroke="currentColor" stroke-width="1.5"
+                                                            stroke-linecap="round" stroke-linejoin="round" />
+                                                    </svg>
+                                                    {{booking.company_rating}}
+                                                </span>
+                                                <span class="togo-tour-card-rating-count">
+                                                    ({{booking.company_reviews}})
+                                                </span>
+                                            </div>
+                                            {% endif %}
+                                            {% if booking.price %}
+                                            <div class="togo-tour-card-price">
+                                                <span class="togo-tour-card-price-prefix">from</span>
+                                                {% if booking.is_promo %}
+                                                <span style="text-decoration: line-through;">${{ booking.price }}</span>
+                                                <span class="togo-tour-card-price-regular"> ${{ booking.adjusted_price }}</span>
+                                                {% else %}
+                                                <span class="togo-tour-card-price-regular"> ${{ booking.price }}</span>
+                                                {% endif %}
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        {% if booking.is_promo %}
+                                        <div>
+                                            <p class="bg-light p-2 rounded" style="margin-bottom: 0px;"><small>Use Code:</small> <span class="fw-bold" style="color: var(--togo-theme-primary);">{{booking.promo_code}}</span></p>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="togo-tour-5-bottom text-center mt-35 fade-anim" data-delay=".3">
+                                    <a class="togo-btn-primary bdr-style orange-bdr" href="tour-filter-list.html">View
+                                        all
+                                        tours</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- popular tours area end -->
+
+
+                <!-- blog area start -->
+                <div class="togo-blog-9-ptb pt-60 pb-60">
+                    <div class="container">
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="togo-blog-9-heading mb-30 fade-anim" data-delay=".3">
+                                    <h3 class="togo-section-title">Guides by our specialists</h3>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="togo-tour-right text-lg-end mb-30 fade-anim" data-delay=".5">
+                                    <a class="togo-tour-btn line-border" href="blog-sidebar.html">
+                                        <span>View all guides</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            {% for post in wp_posts %}
+                            <div class="col-lg-4 col-md-6">
+                                <div class="togo-blog-2-item mb-30 fade-anim" data-delay=".5">
+                                    <div class="togo-blog-2-item-thumb mb-20">
+                                        <a href="blog-details.html">
+                                            <img src="{{post.jetpack_featured_media_url}}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="togo-blog-2-item-content">
+                                        <div class="togo-blog-item-meta mb-10">
+                                            {% for tag in post.tag_names|slice:":3" %}
+                                            <span class="label"> {{tag}}</span>
+                                            {% endfor %}
+                                            <span class="date"> {{post.modified|date:"M j, Y"}}</span>
+                                            </div>
+                                        <h4 class="togo-blog-2-item-title">
+                                            <a href="blog-details.html">{{post.title.rendered|safe}}</a>
+                                        </h4>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <!-- blog area end -->
+
+
+
+                <!-- feature area start -->
+                <div class="togo-chose-3-ptb pt-80 pb-50">
+                    <div class="container container-1440">
+                        <div class="row">
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="togo-chose-3-heading mb-30 fade-anim" data-delay=".3" data-fade-from="left">
+                                    <span class="togo-section-subtitle">Travel Your Way</span>
+                                    <h4 class="togo-section-title mb-12">Guiding Travelers for Over 5 Years</h4>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="togo-chose-3-item pl-45 mb-30 fade-anim" data-delay=".5">
+                                    <div class="togo-chose-3-item-icon mb-20">
+                                        <img src="{% static 'core/img/icon/home-3/chose-1.svg' %}" alt="">
+                                    </div>
+                                    <div class="togo-chose-3-item-content">
+                                        <h4 class="togo-chose-item-title">
+                                            Expert Local Guides
+                                        </h4>
+                                        <p>Discover hidden gems and iconic spots with insider knowledge.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="togo-chose-3-item pl-45 mb-30 fade-anim" data-delay=".7">
+                                    <div class="togo-chose-3-item-icon mb-20">
+                                        <img src="{% static 'core/img/icon/home-3/chose-2.svg' %}" alt="">
+                                    </div>
+                                    <div class="togo-chose-3-item-content">
+                                        <h4 class="togo-chose-item-title">
+                                            Tailored Adventures
+                                        </h4>
+                                        <p>Tours and experiences designed for every type of traveler.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-sm-6">
+                                <div class="togo-chose-3-item pl-45 mb-30 fade-anim" data-delay=".9">
+                                    <div class="togo-chose-3-item-icon mb-20">
+                                        <img src="{% static 'core/img/icon/home-3/chose-3.svg' %}" alt="">
+                                    </div>
+                                    <div class="togo-chose-3-item-content">
+                                        <h4 class="togo-chose-item-title">
+                                            Eco-Friendly Travel
+                                        </h4>
+                                        <p>Respecting Hawaii’s islands, communities, and environment.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- feature area end -->
+
+                <!-- text slider area start -->
+                <div class="togo-text-slider-ptb fix pt-80 pb-60">
+                    <div class="togo-text-slider-wrapper">
+                        <div class="swiper-container togo-text-slide-active">
+                            <div class="swiper-wrapper togo-slide-transtion">
+                                <div class="swiper-slide">
+                                    <div class="togo-text-slider-item">
+                                        <img src="{% static 'core/img/text-slider/text-icon-1.svg' %}" alt="">
+                                        <span>Discover the magic of O'ahu</span>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="togo-text-slider-item">
+                                        <img src="{% static 'core/img/text-slider/text-icon-2.svg' %}" alt="">
+                                        <span>Dive into the beauty of Maui</span>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="togo-text-slider-item">
+                                        <img src="{% static 'core/img/text-slider/text-icon-3.svg' %}" alt="">
+                                        <span>Explore the wonders of Hawaii</span>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="togo-text-slider-item">
+                                        <img src="{% static 'core/img/text-slider/text-icon-4.svg' %}" alt="">
+                                        <span>Experience the culture of Kaua'i</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="togo-text-slider-bg-wrapper">
+                        <div class="swiper-container togo-text-slide-2-active" dir="rtl">
+                            <div class="swiper-wrapper togo-slide-transtion">
+                                <div class="swiper-slide">
+                                    <div class="togo-text-slider-bg-item">
+                                        <span> Book your Hawaiian tours today </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- text slider area end -->
+
+
+
+
+
+                <!-- faq area start -->
+                <div class="togo-faq-ptb fix pt-120 pb-120">
+                    <div class="container container-1440">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="togo-faq-heading text-center mb-40">
+                                    <span class="togo-section-subtitle fade-anim" data-delay=".3">FAQs</span>
+                                    <h3 class="togo-section-title mb-15 fade-anim" data-delay=".5">
+                                        Frequently Asked Questions
+                                    </h3>
+                                    <div class="togo-faq-text fade-anim" data-delay=".7">
+                                        <p>Lorem ipsum dolor sit amet consectetur. Et sagittis sit odio urna. <br>
+                                            Varius ornare
+                                            ut gravida velit vulputate.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row align-items-center">
+                            <div class="col-lg-6">
+                                <div class="togo-faq-wrapper mb-40 fade-anim" data-delay=".5" data-fade-from="left">
+                                    <div class="accordions" id="accordionExample">
+                                        <div class="accordion-items active mb-20">
+                                            <div class="accordion-header">
+                                                <button class="accordion-buttons" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                    aria-expanded="true" aria-controls="collapseOne">
+                                                    How do I book a trip with Hawaii Travel Tips?
+                                                    <span class="togo-accordion-icon"></span>
+                                                </button>
+                                            </div>
+                                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                                        tellus,
+                                                        luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-items mb-20">
+                                            <div class="accordion-header">
+                                                <button class="accordion-buttons collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                    aria-expanded="false" aria-controls="collapseTwo">
+                                                    What if I need to make changes to my booking?
+                                                    <span class="togo-accordion-icon"></span>
+                                                </button>
+                                            </div>
+                                            <div id="collapseTwo" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                                        tellus,
+                                                        luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-items mb-20">
+                                            <div class="accordion-header">
+                                                <button class="accordion-buttons collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                    Does Travlo offer support during my trip?
+                                                    <span class="togo-accordion-icon"></span>
+                                                </button>
+                                            </div>
+                                            <div id="collapseThree" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                                        tellus,
+                                                        luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-items mb-20">
+                                            <div class="accordion-header">
+                                                <button class="accordion-buttons collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                                    aria-expanded="false" aria-controls="collapseFour">
+                                                    Are your trips family-friendly?
+                                                    <span class="togo-accordion-icon"></span>
+                                                </button>
+                                            </div>
+                                            <div id="collapseFour" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                                        tellus,
+                                                        luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-items mb-20">
+                                            <div class="accordion-header">
+                                                <button class="accordion-buttons collapsed" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#collapseFive"
+                                                    aria-expanded="false" aria-controls="collapseFive">
+                                                    Can I customize my travel itinerary?
+                                                    <span class="togo-accordion-icon"></span>
+                                                </button>
+                                            </div>
+                                            <div id="collapseFive" class="accordion-collapse collapse"
+                                                data-bs-parent="#accordionExample">
+                                                <div class="accordion-body">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
+                                                        tellus,
+                                                        luctus nec ullamcorper mattis, pulvinar dapibus leo.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="togo-faq-card text-center ml-70 fade-anim" data-delay=".7"
+                                    data-fade-from="right">
+                                    <div class="togo-faq-card-icon">
+                                        <img src="{% static 'core/img/banner/home-3/message-icon.svg' %}" alt="">
+                                    </div>
+                                    <div class="togo-faq-card-content">
+                                        <h4 class="togo-faq-card-title">
+                                            You have different questions?
+                                        </h4>
+                                        <p>
+                                            Lorem ipsum dolor sit amet consectetur. Et sagittis sit odio urna. Varius
+                                            ornare
+                                        </p>
+                                        <div class="togo-faq-card-btn">
+                                            <a href="contact.html" class="togo-btn-primary">Contact us</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- faq area end -->
+
+
+                <!-- CTA area start -->
+                <div class="togo-banner-3-ptb">
+                    <div class="container container-1440">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="togo-banner-3-heading text-center pb-140">
+                                    <h4 class="togo-section-title mb-15 fade-anim" data-delay=".3">Ready to Explore?
+                                    </h4>
+                                    <div class="togo-banner-3-text fade-anim" data-delay=".5">
+                                        <p>Plan your perfect trip.</p>
+                                    </div>
+                                    <div class="togo-banner-3-btn fade-anim" data-delay=".7">
+                                        <a class="togo-btn-primary" href="contact.html">View Tours</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- CTA area end -->
+
+                <!-- community area start -->
+                {% include 'core/components/community.html' %}
+                <!-- community area end -->
+
+            </main>
+
+
+            {% include 'core/components/footer.html' %}
+
+        </div>
+    </div>
+
+
+    <!-- JS here -->
+    <script src="{% static 'core/js/vendor/jquery.js' %}"></script>
+    <script src="{% static 'core/js/bootstrap-bundle.js' %}"></script>
+    <script src="{% static 'core/js/swiper-bundle.js' %}"></script>
+    <script src="{% static 'core/js/magnific-popup.js' %}"></script>
+    <script src="{% static 'core/js/nice-select.js' %}"></script>
+    <script src="{% static 'core/js/purecounter.js' %}"></script>
+    <script src="{% static 'core/js/incluid-bundle.js' %}"></script>
+    <script src="{% static 'core/js/scripts.js' %}"></script>
+
+</body>
+
+</html>

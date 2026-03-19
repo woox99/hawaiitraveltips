@@ -1,0 +1,600 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  7.7 testimonial css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-testimonial{
+    &-shape{
+        position: absolute;
+        bottom: 7%;
+        right: 18%;
+        @media #{$md,$xs} {
+            right: 2%;
+            bottom: 2%;
+        }
+    }
+    &-thumb{
+        &-wrap{
+            & img{
+                z-index: 1;
+                position: relative;
+                border: 18px solid var(--togo-common-white);
+                box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.26);
+                @media #{$md,$xs} {
+                    width: 100%;
+                }
+            }
+            & .bg-shape{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 91%;
+                height: 40vh;
+                min-height: 392px;
+                display: inline-block;
+                transform: rotate(-8.489deg);
+                background: var(--togo-common-white);
+                box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.05);
+                @media #{$lg,$md} {
+                    min-height: 350px;
+                }
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-item{
+        &-content{
+            margin-bottom: 28px;
+            & p{
+                font-size: 18px;
+            }
+        }
+        &-user{
+            gap: 12px;
+            &-thumb{
+                & img{
+                    width: 50px;
+                    border-radius: 50%;
+                }
+            }
+            &-content{
+                & h4{
+                    font-size: 18px;
+                    margin: 0;
+                }
+                & p{
+                    margin: 0;
+                }
+            }
+        }
+    }
+    &-arrows{
+        gap: 12px;
+        & button{
+            height: 36px;
+            width: 36px;
+            display: grid;
+            border-radius: 50%;
+            text-align: center;
+            place-content: center;
+            color: var(--togo-common-black);
+            border: 1px solid var(--togo-gray-2);
+            background-color: var(--togo-common-white);
+            & span{
+                display: inline-block;
+                transform: translate(-1px, -1px);
+            }
+            &:hover{
+                color: #999999;
+            }
+        }
+    }
+    &-fraction{
+        & .togo-hero-2-fraction-wrap{
+            bottom: 0;
+            display: flex;
+            border-radius: 10px;
+            justify-content: space-between;
+            & .swiper-pagination-progress{
+                height: 5px;
+                width: 100px;
+                left: 55px;
+                bottom: 12px;
+                margin: 0 0px;
+                border-radius: 10px;
+                background: #EEEEEE;
+                & .swiper-pagination-progressbar-fill{
+                    height: 5px;
+                    border-radius: 10px;
+                    background: var(--togo-theme-primary);
+                }
+            }
+            & .swiper-pagination-fraction{
+                display: none;
+            }
+        }
+        & .togo-testimonial{
+            &-prev,
+            &-next{
+                width: 36px;
+                height: 36px;
+                display: inline-grid;
+                place-content: center;
+                text-align: center;
+                border-radius: 50%;
+                color: var(--togo-common-black);
+                background-color: var(--togo-common-white);
+                border: 1px solid rgba($color: #eee, $alpha: 0.9);
+                & span{
+                    display: inline-block;
+                    transform: translate(-1px, -1px);
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-testimonial-2{
+    &-shape{
+        position: absolute;
+        right: 22%;
+        top: 12%;
+        @media #{$xl,$lg,$md,$xs} {
+            display: none;
+        }
+    }
+    &-item{
+        position: relative;
+        border-radius: 16px;
+        padding: 20px 35px 24px 24px;
+        background: var(--togo-common-white);
+        &-title{
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+        &-quote{
+            position: absolute;
+            top: 0;
+            right: 28px;
+        }
+        &-content{
+            & p{
+                font-size: 18px;
+                font-family: var(--togo-ff-outfit);
+            }
+        }
+        &-user{
+            gap: 16px;
+            align-items: center;
+            &-thumb{
+                & img{
+                    border-radius: 50%;
+                }
+            }
+            &-content{
+                & h4{
+                    font-size: 16px;
+                    font-weight: 500;
+                    margin-bottom: 0px;
+                    font-family: var(--togo-ff-p);
+                }
+                & span{
+                    font-size: 16px;
+                    display: inline-block;
+                }
+            }
+        }
+
+        &.tes-style-5{
+            padding-right: 100px;
+            background-color: transparent;
+            border-right: 1px solid #EEEEEE;
+            @media #{$xl,$lg} {
+                padding-right: 50px;
+            }
+            @media #{$md,$xs} {
+                padding-right: 35px;
+            }
+            & .togo-testimonial-2-item{
+                &-title{
+                    font-family: var(--togo-ff-marcellus);
+                }
+            }
+        }
+    }
+}
+
+.#{$theme-prefix}-testimonial-3{
+    &-ptb{
+        padding-bottom: 200px;
+    }
+    &-wrapper{
+        padding: 0 15px;
+    }
+    &-title{
+        font-weight: 400;
+    }
+    &-content{
+        & p{
+            font-size: 22px;
+            font-style: italic;
+        }
+    }
+    &-user{
+        &-content{
+            margin-bottom: 5px;
+            margin-bottom: 16px;
+            & h4{
+                font-size: 16px;
+                margin-bottom: 1px;
+                font-family: var(--togo-ff-p);
+            }
+            & span{
+                font-weight: 400;
+            }
+        }
+        &-thumb{
+            & img{
+                border-radius: 50%;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-testimonial-4{
+    &-heading{
+        & p{
+            font-size: 18px;
+            & span{
+                font-weight: 500;
+                color: var(--togo-common-black);
+            }
+        }
+    }
+    &-thumb{
+        overflow: hidden;
+        border-radius: 18px;
+        &:hover{
+            & img{
+                transform: scale(1.2);
+            }
+        }
+        & img{
+            width: 100%;
+            border-radius: 18px;
+            transition: all .5s ease-in-out;
+        }
+    }
+    &-wrap{
+        padding: 25px 20px;
+        border-radius: 18px;
+        background-color: #FFF1F0;
+        &-title{
+            font-size: 18px;
+            font-weight: 400;
+            line-height: 1.4;
+        }
+        &-content{
+            & span{
+                font-size: 16px;
+                font-weight: 500;
+                position: relative;
+                color: var(--togo-common-black);
+                &::after{
+                    content: "";
+                    width: 4px;
+                    height: 4px;
+                    margin: 0 8px;
+                    border-radius: 50%;
+                    display: inline-block;
+                    transform: translateY(-3px);
+                    background-color: #EEEEEE;
+                }
+            }
+            & p{
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-testimonial-5{
+    &-slider{
+        &-wrapper{
+            overflow: hidden;
+            & .togo-testimonial-5-active{
+                margin-right: -2px;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-testimonial-6{
+    &-ptb{
+        @media #{$xs} {
+            padding-top: 80px;
+            padding-bottom: 40px;
+        }
+    }
+    &-shape{
+        & .shape{
+            &-1{
+                position: absolute;
+                top: -55px;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                @media #{$xl,$lg} {
+                    top: -30px;
+                }
+                @media #{$md,$xs} {
+                    top: -20px;
+                }
+                & img{
+                    width: 100%;
+                }
+            }
+            &-2{
+                position: absolute;
+                bottom: -90px;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                @media #{$lg} {
+                    bottom: -50px;
+                }
+                @media #{$md,$xs} {
+                    bottom: -20px;
+                }
+                & img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    &-thumb{
+        & img{
+            border-radius: 16px 100px 16px 16px;
+        }
+    }
+    &-brand{
+        & p{
+            & span{
+                font-weight: 500;
+                color: var(--togo-common-black);
+            }
+        }
+    }
+    &-item{
+        & p{
+            font-size: 20px;
+        }
+        &-user{
+            & img{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+            }
+        }
+        &-name{
+            display: flex;
+            gap: 20px;
+            & span{
+                position: relative;
+                font-size: 16px;
+                font-weight: 500;
+                color: var(--togo-common-black);
+                &::before{
+                    position: absolute;
+                    content: "";
+                    top: 10px;
+                    right: -12px;
+                    width: 4px;
+                    height: 4px;
+                    border-radius: 50%;
+                    background-color: var(--togo-gray-1);
+                }
+            }
+            & p{
+                font-size: 16px;
+                margin: 0;
+            }
+        }
+        &-text{
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            display: inline-block;
+            color: var(--togo-common-black);
+            font-family: var(--togo-ff-outfit);
+        }
+    }
+    &-text{
+        top: 0;
+        left: -70px;
+        font-size: 18px;
+        padding: 40px 0px;
+        padding-right: 15px;
+        font-weight: 500;
+        position: absolute;
+        writing-mode: sideways-lr;
+        text-transform: uppercase;
+        color: var(--togo-theme-primary);
+        border-right: 1px solid #EEEEEE;
+    }
+}
+
+
+.#{$theme-prefix}-testimonial-8{
+    &-wrapper{
+        @media #{$md,$xs} {
+            margin-bottom: 50px;
+        }
+    }
+    &-thumb{
+        &-wrap{
+            z-index: 1;
+            & img{
+                border-radius: 16px;
+            }
+            &::after{
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 440px;
+                width: 440px;
+                content: '';
+                z-index: -1;
+                border-radius: 16px;
+                transform: rotate(-11.47deg);
+                background-color: #F0F8FF;
+                @media #{$md,$xs} {
+                    right: auto;
+                    left: 0;
+                }
+                @media #{$xs} {
+                    display: none;
+                }
+                @media #{$sm} {
+                    display: block;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+.#{$theme-prefix}-testimonial-9{
+    &-ptb{
+        @media #{$md,$xs} {
+            padding-top: 80px;
+        }
+    }
+}
+
+
+
+
+.#{$theme-prefix}-testimonial-10{
+    &-card{
+        width: 400px;
+        padding: 100px;
+        border-radius: 16px;
+        background-color: #E2F3ED;
+        @media #{$xs} {
+            width: 100%;
+            padding: 75px;
+        }
+        &-content{
+            & span{
+                font-size: 24px;
+                font-weight: 500;
+                display: block;
+                margin-bottom: 15px;
+                color: var(--togo-common-black);
+                font-family: var(--togo-ff-outfit);
+            }
+            & p{
+                & i{
+                    font-style: normal;
+                    font-weight: 500;
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-testimonial-11{
+    &-wrapper{
+        border-radius: 16px;
+        border: 1px solid #EEEEEE;
+    }
+    &-card{
+        text-align: center;
+        border-right: 1px solid #EEEEEE;
+        @media #{$lg,$md,$xs} {
+            border: none;
+        }
+        @media #{$xs} {
+            border-bottom: 1px solid #EEEEEE;
+        }
+    }
+    &-item{
+        padding: 40px 30px;
+        &-title{
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-testimonial-12{
+    &-ptb{
+        @media #{$xs} {
+            padding-bottom: 80px;
+        }
+    }
+    &-web{
+        gap: 60px;
+        justify-content: center;
+        @media #{$lg,$xs} {
+            gap: 35px;
+        }
+        & .togo-testimonial-6-brand{
+            &:not(:last-of-type){
+                padding-right: 60px;
+                border-right: 1px solid #EEEEEE;
+                @media #{$lg,$xs} {
+                    padding-right: 35px;
+                }
+            }
+        }
+    }
+    &-heading{
+        & .togo-section-title{
+            & br{
+                @media #{$xl,$lg} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-item{
+        gap: 24px;
+        display: flex;
+        &-thumb{
+            width: 250px;
+            height: 100%;
+            border-radius: 16px;
+            & img{
+                border-radius: 16px;
+            }
+        }
+        & .togo-testimonial-2{
+            &-item{
+                width: 250px;
+                padding: 24px;
+                border: 1px solid #EEE;
+                background: var(--togo-common-white);
+                &-content{
+                    & p{
+                        font-size: 17px;
+                    }
+                }
+            }
+        }
+    }
+}

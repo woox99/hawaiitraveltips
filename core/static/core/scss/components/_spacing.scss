@@ -1,0 +1,36 @@
+@use '../utils' as *;
+/*---------------------------------
+    2.10  Spacing
+---------------------------------*/
+
+// Mixin for spacing
+@mixin space-generator($prefix, $property) {
+  // 1 to 30 (step 1)
+  @for $i from 1 through 30 {
+    .#{$prefix}-#{$i} {
+      #{$property}: #{$i}px;
+    }
+  }
+
+  // 35 to 200 (step 5)
+  @for $i from 35 through 200 {
+    @if ($i % 5 == 0) {
+      .#{$prefix}-#{$i} {
+        #{$property}: #{$i}px;
+      }
+    }
+  }
+}
+
+// Padding classes
+@include space-generator('pt', 'padding-top');
+@include space-generator('pb', 'padding-bottom');
+@include space-generator('pl', 'padding-left');
+@include space-generator('pr', 'padding-right');
+
+// Margin classes
+@include space-generator('mt', 'margin-top');
+@include space-generator('mb', 'margin-bottom');
+@include space-generator('ml', 'margin-left');
+@include space-generator('mr', 'margin-right');
+

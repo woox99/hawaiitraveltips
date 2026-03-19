@@ -1,0 +1,205 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  8.5 faq css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-faq{
+    &-heading{
+        & p{
+            font-size: 18px;
+            & br{
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+    &-card{
+        width: 435px;
+        padding: 40px 20px;
+        border-radius: 16px;
+        background: #F2F7F8;
+        @media #{$lg} {
+            width: auto;
+        }
+        @media #{$md} {
+            margin-left: 0;
+        }
+        @media #{$xs} {
+            margin-left: 0;
+            width: auto;
+        }
+        &-icon{
+            margin-bottom: 15px;
+        }
+        &-title{
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 15px;
+            color: var(--togo-theme-primary);
+        }
+        &-content{
+            & p{
+                color: var(--togo-common-black);
+            }
+        }
+    }
+    &-wrapper{
+        & .accordion-items{
+            &:not(:last-of-type){
+                border-bottom: 1px solid #EEE;
+            }
+        }
+        & .accordion-buttons{
+            position: relative;
+            padding: 20px 0px;
+            padding-bottom: 15px;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 1.7;
+            width: 100%;
+            text-align: left;
+            text-transform: capitalize;
+            color: var(--togo-common-black);
+            font-family: var(--togo-ff-outfit);
+            @media #{$xs} {
+                padding-right: 50px;
+                line-height: 1.3;
+            }
+            &:not(.collapsed){
+                & .togo-accordion-icon{
+                    & svg{
+                        transform: rotate(135deg);
+                    }
+                    &::before{
+                        @include togo-transform(translate(-50%, -50%) rotate(0deg));
+                    }
+                    &::after{
+                        background-color: var(--togo-common-black);
+                    }
+                }
+            }
+        }
+        & .accordion-body{
+            padding: 0 0px;
+            padding-right: 100px;
+            @media #{$lg,$md} {
+                padding-right: 60px;
+            }
+            @media #{$xs} {
+                padding-right: 30px;
+            }
+            & p{
+                margin-bottom: 0;
+                padding-bottom: 30px;
+                & br{
+                    @media #{$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+        & .togo-accordion-icon{
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            & svg{
+                transition: .3s;
+            }
+             &::after,
+                &::before{
+                    position: absolute;
+                    content: '';
+                    width: 18px;
+                    height: 2px;
+                    left: 50%;
+                    top: 50%;
+                    border-radius: 2px;
+                    @include togo-transition();
+                    @include togo-transform(translate(-50%, -50%));
+                    background-color: var(--togo-common-black);
+                }
+                &::before{
+                    background-color: var(--togo-common-black);
+                    @include togo-transform(translate(-50%, -50%) rotate(90deg));
+                }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-faq-8{
+    &-ptb{
+        @media #{$md,$xs} {
+            padding-bottom: 60px;
+        }
+    }
+    &-wrapper{
+        &.togo-faq-wrapper {
+            & .togo-accordion-icon{
+                &::before,
+                &::after{
+                    content: none;
+                }
+            }
+            & .accordion-buttons{
+                &:not(.collapsed) {
+                    & .togo-accordion-icon {
+                        & svg{
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+.#{$theme-prefix}-faq-9{
+    &-thumb{
+        display: inline-block;
+        @media #{$md,$xs} {
+            width: 100%;
+        }
+        & .shape-left {
+            position: absolute;
+            left: 0;
+            right: auto;
+            top: 0;
+            height: 100%;
+            width: 100px;
+            @media #{$md,$xs} {
+                display: none;
+            }
+        }
+        & img{
+            @media #{$md,$xs} {
+                width: 100%;
+            }
+        }
+    }
+    &-content{
+        position: absolute;
+        bottom: 60px;
+        left: 100px;
+        @media #{$xs} {
+            left: 30px;
+            bottom: 30px;
+        }
+    }
+    &-title{
+        font-size: 46px;
+        text-align: start;
+        margin-bottom: 20px;
+        color: var(--togo-common-white);
+        @media #{$xl,$lg,$sm} {
+            font-size: 40px;
+        }
+        @media #{$xs} {
+            font-size: 35px;
+        }
+    }
+}

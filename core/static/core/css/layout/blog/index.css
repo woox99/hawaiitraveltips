@@ -1,0 +1,421 @@
+.togo-blog-item-meta .date svg {
+  -webkit-transform: translateY(-2px);
+  -moz-transform: translateY(-2px);
+  -ms-transform: translateY(-2px);
+  -o-transform: translateY(-2px);
+  transform: translateY(-2px);
+}
+
+/* transform */
+@font-face {
+  font-family: "Otomanopee";
+  src: url("../fonts/OtomanopeeOne-Regular.ttf");
+  src: url("../fonts/OtomanopeeOne-Regular.ttf") format("embedded-opentype"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff"), url("../fonts/OtomanopeeOne-Regular.ttf") format("woff2"), url("../fonts/OtomanopeeOne-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+  text-rendering: optimizeLegibility;
+}
+:root {
+  /**
+  @font family declaration
+  */
+  --togo-ff-body: 'DM Sans', sans-serif;
+  --togo-ff-heading: 'Playfair Display', serif;
+  --togo-ff-p: 'DM Sans', sans-serif;
+  --togo-ff-outfit : 'Outfit', sans-serif;
+  --togo-ff-marcellus : 'Marcellus', serif;
+  --togo-ff-jost : 'Jost', sans-serif;
+  --togo-ff-playfair : 'Playfair Display', serif;
+  --togo-ff-otomanopee: 'Otomanopee', sans-serif;
+  --togo-ff-fontawesome: "Font Awesome 6 Pro";
+  /**
+  @color declaration
+  */
+  --togo-common-white: #FFFFFF;
+  --togo-common-black: #111111;
+  --togo-common-black-2: #1E1E1E;
+  --togo-common-red: #FF252B;
+  --togo-common-orange: #ED2B04;
+  --togo-common-yellow: #FFE453;
+  --togo-common-green: #46E86A;
+  --togo-common-brown: #664117;
+  --togo-theme-primary: #FD4621;
+  --togo-theme-secondary: #FBDFD1;
+  --togo-text-body: #333333;
+  --togo-gray-1: #DDDDDD;
+  --togo-gray-2: #EEEEEE;
+}
+
+/*----------------------------------------*/
+/*  5.1 Postbox css
+/*----------------------------------------*/
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-postbox-box {
+    padding-bottom: 80px;
+  }
+}
+.togo-postbox-details-wrapper {
+  margin-bottom: 60px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #edf0f2;
+}
+.togo-postbox-details-tags span {
+  font-size: 16px;
+  position: relative;
+  display: inline-block;
+  text-transform: uppercase;
+}
+.togo-postbox-details-tags span:not(:last-of-type) {
+  margin-right: 15px;
+  padding-right: 15px;
+}
+.togo-postbox-details-tags span:not(:last-of-type)::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  height: 5px;
+  width: 5px;
+  content: "";
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background-color: var(--togo-text-body);
+}
+.togo-postbox-details-title {
+  font-size: 48px;
+  font-weight: 600;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .togo-postbox-details-title {
+    font-size: 42px;
+  }
+}
+@media (max-width: 767px) {
+  .togo-postbox-details-title {
+    font-size: 32px;
+  }
+  .togo-postbox-details-title br {
+    display: none;
+  }
+}
+.togo-postbox-details-thumb img {
+  border-radius: 16px;
+}
+.togo-postbox-details-text p {
+  padding-bottom: 5px;
+}
+.togo-postbox-details-related {
+  margin-bottom: 60px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #edf0f2;
+}
+
+/*----------------------------------------*/
+/*  5.3 Sidebar css
+/*----------------------------------------*/
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-sidebar-box {
+    padding-bottom: 80px;
+  }
+}
+.togo-sidebar-widget-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: var(--togo-common-black);
+}
+.togo-sidebar-search-input {
+  position: relative;
+}
+.togo-sidebar-search-input input {
+  height: 54px;
+  border-radius: 8px;
+  padding-right: 60px;
+  border-color: #DDD;
+  color: var(--togo-common-black);
+  background: var(--togo-common-white);
+}
+.togo-sidebar-search-input input:focus {
+  border-color: var(--togo-theme-primary);
+}
+.togo-sidebar-search-input button {
+  position: absolute;
+  top: 50%;
+  right: 25px;
+  transform: translateY(-50%);
+}
+.togo-sidebar-search-input button:hover {
+  color: var(--togo-theme-primary);
+}
+.togo-sidebar-post-title {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 15px;
+  display: inline-block;
+}
+.togo-sidebar-post-title:hover {
+  color: var(--togo-theme-primary);
+}
+.togo-sidebar-item {
+  gap: 30px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-sidebar-item {
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+}
+.togo-sidebar-item:hover .togo-sidebar-item-thumb img {
+  transform: scale(1.1);
+}
+.togo-sidebar-item-thumb {
+  width: 340px;
+  height: 240px;
+  flex: 0 0 auto;
+  overflow: hidden;
+  border-radius: 16px;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-sidebar-item-thumb {
+    width: 100%;
+    height: 300px;
+  }
+}
+.togo-sidebar-item-thumb img {
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  transition: all 0.5s ease-in-out;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-sidebar-item-thumb img {
+    object-fit: cover;
+  }
+}
+.togo-sidebar-item-tag {
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: inline-block;
+}
+.togo-sidebar-item-title {
+  margin-bottom: 15px;
+}
+.togo-sidebar-item-title a:hover {
+  color: var(--togo-theme-primary);
+}
+
+/*----------------------------------------*/
+/*  5.4 Blog css
+/*----------------------------------------*/
+.togo-blog-heading p {
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+  .togo-blog-heading p br {
+    display: none;
+  }
+}
+.togo-blog-item:hover .togo-blog-item-thumb img {
+  transform: scale(1.2);
+}
+.togo-blog-item.blog-style-2 {
+  gap: 16px;
+  display: flex;
+  align-items: center;
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+  .togo-blog-item.blog-style-2 {
+    align-items: start;
+  }
+}
+@media (max-width: 767px) {
+  .togo-blog-item.blog-style-2 {
+    flex-wrap: wrap;
+  }
+}
+.togo-blog-item.blog-style-2 .togo-blog-item-thumb {
+  width: 100%;
+  height: 100%;
+  max-height: 166px;
+  max-width: 185px;
+}
+@media (max-width: 767px) {
+  .togo-blog-item.blog-style-2 .togo-blog-item-thumb {
+    max-width: 100%;
+    max-height: 100%;
+  }
+}
+.togo-blog-item.blog-style-2 .togo-blog-item-meta {
+  margin-bottom: 5px;
+}
+@media only screen and (min-width: 1200px) and (max-width: 1399px), only screen and (min-width: 992px) and (max-width: 1199px) {
+  .togo-blog-item.blog-style-2 .togo-blog-item-content {
+    padding-top: 0;
+  }
+}
+.togo-blog-item.blog-style-2 .togo-blog-item-content p {
+  margin-bottom: 7px;
+}
+.togo-blog-item.blog-style-2.style-10 {
+  gap: 30px;
+  align-items: center;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .togo-blog-item.blog-style-2.style-10 {
+    gap: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .togo-blog-item.blog-style-2.style-10 {
+    gap: 0;
+  }
+}
+.togo-blog-item-thumb {
+  overflow: hidden;
+  border-radius: 16px;
+}
+.togo-blog-item-thumb img {
+  width: 100%;
+  border-radius: 16px;
+  transition: all 0.5s ease-in-out;
+}
+.togo-blog-item-content {
+  padding: 16px 0;
+}
+.togo-blog-item-content p {
+  line-height: 1.4;
+}
+.togo-blog-item-meta span {
+  position: relative;
+  font-size: 16px;
+  line-height: 1;
+}
+.togo-blog-item-meta span:not(:last-of-type) {
+  margin-right: 20px;
+}
+.togo-blog-item-meta span:not(:last-of-type)::after {
+  position: absolute;
+  content: "";
+  top: 8px;
+  right: -12px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--togo-gray-1);
+}
+.togo-blog-item-meta .label {
+  font-weight: 500;
+  color: var(--togo-common-black);
+}
+.togo-blog-item-meta .date {
+  font-weight: 400;
+  color: var(--togo-text-body);
+}
+.togo-blog-item-title {
+  font-size: 20px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: var(--togo-common-black);
+}
+.togo-blog-item-title.fs-18 {
+  font-size: 18px;
+  font-weight: 500;
+}
+.togo-blog-item-title a:hover {
+  color: var(--togo-theme-primary);
+}
+.togo-blog-item-btn a {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--togo-theme-primary);
+}
+
+.togo-blog-2-item:hover .togo-blog-2-item-thumb img {
+  transform: scale(1.2);
+}
+.togo-blog-2-item-title {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.18px;
+}
+.togo-blog-2-item-title.ff-marcellus {
+  font-family: var(--togo-ff-marcellus);
+}
+.togo-blog-2-item-title a:hover {
+  color: var(--togo-theme-primary);
+}
+.togo-blog-2-item-thumb {
+  overflow: hidden;
+  border-radius: 16px;
+}
+.togo-blog-2-item-thumb img {
+  width: 100%;
+  border-radius: 16px;
+  transition: all 0.5s ease-in-out;
+}
+
+@media (max-width: 767px) {
+  .togo-blog-4-ptb {
+    padding-bottom: 80px;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-blog-4-heading {
+    margin-bottom: 20px;
+  }
+}
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-blog-4-heading p br {
+    display: none;
+  }
+}
+.togo-blog-4-item {
+  gap: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 16px;
+  background: #FFF1F0;
+}
+.togo-blog-4-item:hover .togo-blog-4-item-thumb img {
+  transform: scale(1.2);
+}
+.togo-blog-4-item-title {
+  font-size: 18px;
+  line-height: 1.4;
+}
+.togo-blog-4-item-title a:hover {
+  color: var(--togo-theme-primary);
+}
+.togo-blog-4-item-thumb {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  max-width: 185px;
+  border-radius: 16px 0 0 16px;
+}
+.togo-blog-4-item-thumb img {
+  width: 100%;
+  border-radius: 16px 0 0 16px;
+  transition: all 0.5s ease-in-out;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px), only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-blog-6-ptb {
+    padding-top: 120px;
+    padding-bottom: 80px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-blog-9-heading, .togo-blog-10-heading {
+    margin-bottom: 0;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px), (max-width: 767px) {
+  .togo-blog-11-ptb {
+    padding-top: 0;
+  }
+}
+
+/*# sourceMappingURL=index.css.map */

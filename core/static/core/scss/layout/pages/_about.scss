@@ -1,0 +1,427 @@
+@use '../../utils' as *;
+/*----------------------------------------*/
+/*  8.7 about css
+/*----------------------------------------*/
+
+.#{$theme-prefix}-about{
+    &-4{
+        &-ptb{
+            @media #{$md,$xs} {
+                padding-top: 50px;
+                padding-bottom: 0px;
+            }
+        }
+        &-shape{
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            width: 100%;
+            @media #{$xxl,$xl,$lg} {
+                bottom: 90px;
+            }
+            @media #{$md,$xs} {
+                display: none;
+            }
+            & img{
+                width: 100%;
+            }
+        }
+        &-heading{
+            @media #{$xs} {
+                padding-bottom: 40px;
+            }
+            & p{
+                & br{
+                    @media #{$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+        &-counter{
+            &-item{
+                & span{
+                    font-size: 16px;
+                    display: inline-block;
+                    color: var(--togo-common-black);
+                }
+            }
+            &-title{
+                font-size: 46px;
+                font-weight: 500;
+                line-height: 1;
+                & i{
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-about{
+    &-5{
+        &-heading{
+            & p{
+                font-size: 18px;
+                & br{
+                    @media #{$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-about{
+    &-6{
+        &-ptb{
+            @media #{$xs} {
+                padding-bottom: 30px;
+            }
+        }
+        &-thumb{
+            &-wrapper{
+                align-items: center;
+            }
+            & img{
+                border-radius: 0px 200px 200px 0px;
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-about{
+    &-7{
+        &-heading{
+            padding-right: 132px;
+            @media #{$lg,$xs} {
+                padding-right: 40px;
+            }
+        }
+        &-thumb{
+            &-wrap{
+                gap: 24px;
+                display: flex;
+                align-items: end;
+            }
+            &.bdr{
+                &-1{
+                    & img{
+                        border-radius: 200px 200px 16px 16px;
+                    }
+                }
+                &-2{
+                    & img{
+                        border-radius: 200px 200px 16px 16px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-about{
+    &-8{
+        &-ptb{
+            padding-bottom: 305px;
+            @media #{$lg,$md,$xs} {
+                padding-top: 80px;
+                bottom: 80px;
+                padding-bottom: 30px;
+            }
+        }
+        &-thumb{
+            &-wrapper{
+                & .shape{
+                    &-1{
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        border-radius: 16px;
+                        @media #{$xxl,$xl} {
+                            left: -10%;
+                        }
+                        @media #{$lg,$md,$xs} {
+                            display: none;
+                        }
+                    }
+                    &-2{
+                        position: absolute;
+                        bottom: 110px;
+                        right: -10px;
+                        border-radius: 16px;
+                        @media #{$lg,$md,$xs} {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+        &-num{
+            &-wrap{
+                @media #{$lg,$md} {
+                    display: flex;
+                    gap: 30px;
+                    margin-left: 30px;
+                    margin-bottom: 30px;
+                }
+                @media #{$xs} {
+                    display: flex;
+                    gap: 30px;
+                    flex-wrap: wrap;
+                    margin-left: 20px;
+                    margin-bottom: 30px;
+                }
+            }
+            &-item{
+                width: 255px;
+                padding: 45px 0;
+                border-radius: 16px;
+                text-align: center;
+                background: #F0F8FF;
+                &.pos{
+                    &-1{
+                        position: absolute;
+                        left: 15%;
+                        bottom: 20%;
+                        @media #{$xxl,$xl} {
+                            left: 7%;
+                        }
+                        @media #{$lg,$md,$xs} {
+                            // display: none;
+                            position: initial;
+                        }
+                    }
+                    &-2{
+                        position: absolute;
+                        right: 8%;
+                        top: 20%;
+                        @media #{$xl} {
+                            top: 0%;
+                            right: 6%;
+                        }
+                        @media #{$lg,$md,$xs} {
+                            // display: none;
+                            position: initial;
+                        }
+                    }
+                }
+                & p{
+                    font-size: 20px;
+                    font-weight: 400;
+                    color: var(--togo-common-black);
+                    font-family: var(--togo-ff-jost);
+                }
+            }
+            &-title{
+                font-size: 46px;
+                font-weight: 500;
+                font-family: var(--togo-ff-jost);
+                & i{
+                    font-style: normal;
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-about{
+    &-9{
+        &-ptb{
+            @media #{$lg,$md,$xs} {
+                padding-top: 0;
+            }
+            @media #{$md,$xs} {
+                padding-bottom: 0;
+            }
+        }
+        &-text-title{
+            font-size: 28px;
+            font-weight: 500;
+            line-height: 1.15;
+            color: var(--togo-common-black);
+            font-family: var(--togo-ff-outfit);
+            & br{
+                @media #{$md,$xs} {
+                    display: none;
+                }
+            }
+        }
+        &-heading{
+            @media #{$lg,$md,$xs} {
+                padding-top: 30px;
+            }
+            & .togo-section-subtitle{
+                font-weight: 500;
+                color: var(--togo-common-black);
+            }
+        }
+        &-thumb{
+            &-left{
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                @media #{$x3l} {
+                    left: -55px;
+                }
+                @media #{$xxl} {
+                    left: -10%;
+                }
+                @media #{$xl} {
+                    left: -20%;
+                }
+                @media #{$lg,$md,$xs} {
+                    position: static;
+                    text-align: center;
+                }
+                & img{
+                    height: 100%;
+                }
+                & .shape-right{
+                    position: absolute;
+                    right: 0; 
+                    left: auto; 
+                    top: 0; 
+                    height: 100%; 
+                    width: 100px;
+                    @media #{$lg,$md,$xs} {
+                        display: none;
+                    }
+                }
+            }
+            &-right{
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                @media #{$x3l} {
+                    right: -55px;
+                }
+                @media #{$xxl} {
+                    right: -10%;
+                }
+                @media #{$xl} {
+                    right: -20%;
+                }
+                @media #{$lg,$md,$xs} {
+                    position: static;
+                    text-align: center;
+                }
+                & img{
+                    height: 100%;
+                }
+                & .shape-left{
+                    position: absolute;
+                    left: 0; 
+                    right: auto; 
+                    top: 0; 
+                    height: 100%; 
+                    width: 100px;
+                    @media #{$lg,$md,$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.#{$theme-prefix}-about{
+    &-story{
+        &-ptb{
+            @media #{$xs} {
+                padding-top: 60px;
+                padding-bottom: 0;
+            }
+        }
+        &-thumb{
+            @media #{$xs} {
+                margin-bottom: 20px;
+            }
+            & img{
+                width: 100%;
+                border-radius: 8px;
+            }
+        }
+    }
+    &-map{
+        &-ptb{
+            background-position: center;
+            background-repeat: no-repeat;
+            @media #{$xs} {
+                padding-bottom: 60px;
+            }
+        }
+        &-heading{
+            & p{
+                & br{
+                    @media #{$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+        &-item{
+            padding: 32px;
+            border-radius: 16px;
+            border: 1px solid #FD4621;
+            @media #{$xl,$xs} {
+                padding: 26px;
+            }
+            &-title{
+                font-size: 34px;
+                line-height: 1;
+                font-weight: 500;
+                color: var(--togo-theme-primary);
+                font-family: var(--togo-ff-outfit);
+                & i{
+                    font-style: normal;
+                }
+            }
+            & p{
+                margin: 0;
+                color: var(--togo-theme-primary);
+            }
+        }
+    }
+    &-info{
+        &-item{
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #EEE;
+            &-icon{
+                & span{
+                    display: inline-block;
+                    margin-bottom: 24px;
+                }
+            }
+            &-title{
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+    &-team{
+        &-heading{
+            & p{
+                & br{
+                    @media #{$xs} {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// *{
+//     border: 1px solid red;
+// }

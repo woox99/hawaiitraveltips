@@ -1,0 +1,81 @@
+@use '../../utils' as *;
+
+/*----------------------------------------*/
+/*  8.0 team css
+/*----------------------------------------*/
+
+
+.#{$theme-prefix}-team{
+    &-item{
+        &:hover{
+            & .togo-team-item{
+                &-thumb{
+                    & img{
+                        transform: scale(1.1);
+                    }
+                }
+                &-social{
+                    & a{
+                        opacity: 1;
+                        transform: translateY(0px);
+                    }
+                }
+            }
+        }
+        &-thumb{
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 26px;
+            border-radius: 110px;
+            & img{
+                width: 100%;
+                border-radius: 110px;
+                transition: all .5s ease-in-out;
+            }
+        }
+        &-title{
+            font-size: 18px;
+            margin-bottom: 7px;
+            & a{
+                &:hover{
+                    color: var(--togo-theme-primary);
+                }
+            }
+        }
+        &-social{
+            position: absolute;
+            bottom: 12px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            display: block;
+            overflow: hidden;
+            text-align: center;
+            & a{
+                height: 38px;
+                width: 38px;
+                opacity: 0;
+                border-radius: 50%;
+                text-align: center;
+                place-content: center;
+                display: inline-grid;
+                transition: .7s;
+                transform: translateY(200px);
+                -webkit-transform: translateY(200px);
+                background-color: var(--togo-common-white);
+                & .fit{
+                    transform: translate(1px, 2px);
+                }
+            }
+        }
+    }
+    &-bottom{
+        & p{
+            & br{
+                @media #{$xs} {
+                    display: none;
+                }
+            }
+        }
+    }
+}
