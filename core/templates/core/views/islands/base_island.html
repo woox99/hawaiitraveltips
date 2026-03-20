@@ -216,7 +216,7 @@
                             <div class="col-xl-3 col-lg-4 col-sm-6">
                                 <div class="togo-tour-card mb-24">
                                     <div class="togo-tour-card-thumb p-relative mb-20">
-                                        <a href="tour-details-1.html">
+                                        <a href="{{booking.referral_link}}&back={{back_url}}">
                                             <img src="{{ booking.image_URL }}" alt="{{ booking.title }}">
                                         </a>
                                         <div class="togo-tour-card-wishlist">
@@ -233,7 +233,7 @@
                                     </div>
                                     <div class="togo-tour-card-content">
                                         <h4 class="togo-tour-card-title">
-                                            <a href="tour-details-1.html">{{ booking.title }}</a>
+                                            <a href="{{booking.referral_link}}&back={{back_url}}">{{ booking.title }}</a>
                                         </h4>
                                         <div class="togo-tour-card-meta-wrap">
                                             <h5 class="togo-tour-card-meta">
@@ -667,6 +667,17 @@
     <script src="{% static 'core/js/purecounter.js' %}"></script>
     <script src="{% static 'core/js/incluid-bundle.js' %}"></script>
     <script src="{% static 'core/js/scripts.js' %}"></script>
+
+    <!-- Fareharbor Script only loads on desktop -->
+    <script>
+        window.addEventListener("load", () => {
+            if (window.innerWidth >= 768) {
+                const script = document.createElement('script');
+                script.src = "https://fareharbor.com/embeds/api/v1/?autolightframe=yes";
+                document.body.appendChild(script);
+            }
+        });
+    </script>
 
 </body>
 

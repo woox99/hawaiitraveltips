@@ -3,6 +3,16 @@ import re
 import math
 from datetime import datetime
 from .models import *
+from django.core.paginator import Paginator
+
+
+def paginate_bookings(bookings, request, per_page=12):
+    paginator = Paginator(bookings, per_page)
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+    page_range = paginator.get_elided_page_range(page_number, on_each_side=0, on_ends=1)
+    return page_obj, page_range
+
 
 def get_wp_posts(WP_API_URL):
     try:

@@ -76,14 +76,17 @@
                             <div class="col-lg-12">
                                 <div class="togo-breadcrumb-content z-index-1">
                                     <h4 class="togo-section-title mb-15 color-white">{{island.name}} • Book Tours & Activities</h4>
-                                    <div class="togo-hero-11-input-wrapper p-relative">
-                                        <div class="togo-hero-11-input-search d-flex align-items-center">
+                                    <form action="" method="get">
+                                        <div class="togo-hero-11-input-search d-flex align-items-center rounded-pill bg-white p-2">
                                             <div class="togo-hero-11-input-search-wrap trip-search-form">
-                                                <input type="text" placeholder="Search tours in Oahu">
+                                                {% if request.GET.q %}
+                                                <input type="text" name="q" placeholder="{{ request.GET.q }}" class="px-4">
+                                                {% else %}
+                                                <input type="text" name="q" placeholder="Search tours & activities in {{island.name}}" class="px-4">
+                                                {% endif %}
                                             </div>
-                                        </div>
-                                        <div class="togo-hero-2-search-btn">
-                                            <button>
+                                            <div class="togo-hero-2-search-btn">
+                                            <button type="submit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                                     viewBox="0 0 22 22" fill="none">
                                                     <path
@@ -93,7 +96,8 @@
                                                 </svg>
                                             </button>
                                         </div>
-                                    </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -140,7 +144,7 @@
                                         </div>
                                     </div>
                                     <div class="togo-tour-widget">
-                                        <h4 class="togo-tour-widget-title">Tour styles <span class="icon">
+                                        <h4 class="togo-tour-widget-title">Tours & Activites <span class="icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8"
                                                     viewBox="0 0 14 8" fill="none">
                                                     <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor"
@@ -148,194 +152,51 @@
                                                         stroke-linejoin="round" />
                                                 </svg>
                                             </span></h4>
-                                        <div class="togo-tour-widget-filter-checkbox inner_content">
-                                            <ul>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="natural" type="checkbox">
-                                                        <label for="natural">Natural</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="cuisine" type="checkbox">
-                                                        <label for="cuisine">Cuisine</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="biking" type="checkbox">
-                                                        <label for="biking">Biking</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="family" type="checkbox">
-                                                        <label for="family">Family</label>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="togo-tour-widget">
-                                        <h4 class="togo-tour-widget-title">Tour types <span class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8"
-                                                    viewBox="0 0 14 8" fill="none">
-                                                    <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </span></h4>
-                                        <div class="togo-tour-widget-filter-checkbox inner_content">
-                                            <ul>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="group" type="checkbox">
-                                                        <label for="group">Group tour</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="private" type="checkbox">
-                                                        <label for="private">Private tour</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="daily" type="checkbox">
-                                                        <label for="daily">Daily tour</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="package" type="checkbox">
-                                                        <label for="package">Package tour</label>
-                                                    </span>
-                                                </li>
-                                                <li class="togo-show-more">
-                                                    <a class="line-border" href="javascript:void(0)">
-                                                        <span>Show more
-                                                            <svg class="ml-4" xmlns="http://www.w3.org/2000/svg"
-                                                                width="14" height="8" viewBox="0 0 14 8" fill="none"
-                                                                style="transform: rotate(180deg);">
-                                                                <path d="M12.75 6.75L6.75 0.75L0.75 6.75"
-                                                                    stroke="currentColor" stroke-width="1.5"
-                                                                    stroke-linecap="round" stroke-linejoin="round">
-                                                                </path>
-                                                            </svg>
+                                            <div class="togo-tour-widget-filter-checkbox inner_content" style="font-size: 16px;">
+                                                <ul>
+                                                    <li>
+                                                        <span>
+                                                            <a href="{% url 'core:bookings' island_slug=island.slug %}">View All ({{ total_bookings_count }})</a>
                                                         </span>
-                                                    </a>
-                                                </li>
-                                                <li class="togo-show-more-content">
+                                                    </li>
+                                                    {% for cat in categories %}
+                                                    <li>
+                                                        <span class="togo-from-checkbox">
+                                                            {% if cat == current_category %}
+                                                            <a href="{% url 'core:bookings' island_slug=island.slug %}?category={{ cat.name|slugify }}"
+                                                                style="color: var(--togo-theme-primary);">
+                                                                {{ cat.name }} ({{ cat.visible_bookings_count }})
+                                                            </a>
+                                                            {% else %}
+                                                            <a href="{% url 'core:bookings' island_slug=island.slug %}?category={{ cat.name|slugify }}">
+                                                                {{ cat.name }} ({{ cat.visible_bookings_count }})
+                                                            </a>
+                                                            {% endif %}
+                                                        </span>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            </div>
+                                            </div>
+                                            <!-- <div class="togo-tour-widget">
+                                                <h4 class="togo-tour-widget-title">Discounts <span class="icon">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" viewBox="0 0 14 8" fill="none">
+                                                            <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor" stroke-width="1.5"
+                                                                stroke-linecap="round" stroke-linejoin="round" />
+                                                        </svg>
+                                                    </span></h4>
+                                                <div class="togo-tour-widget-filter-checkbox inner_content">
                                                     <ul>
                                                         <li>
-                                                            <span class="togo-from-checkbox">
-                                                                <input id="city" type="checkbox">
-                                                                <label for="city">City Tours</label>
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="togo-from-checkbox">
-                                                                <input id="cultural" type="checkbox">
-                                                                <label for="cultural">Cultural & Thematic Tours</label>
-                                                            </span>
-                                                        </li>
-                                                        <li>
-                                                            <span class="togo-from-checkbox">
-                                                                <input id="friendly" type="checkbox">
-                                                                <label for="friendly">Family Friendly Tours</label>
+                                                            <span>
+                                                                <a href="{% url 'core:bookings' island_slug=island.slug %}?category=promo-code">Promo Code</a>
                                                             </span>
                                                         </li>
                                                     </ul>
-                                                </li>
-                                                <li class="togo-show-less">
-                                                    <a class="line-border" href="javascript:void(0)">
-                                                        <span>Show less
-                                                            <svg class="ml-4" xmlns="http://www.w3.org/2000/svg"
-                                                                width="14" height="8" viewBox="0 0 14 8" fill="none">
-                                                                <path d="M12.75 6.75L6.75 0.75L0.75 6.75"
-                                                                    stroke="currentColor" stroke-width="1.5"
-                                                                    stroke-linecap="round" stroke-linejoin="round">
-                                                                </path>
-                                                            </svg>
-                                                        </span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="togo-tour-widget">
-                                        <h4 class="togo-tour-widget-title">Duration <span class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8"
-                                                    viewBox="0 0 14 8" fill="none">
-                                                    <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </span></h4>
-                                        <div class="togo-tour-widget-filter-checkbox inner_content">
-                                            <ul>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="hour-1" type="checkbox">
-                                                        <label for="hour-1">0 - 3 hours</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="hour-2" type="checkbox">
-                                                        <label for="hour-2">3 - 5 hours</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="hour-3" type="checkbox">
-                                                        <label for="hour-3">5 - 8 hours</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="hour-4" type="checkbox">
-                                                        <label for="hour-4">8 - 12 hours</label>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="togo-tour-widget">
-                                        <h4 class="togo-tour-widget-title">Time of day <span class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8"
-                                                    viewBox="0 0 14 8" fill="none">
-                                                    <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </span></h4>
-                                        <div class="togo-tour-widget-filter-checkbox inner_content">
-                                            <ul>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="morning" type="checkbox">
-                                                        <label for="morning">Morning, 8 AM-12 PM</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="afternoon" type="checkbox">
-                                                        <label for="afternoon">Afternoon, 12 PM-5 PM</label>
-                                                    </span>
-                                                </li>
-                                                <li>
-                                                    <span class="togo-from-checkbox">
-                                                        <input id="evening" type="checkbox">
-                                                        <label for="evening">Evening, 5 PM-12 AM</label>
-                                                    </span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                                </div>
+                                            </div> -->
+                                            </div>
+                                            </div>
                             <div class="col-xl-9 order-1 order-xl-2">
                                 <div class="togo-tour-grid-wrapper">
                                     <div
@@ -347,40 +208,58 @@
                                         </div>
                                         <div class="togo-tour-grid-select-wrap">
                                             <div class="togo-tour-grid-select">
-                                                <select class="wide">
-                                                    <option>Popular</option>
-                                                    <option>Best seller</option>
-                                                    <option>Newest</option>
-                                                    <option>Price: Low to High</option>
-                                                    <option>Price: High to Low</option>
-                                                    <option>Title: A to Z</option>
-                                                    <option>Title: Z to A</option>
-                                                </select>
+                                                <form action="" method="get">
+                                                    {% if current_category %}
+                                                    <input type="hidden" name="category" value="{{ current_category|slugify }}">
+                                                    {% endif %}
+                                                    <select class="wide" name="sort" onchange="this.form.submit()">
+                                                        {% if request.GET.sort == "best-seller" %}
+                                                        <option value="best-seller" selected>Best Seller</option>
+                                                        {% else %}
+                                                        <option value="best-seller">Best Seller</option>
+                                                        {% endif %}
+
+                                                        {% if request.GET.sort == "promo-code" %}
+                                                        <option value="promo-code" selected>Promo Code</option>
+                                                        {% else %}
+                                                        <option value="promo-code">Promo Code</option>
+                                                        {% endif %}
+
+                                                        {% if request.GET.sort == "price" %}
+                                                        <option value="price" selected>Price: Low to High</option>
+                                                        {% else %}
+                                                        <option value="price">Price: Low to High</option>
+                                                        {% endif %}
+
+                                                        {% if request.GET.sort == "title" %}
+                                                        <option value="title" selected>Title: A to Z</option>
+                                                        {% else %}
+                                                        <option value="title">Title: A to Z</option>
+                                                        {% endif %}
+                                                    </select>
+                                                </form>
                                             </div>
-                                        </div>
-                                    </div>
+                                            </div>
+                                            </div>
                                     <div class="togo-tour-grid-item-box">
                                         <div class="row">
-
                                             <!-- Booking Card Start -->
-                                            {% for booking in bookings %}
+                                            {% for booking in page_obj %}
                                             <div class="col-lg-4 col-md-6">
                                                 <div class="togo-tour-card style-9 mb-24">
                                                     <div class="togo-tour-2-card-thumb p-relative mb-20">
                                                         <div class="swiper togo-tour-card-active">
                                                             <div class="swiper-wrapper togo-slide-transtion">
                                                                 <div class="swiper-slide">
-                                                                    <img src="{{ booking.image_URL }}"
-                                                                        alt="">
+                                                                    <a href="{{booking.referral_link}}&back={{back_url}}">
+                                                                        <img src="{{ booking.image_URL }}"
+                                                                            alt="">
+                                                                    </a>
                                                                 </div>
-                                                                <div class="swiper-slide">
+                                                                <!-- <div class="swiper-slide">
                                                                     <img src="assets/img/tour/home-9/thumb-4.jpg"
                                                                         alt="">
-                                                                </div>
-                                                                <div class="swiper-slide">
-                                                                    <img src="assets/img/tour/home-9/thumb-3.jpg"
-                                                                        alt="">
-                                                                </div>
+                                                                </div> -->
                                                             </div>
                                                             <div class="slider_pagination"></div>
                                                         </div>
@@ -447,7 +326,7 @@
                                                                 </3>
                                                         </div>
                                                         <h4 class="togo-tour-2-card-title">
-                                                            <a href="tour-details-2.html">
+                                                            <a href="{{booking.referral_link}}&back={{back_url}}">
                                                                 {{booking.title}}
                                                             </a>
                                                         </h4>
@@ -497,7 +376,7 @@
                                                                 <span class="togo-tour-card-price-regular">${{booking.adjusted_price}}</span>
                                                             </div>
                                                             <div class="togo-tour-card-map">
-                                                                <a href="#">
+                                                                <a href="{{booking.referral_link}}&back={{back_url}}">
                                                                     <span>
                                                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                                                                             class="bi bi-arrow-right-short" viewBox="0 0 16 16">
@@ -521,39 +400,54 @@
                                             <!-- Booking Card End -->
                                         </div>
                                     </div>
+                                    <!-- Pagination -->
                                     <div class="row">
                                         <div class="togo-tour-pagination mt-20">
                                             <div class="col-lg-12">
                                                 <div class="togo-pagination">
                                                     <nav>
-                                                        <ul>
-                                                            <li><a class="active" href="#">
-                                                                    1
-                                                                </a></li>
-                                                            <li><a href="#">
-                                                                    2
-                                                                </a></li>
-                                                            <li><a href="#">
-                                                                    3
-                                                                </a></li>
-                                                            <li><a href="#">
-                                                                    ...
-                                                                </a></li>
-                                                            <li><a href="#">
-                                                                    6
-                                                                </a></li>
-                                                            <li><a href="#" class="next">
-                                                                    <span>
-                                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                                            width="7" height="13" viewBox="0 0 7 13"
-                                                                            fill="none">
-                                                                            <path d="M0.75 11.75L6.25 6.25L0.75 0.75"
-                                                                                stroke="currentColor" stroke-width="1.5"
-                                                                                stroke-linecap="round"
-                                                                                stroke-linejoin="round" />
-                                                                        </svg>
-                                                                    </span>
-                                                                </a></li>
+                                                        <ul>{% if page_obj.has_previous %}
+                                                        <li><a rel="prev" href="?page={{ page_obj.previous_page_number }}" class="next">
+                                                                <span>
+                                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                                        class="bi bi-chevron-left" viewBox="0 0 16 16">
+                                                                        <path fill-rule="evenodd"
+                                                                            d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0" />
+                                                                    </svg>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        {% endif %}
+
+                                                            {% for page_number in page_range %}
+                                                                {% if page_number == page_obj.number %}
+                                                                    <li><a class="active" href="?page={{ page_number }}">
+                                                                        {{ page_number }}
+                                                                    </a></li>
+                                                                {% else %}
+                                                                <li>
+                                                                    {% if page_number == "…" %}
+                                                                    <span>…</span>
+                                                                    {% else %}
+                                                                    <a href="?page={{ page_number }}">
+                                                                        {{ page_number }}
+                                                                    </a>
+                                                                    {% endif %}
+                                                                </li>
+                                                                {% endif %}
+                                                                {% endfor %}
+                                                                
+                                                                {% if page_obj.has_next %}
+                                                                <li><a rel="next" href="?page={{ page_obj.next_page_number }}" class="next">
+                                                                        <span>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                                                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                                                                <path fill-rule="evenodd"
+                                                                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708" />
+                                                                            </svg>
+                                                                        </span>
+                                                                    </a></li>
+                                                                {% endif %}
                                                         </ul>
                                                     </nav>
                                                 </div>
@@ -627,6 +521,17 @@
     <script src="{% static 'core/js/hotel-datepicker.js' %}"></script>
     <script src="{% static 'core/js/range-slider.js' %}"></script>
     <script src="{% static 'core/js/scripts.js' %}"></script>
+
+    <!-- Fareharbor Script only loads on desktop -->
+    <script>
+        window.addEventListener("load", () => {
+            if (window.innerWidth >= 768) {
+                const script = document.createElement('script');
+                script.src = "https://fareharbor.com/embeds/api/v1/?autolightframe=yes";
+                document.body.appendChild(script);
+            }
+        });
+    </script>
 
 </body>
 

@@ -7,6 +7,9 @@ from .util import *
 from django.shortcuts import HttpResponse
 from core.models import Booking, Island, Category
 from openpyxl import load_workbook
+from django.utils.text import slugify
+
+from django.db.models import Q
 
 
 
@@ -17,7 +20,7 @@ def home(request):
         return redirect('core:island', island_slug=request.session['current_island'])
     
     context = {
-        'islands' : Island.objects.all()
+        'islands' : Island.objects.all().order_by('modified'),
     }
     return render(request, 'core/home.html', context)
 
@@ -36,10 +39,13 @@ def island_view(request, island_slug):
     WP_API_URL = f"https://public-api.wordpress.com/wp/v2/sites/team92d3a5e49bc-kctlm.wordpress.com/posts?categories={island.wp_category_id}&per_page=3&_embed"
     wp_posts = get_wp_posts(WP_API_URL)
 
+    # back_url = f'www.hawaiitraveltips.com/{quote(island.slug)}/?page={page_obj.number}'
+
+
 
     context = {
         'island': island,
-        'islands' : Island.objects.all(),
+        'islands' : Island.objects.all().order_by('modified'),
         'bookings': bookings,
         "wp_posts": wp_posts,
     }
@@ -56,14 +62,62 @@ def bookings_view(request, island_slug):
     request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
 
-    bookings = Booking.objects.filter(island=island, is_public=True)[:12]
+    # Filter by category if category slug is provided in query params
+    category_slug = request.GET.get('category', '')
+    current_category = None
+    if category_slug:
+        for cat in Category.objects.all():
+            if slugify(cat.name) == category_slug:
+                current_category = cat
+                break
+
+    if current_category:
+        bookings = Booking.objects.filter(island=island, is_public=True, tags=current_category).order_by("-is_pinned")
+    elif request.GET.get('q'):
+        query = request.GET.get('q')
+        bookings = Booking.objects.filter(
+            Q(title__icontains=query) |
+            Q(city__icontains=query) |
+            Q(details__icontains=query),
+            island=island,
+            is_public=True
+        ).order_by("-is_pinned")
+    else:
+        bookings = Booking.objects.filter(island=island, is_public=True).order_by("-is_pinned")
+
+    # Apply sorting based on query param
+    sort_slug = request.GET.get('sort', '')
+    if sort_slug == 'best-seller':
+        bookings = bookings.order_by("is_popular")
+    elif sort_slug == 'promo-code':
+        bookings = bookings.order_by("-is_promo", "-promo_amount")
+    elif sort_slug == 'price':
+        bookings = bookings.order_by("price")
+    elif sort_slug == 'title':
+        bookings = bookings.order_by("title")
+
+
+
+    # Pagination
+    page_obj, page_range = paginate_bookings(bookings, request)
+
+    # Get all categories that have visible bookings for this island
+    categories = Category.objects.filter(bookings__island=island, bookings__is_public=True).distinct().order_by('name')
     
-    
+    # Get count of visible bookings for each category
+    for cat in categories:
+        # cat.visible_bookings_count = cat.bookings.filter(island=island).count
+        cat.visible_bookings_count = cat.bookings.filter(island=island, is_public=True).count
+        
     context = {
         'island': island,
-        'islands' : Island.objects.all(),
-        'bookings': bookings,
-        'bookings_count': Booking.objects.filter(island=island, is_public=True).count()
+        'islands' : Island.objects.all().order_by('modified'),
+        'categories': categories,
+        'current_category': current_category,
+        'page_obj' : page_obj,
+        'page_range': page_range,
+        'bookings_count': bookings.count(),
+        'total_bookings_count': Booking.objects.filter(island=island, is_public=True).count(),
     }
 
     # Build the template path dynamically
@@ -83,7 +137,7 @@ def guide_list_view(request, island_slug):
     
     context = {
         'island': island,
-        'islands' : Island.objects.all(),
+        'islands' : Island.objects.all().order_by('modified'),
         "wp_posts": wp_posts,
     }
 
@@ -108,7 +162,7 @@ def guide_detail_view(request, island_slug, guide_slug):
     
     context = {
         'island': island,
-        'islands' : Island.objects.all(),
+        'islands' : Island.objects.all().order_by('modified'),
         "wp_post": wp_post,
         "wp_posts": wp_posts,
     }
@@ -116,6 +170,17 @@ def guide_detail_view(request, island_slug, guide_slug):
     # Build the template path dynamically
     return render(request, 'core/views/guide_detail.html', context)
 
+def about_view(request):
+    context = {
+        'islands' : Island.objects.all().order_by('modified'),
+    }
+    return render(request, 'core/views/about.html', context)
+
+def contact_view(request):
+    context = {
+        'islands' : Island.objects.all().order_by('modified'),
+    }
+    return render(request, 'core/views/contact.html', context)
 
 
 
