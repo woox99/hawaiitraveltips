@@ -17,10 +17,15 @@ from django.db.models import Q
 def home(request):
     # Check if 'current_island' is in the session and render the island instead of the home page
     if 'current_island' in request.session:
-        return redirect('core:island', island_slug=request.session['current_island'])
+        return redirect('core:island', island_slug=request.session['current_island_slug'])
+    
+
+    # Get 4 popular bookings for the island
+    bookings = Booking.objects.filter(is_pinned=True, is_public=True)[:4]
     
     context = {
         'islands' : Island.objects.all().order_by('modified'),
+        'bookings': bookings,
     }
     return render(request, 'core/home.html', context)
 
@@ -30,10 +35,11 @@ def island_view(request, island_slug):
     # Set the current island in the session if coming from the home page
     request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
-    
+
+
 
     # Get 4 popular bookings for the island
-    bookings = Booking.objects.filter(island=island, is_public=True)[:4]
+    bookings = Booking.objects.filter(island=island, is_public=True, is_pinned=True)[:4]
 
     # WordPress.com REST API endpoint - Limit = 3
     WP_API_URL = f"https://public-api.wordpress.com/wp/v2/sites/team92d3a5e49bc-kctlm.wordpress.com/posts?categories={island.wp_category_id}&per_page=3&_embed"
@@ -171,16 +177,35 @@ def guide_detail_view(request, island_slug, guide_slug):
     return render(request, 'core/views/guide_detail.html', context)
 
 def about_view(request):
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+
     context = {
+        'island': island,
         'islands' : Island.objects.all().order_by('modified'),
     }
     return render(request, 'core/views/about.html', context)
 
 def contact_view(request):
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+
     context = {
+        'island': island,
         'islands' : Island.objects.all().order_by('modified'),
     }
     return render(request, 'core/views/contact.html', context)
+
+
+def legal_view(request):
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+
+    context = {
+        'island': island,
+        'islands' : Island.objects.all().order_by('modified'),
+    }
+    return render(request, 'core/views/legal.html', context)
 
 
 

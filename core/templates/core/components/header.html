@@ -19,28 +19,34 @@
                                     <nav class="togo-mobile-menu">
                                         <ul>
                                             <li class="togo-dropdown active">
+                                                {% if island %}
+                                                <a href="{% url 'core:home' %}">{{island.name}}</a>
+                                                {% else %}
                                                 <a href="{% url 'core:home' %}">Select Island</a>
+                                                {% endif %}
                                                 <ul class="togo-submenu mobile-slide">
-                                                    {% for island in islands %}
-                                                    <li><a href="{% url 'core:island' island.slug %}">{{ island.name }}</a></li>
+                                                    {% for single_island in islands %}
+                                                    {% if single_island == island %}
+                                                    <li class="active"><a href="{% url 'core:island' single_island.slug %}">{{ single_island.name }}</a></li>
+                                                    {% else %}
+                                                    <li><a href="{% url 'core:island' single_island.slug %}">{{ single_island.name }}</a></li>
+                                                    {% endif %}
                                                     {% endfor %}
                                                 </ul>
                                             </li>
                                             <li class="togo-dropdown">
-                                                <a href="#">Tours & Activities</a>
-                                                <ul class="togo-submenu mobile-slide">
-                                                    {% for island in islands %}
-                                                    <li><a href="{% url 'core:bookings' island.slug %}">{{island.name}}</a></li>
-                                                    {%endfor %}
-                                                </ul>
+                                                {% if not island %}
+                                                <a href="{% url 'core:bookings' island_slug='oahu' %}">Tours & Activities</a>
+                                                {% else %}
+                                                <a href="{% url 'core:bookings' island_slug=island.slug %}">Tours & Activities</a>
+                                                {% endif %}
                                             </li>
                                             <li class="togo-dropdown">
-                                                <a href="#">Guides</a>
-                                                <ul class="togo-submenu mobile-slide">
-                                                    {% for island in islands %}
-                                                    <li><a href="{% url 'core:guides' island.slug %}">{{island.name}}</a></li>
-                                                    {% endfor %}
-                                                </ul>
+                                                {% if not island %}
+                                                <a href="{% url 'core:guides' island_slug='oahu' %}">Guides</a>
+                                                {% else %}
+                                                <a href="{% url 'core:guides' island.slug %}">Guides</a>
+                                                {% endif %}
                                             </li>
                                             <li class="togo-dropdown">
                                                 <a href="#">Company</a>

@@ -7,6 +7,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('import/', views.import_view, name='import'), #debug
     path('about/', views.about_view, name='about'),
+    path('legal/', views.legal_view, name='legal'),
     path('contact/', views.contact_view, name='contact'),
     path('<str:island_slug>/', views.island_view, name='island'),
     path('<str:island_slug>/tours-activities/', views.bookings_view, name='bookings'),

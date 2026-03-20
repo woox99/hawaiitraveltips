@@ -88,19 +88,19 @@
                                             <div class="row">
                                                 <div class="col-lg-8">
                                                     <div class="togo-hero-2-heading">
-                                                        <h1 class="togo-hero-2-title">Experience the Magic, <br> of
-                                                            O'ahu.</h1>
+                                                        <h1 class="togo-hero-2-title">{{island.island_page_title}}, <br> of
+                                                            {{island.name}}.</h1>
                                                         <p class="fs-18">Book tours, explore beaches, and experience
                                                             paradise.</p>
                                                         <div class="togo-hero-3-btn">
-                                                            <a class="togo-btn-primary" href="tour-list.html">View
+                                                            <a class="togo-btn-primary" href="{% url 'core:bookings' island_slug=island.slug %}">View
                                                                 Tours</a>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="togo-hero-2-bg" data-background="{% static 'core/img/oahu.webp' %}">
+                                        <div class="togo-hero-2-bg" data-background="{% static 'core/img/'|add:island.slug|add:'.webp' %}">
                                         </div>
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@
                                 <div class="togo-offer-thumb-main mb-40 fade-anim" data-delay=".3"
                                     data-fade-from="left">
                                     <div class="togo-offer-thumb">
-                                        <img src="{% static 'core/img/offer/offer-thumb-1.jpg' %}" alt="">
+                                        <img src="{% static 'core/img/wave.webp' %}" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +130,7 @@
                                 <div class="togo-offer-heading pt-40 fade-anim" data-delay=".3" data-fade-from="right">
                                     <h3 class="togo-section-title ff-playfair fw-600 mb-35">Exciting outdoor actvities
                                         <br> we
-                                        offer in O'ahu
+                                        offer in {{island.name}}
                                     </h3>
                                     <div class="togo-offer-item-wrap">
                                         <div class="row row-cols-sm-2 row-cols-1">
@@ -141,7 +141,7 @@
                                                     </div>
                                                     <div class="togo-offer-item-content">
                                                         <h3 class="togo-offer-item-title">Kayaking</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                        <p>Paddle the waters. </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,7 +153,7 @@
                                                     </div>
                                                     <div class="togo-offer-item-content">
                                                         <h3 class="togo-offer-item-title">Climbing</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                        <p>Reach new heights. </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -165,7 +165,7 @@
                                                     </div>
                                                     <div class="togo-offer-item-content">
                                                         <h3 class="togo-offer-item-title">Hiking</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                        <p>Hit the trails. </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -177,14 +177,14 @@
                                                     </div>
                                                     <div class="togo-offer-item-content">
                                                         <h3 class="togo-offer-item-title">Mountain biking</h3>
-                                                        <p>Lorem ipsum dolor sit amet consectetur. </p>
+                                                        <p>Ride the rugged paths. </p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="togo-offer-btn-box">
-                                        <a class="togo-btn-primary" href="contact.html">Explore Now</a>
+                                        <a class="togo-btn-primary" href="{% url 'core:bookings' island_slug=island.slug %}">Explore Now</a>
                                     </div>
                                 </div>
                             </div>
@@ -201,11 +201,9 @@
                             <div class="col-lg-12">
                                 <div class="togo-tour-5-heading text-center mb-40">
                                     <h4 class="togo-section-title ff-marcellus mb-1 fade-anim" data-delay=".3">Explore
-                                        Popular
-                                        Tours in O'ahu</h4>
+                                        Tours in {{island.name}}</h4>
                                     <div class="togo-tour-5-text fade-anim" data-delay=".5">
-                                        <p>Get started with handpicked top rated activities from Waikiki to the North
-                                            Shore.</p>
+                                        <p>Top-Rated Tours and Adventures.</p>
                                     </div>
                                 </div>
                             </div>
@@ -311,7 +309,7 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="togo-tour-5-bottom text-center mt-35 fade-anim" data-delay=".3">
-                                    <a class="togo-btn-primary bdr-style orange-bdr" href="tour-filter-list.html">View
+                                    <a class="togo-btn-primary bdr-style orange-bdr" href="{% url 'core:bookings' island_slug=island.slug %}">View
                                         all
                                         tours</a>
                                 </div>
@@ -333,7 +331,7 @@
                             </div>
                             <div class="col-lg-6">
                                 <div class="togo-tour-right text-lg-end mb-30 fade-anim" data-delay=".5">
-                                    <a class="togo-tour-btn line-border" href="blog-sidebar.html">
+                                    <a class="togo-tour-btn line-border" href="{% url 'core:guides' island_slug=island.slug %}">
                                         <span>View all guides</span>
                                     </a>
                                 </div>
@@ -636,7 +634,7 @@
                                         <p>Plan your perfect trip.</p>
                                     </div>
                                     <div class="togo-banner-3-btn fade-anim" data-delay=".7">
-                                        <a class="togo-btn-primary" href="contact.html">View Tours</a>
+                                        <a class="togo-btn-primary" href="{% url 'core:bookings' island_slug=island.slug %}">View Tours</a>
                                     </div>
                                 </div>
                             </div>

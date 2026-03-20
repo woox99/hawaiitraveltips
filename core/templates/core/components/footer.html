@@ -25,8 +25,8 @@
                             <h4 class="togo-footer-widget-title mb-25">Company</h4>
                             <div class="togo-footer-widget-menu">
                                 <ul>
-                                    <li><a class="hover-line" href="about.html">About us</a></li>
-                                    <li><a class="hover-line" href="#">Contact</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:about' %}">About us</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:contact' %}">Contact</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -36,10 +36,10 @@
                             <h4 class="togo-footer-widget-title mb-25">Islands</h4>
                             <div class="togo-footer-widget-menu">
                                 <ul>
-                                    <li><a class="hover-line" href="#">Oahu</a></li>
-                                    <li><a class="hover-line" href="#">Maui</a></li>
-                                    <li><a class="hover-line" href="#">Big Island</a></li>
-                                    <li><a class="hover-line" href="#">Kauai</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:island' island_slug='oahu' %}">Oahu</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:island' island_slug='maui' %}">Maui</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:island' island_slug='big-island' %}">Big Island</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:island' island_slug='kauai' %}">Kauai</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -49,8 +49,8 @@
                             <h4 class="togo-footer-widget-title mb-25">Legal</h4>
                             <div class="togo-footer-widget-menu">
                                 <ul>
-                                    <li><a class="hover-line" href="#">Privacy policy</a></li>
-                                    <li><a class="hover-line" href="#">Terms of use</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:legal' %}">Privacy policy</a></li>
+                                    <li><a class="hover-line" href="{% url 'core:legal' %}">Terms of use</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                             <h4 class="togo-footer-widget-title mb-28">Connect</h4>
                             <div class="togo-footer-2-social">
                                 <div class="togo-footer-2-social-item">
-                                    <a href="#">
+                                    <a href="https://www.facebook.com/groups/1747780178610364/" target="_blank">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="20"
                                                 viewBox="0 0 13 20" fill="none">
