@@ -64,6 +64,8 @@ def island_view(request, island_slug):
 
 def bookings_view(request, island_slug):
 
+    
+
     # Set the current island in the session if coming from the home page
     request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
@@ -92,9 +94,17 @@ def bookings_view(request, island_slug):
         bookings = Booking.objects.filter(island=island, is_public=True).order_by("-is_pinned")
 
     # Apply sorting based on query param
-    sort_slug = request.GET.get('sort', '')
+    sort_slug = request.GET.get('sort')
+
+    if sort_slug:
+        request.session['sort_slug'] = sort_slug
+    else:
+        sort_slug = request.session.get('sort_slug', '')
+
     if sort_slug == 'best-seller':
         bookings = bookings.order_by("is_popular")
+    elif sort_slug == 'rating':
+        bookings = bookings.order_by("-company_rating")
     elif sort_slug == 'promo-code':
         bookings = bookings.order_by("-is_promo", "-promo_amount")
     elif sort_slug == 'price':
@@ -124,6 +134,7 @@ def bookings_view(request, island_slug):
         'page_range': page_range,
         'bookings_count': bookings.count(),
         'total_bookings_count': Booking.objects.filter(island=island, is_public=True).count(),
+        'sort_slug': sort_slug,
     }
 
     # Build the template path dynamically
@@ -132,6 +143,7 @@ def bookings_view(request, island_slug):
 
 
 def guide_list_view(request, island_slug):
+
 
     # set the current island in the session if coming from the home page
     request.session['current_island_slug'] = island_slug

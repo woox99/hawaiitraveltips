@@ -141,9 +141,9 @@
                                     <div class="togo-sidebar-widget mb-30">
                                         <h4 class="togo-sidebar-widget-title">Search</h4>
                                         <div class="togo-sidebar-search">
-                                            <form action="#">
+                                            <form action="{% url 'core:bookings' island_slug=island.slug %}?q=" method="GET">
                                                 <div class="togo-sidebar-search-input">
-                                                    <input type="text" placeholder="Search...">
+                                                    <input type="text" name="q" placeholder="Search...">
                                                     <button type="submit">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
