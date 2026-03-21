@@ -25,12 +25,9 @@
     <div class="right">
         <!-- Form 1 -->
         <form class="d-flex"
-            action="{% url 'core:update-booking' booking.pk %}?category={{current_category|slugify}}&page={{page}}"
+            action="{% url 'core:save-booking' booking.pk %}?category={{current_category|slugify}}&page={{current_page_num}}"
             method="POST">
             {% csrf_token %}
-            <input type="hidden" name="current_island" value="{{current_island}}">
-            <input type="hidden" name="current_category" value="{{current_category}}">
-            <input type="hidden" name="page" value="{{page}}">
 
             <div>
                 <!-- category_ids -->
@@ -120,11 +117,11 @@
                 <div>
                     <label for="island_input">Island</label>
                     <select id="island_input" name="island_id">
-                        {% for island in islands %}
-                        {% if island == booking.island %}
-                        <option value="{{island.id}}" selected>{{island}}</option>
+                        {% for single_island in islands %}
+                        {% if single_island == booking.island %}
+                        <option value="{{single_island.id}}" selected>{{island}}</option>
                         {% else %}
-                        <option value="{{island.id}}">{{island}}</option>
+                        <option value="{{single_island.id}}">{{single_island}}</option>
                         {% endif %}
                         {% endfor %}
                     </select>
@@ -197,18 +194,11 @@
             </div>
 
 
-
             <!-- Exit Button -->
             <div class="exit-button">
-                {% if current_category == "None" %}
                 <a class="btn btn-warning px-4"
-                    href="{% url 'core:bookings' island=current_island %}?page={{page}}#{{booking.fh_id}}"
+                    href="{% url 'core:bookings' island.slug %}?category={{current_category}}&page={{current_page_num}}"
                     class="text-light mt-3 text-decoration-none">Exit</a>
-                {% else %}
-                <a class="btn btn-warning px-4"
-                    href=""
-                    class="text-light mt-3 text-decoration-none">Exit</a>
-                {% endif %}
             </div>
 
             <!-- Save/Delete Button  -->
@@ -240,9 +230,6 @@
                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
                     <form action="" method="POST">
                         {% csrf_token %}
-                        <input type="hidden" name="current_island" value="{{current_island}}">
-                        <input type="hidden" name="current_category" value="{{current_category}}">
-                        <input type="hidden" name="page" value="{{page}}">
                         <button type="submit" class="btn btn-outline-danger">Yes, Delete</button>
                     </form>
                 </div>

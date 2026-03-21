@@ -16,5 +16,6 @@ urlpatterns = [
     path('<str:island_slug>/guides/<str:guide_slug>/', views.guide_detail_view, name='guide-detail'),
     path('<str:island_slug>/clear-bookings/', views.clear_bookings_filter, name='clear-bookings'),
     path('update-booking/<int:booking_id>/', views.update_booking, name='update-booking'),
+    path('save-booking/<int:booking_id>/', views.save_booking, name='save-booking'),
 
 ]

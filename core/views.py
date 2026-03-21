@@ -66,8 +66,6 @@ def bookings_view(request, island_slug):
     # Set the current island in the session if coming from the home page
     request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
-    # print(f"Current island set in session: {island.name}")
-    # print(island)
 
     # Filter by category if category slug is provided in query params
     category_slug = request.GET.get('category', '')
@@ -90,7 +88,7 @@ def bookings_view(request, island_slug):
             is_public=True
         ).order_by("-is_pinned")
     else:
-        bookings = Booking.objects.filter(island=island, is_public=True).order_by("-is_pinned")
+        bookings = Booking.objects.filter(island=island).order_by("-is_pinned")
 
     # Apply sorting based on query param
     sort_slug = request.GET.get('sort')
@@ -242,23 +240,42 @@ def logout_admin(request):
     return redirect('core:bookings', island.slug)
 
 
+
 def update_booking(request, booking_id):
 
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
-
     booking = get_object_or_404(Booking, pk=booking_id)
-    island = get_object_or_404(Island, slug=request.session['current_island_slug'])
 
-    # print(booking_id)
-    # print(request.GET.get('category', ''))
-    # print(request.GET.get('page', ''))
 
     context = {
         'booking' : booking,
         'island' : island,
         'islands' : Island.objects.all().order_by("modified"),
         'categories': Category.objects.all(),
+        'current_category' : request.GET.get('category'),
+        'current_page_num' : request.GET.get('page'),
+    }
+
+    return render(request, 'core/views/update.html', context)
+
+
+
+def save_booking(request, booking_id):
+
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+        
+    booking = update_booking_util(request, booking_id)
+
+
+    context = {
+        'booking' : booking,
+        'island' : island,
+        'islands' : Island.objects.all().order_by("modified"),
+        'categories': Category.objects.all(),
+        'current_category' : request.GET.get('category'),
+        'current_page_num' : request.GET.get('page'),
 
     }
     return render(request, 'core/views/update.html', context)
