@@ -235,10 +235,34 @@ def legal_view(request):
 
 
 def logout_admin(request):
+
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
     logout(request)
     return redirect('core:bookings', island.slug)
+
+
+def update_booking(request, booking_id):
+
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+
+    booking = get_object_or_404(Booking, pk=booking_id)
+    island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+
+    # print(booking_id)
+    # print(request.GET.get('category', ''))
+    # print(request.GET.get('page', ''))
+
+    context = {
+        'booking' : booking,
+        'island' : island,
+        'islands' : Island.objects.all().order_by("modified"),
+        'categories': Category.objects.all(),
+
+    }
+    return render(request, 'core/views/update.html', context)
+
 
 
 

@@ -1,0 +1,91 @@
+/* card */
+.togo-tour-card-desc,
+.togo-tour-card-bottom {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.togo-tour-card{
+    width: 300px !important;
+}
+
+.togo-tour-card img{
+    width: 300px !important;
+    align-self: 5/3 !important;
+}
+
+.update-card-container{
+    position: fixed;
+    top: 50px;
+    left: 50px;
+}
+
+
+/* page */
+* {
+    /* border: 1px solid red; */
+    padding: 0;
+    margin: 0;
+}
+
+input{
+    height: unset !important;
+    width: unset !important;
+    margin: unset !important;
+    padding: unset !important;
+    line-height: unset !important;
+}
+textarea{
+    padding: 5px !important;
+    font-size: 16px !important;
+}
+
+body {
+    min-height: 100vh;
+    padding: 0;
+}
+
+.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: calc(100vw - 700px);
+    font-size: 16px !important;
+}
+
+#category_ids{
+    position: fixed;
+    left: 440px;
+    top: 0;
+    width: 200px;
+    height: 100vh;
+    padding-bottom: 50px;
+}
+textarea[name='details'] {
+    width: 400px;
+    height: 100px;
+    resize: vertical;
+}
+
+select[name='category_ids']{
+    width: 400px;
+    height: 200px;
+}
+
+.buttons{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.exit-button{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+
+
+

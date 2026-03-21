@@ -172,11 +172,11 @@
                                                 <li>
                                                     <span style="font-size: 16px;">
                                                         {% if single_island == island %}
-                                                        <a href="{% url 'core:bookings' single_island.slug %}?sort={{sort_slug}}"
+                                                        <a href="{% url 'core:bookings' single_island.slug %}"
                                                             style="color: var(--togo-theme-primary);">{{ single_island.name }}</a>
                                                         {% else %}
                                                         <a
-                                                            href="{% url 'core:bookings' single_island.slug %}?sort={{sort_slug}}">{{ single_island.name }}</a>
+                                                            href="{% url 'core:bookings' single_island.slug %}">{{ single_island.name }}</a>
                                                         {% endif %}
                                                     </span>
                                                 </li>
@@ -345,12 +345,14 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- Booking Cards -->
+
+                                    <!-- Booking Cards start -->
                                     {% if request.session.view == 'list' %}
                                     {% include 'core/views/bookings/bookings_list_view.html' %}
                                     {% else %}
                                     <div class="togo-tour-grid-item-box">
                                         <div class="row">
+                                            <!-- Booking Card start-->
                                             {% for booking in page_obj %}
                                             <div class="col-lg-4 col-md-6">
                                                 <div class="togo-tour-card style-9 mb-24">
@@ -482,7 +484,12 @@
                                                         </div>
                                                         {% endif %}
                                                         {% if user.is_authenticated %}
-                                                        Test
+                                                        <a class="btn btn-warning" href="{% url 'core:update-booking' booking.pk %}?category={{current_category|slugify}}&page={{page_obj.number}}" role="button">EDIT</a>
+                                                        {% if booking.is_public %}
+                                                        <button type="button" class="btn btn-primary" disabled>PUBLIC</button>
+                                                        {% else %}
+                                                        <button type="button" class="btn btn-danger" disabled>HIDDEN</button>
+                                                        {% endif %}
                                                         {% endif %}
                                                     </div>
                                                 </div>
@@ -492,6 +499,8 @@
                                         </div>
                                     </div>
                                     {% endif %}
+                                    <!-- booking cards end-->
+
                                     <!-- Pagination -->
                                     <div class="row">
                                         <div class="togo-tour-pagination mt-20">
