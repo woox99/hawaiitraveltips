@@ -1,5 +1,7 @@
 from urllib import response
 from django.shortcuts import get_object_or_404, redirect, render
+from django.contrib.auth import logout
+
 
 from core.models import *
 from .util import *
@@ -18,7 +20,6 @@ def home(request):
     # Check if 'current_island' is in the session and render the island instead of the home page
     if 'current_island' in request.session:
         return redirect('core:island', island_slug=request.session['current_island_slug'])
-    
 
     # Get 4 popular bookings for the island
     bookings = Booking.objects.filter(is_pinned=True, is_public=True)[:4]
@@ -30,13 +31,12 @@ def home(request):
     return render(request, 'core/home.html', context)
 
 
+
 def island_view(request, island_slug):
 
     # Set the current island in the session if coming from the home page
     request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
-
-
 
     # Get 4 popular bookings for the island
     bookings = Booking.objects.filter(island=island, is_public=True, is_pinned=True)[:4]
@@ -46,8 +46,6 @@ def island_view(request, island_slug):
     wp_posts = get_wp_posts(WP_API_URL)
 
     # back_url = f'www.hawaiitraveltips.com/{quote(island.slug)}/?page={page_obj.number}'
-
-
 
     context = {
         'island': island,
@@ -62,13 +60,14 @@ def island_view(request, island_slug):
     return render(request, template_path, context)
 
 
-def bookings_view(request, island_slug):
 
-    
+def bookings_view(request, island_slug):
 
     # Set the current island in the session if coming from the home page
     request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
+    # print(f"Current island set in session: {island.name}")
+    # print(island)
 
     # Filter by category if category slug is provided in query params
     category_slug = request.GET.get('category', '')
@@ -102,7 +101,7 @@ def bookings_view(request, island_slug):
         sort_slug = request.session.get('sort_slug', '')
 
     if sort_slug == 'best-seller':
-        bookings = bookings.order_by("is_popular")
+        bookings = bookings.order_by("is_popular", "is_pinned")
     elif sort_slug == 'rating':
         bookings = bookings.order_by("-company_rating")
     elif sort_slug == 'promo-code':
@@ -111,8 +110,6 @@ def bookings_view(request, island_slug):
         bookings = bookings.order_by("price")
     elif sort_slug == 'title':
         bookings = bookings.order_by("title")
-
-
 
     # Pagination
     page_obj, page_range = paginate_bookings(bookings, request)
@@ -137,9 +134,20 @@ def bookings_view(request, island_slug):
         'sort_slug': sort_slug,
     }
 
+    if request.GET.get('view'):
+            request.session['view'] = request.GET.get('view')
+
     # Build the template path dynamically
-    template_path = f'core/views/bookings/{island.slug}.html'
+    template_path = f'core/views/bookings/base_bookings.html'
     return render(request, template_path, context)
+
+
+
+def clear_bookings_filter(request, island_slug):
+    if 'sort_slug' in request.session:
+        del request.session['sort_slug']
+    return redirect('core:bookings', island_slug)
+
 
 
 def guide_list_view(request, island_slug):
@@ -161,6 +169,7 @@ def guide_list_view(request, island_slug):
 
     # Build the template path dynamically
     return render(request, 'core/views/guide_list.html', context)
+
 
 
 def guide_detail_view(request, island_slug, guide_slug):
@@ -188,6 +197,8 @@ def guide_detail_view(request, island_slug, guide_slug):
     # Build the template path dynamically
     return render(request, 'core/views/guide_detail.html', context)
 
+
+
 def about_view(request):
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
@@ -197,6 +208,8 @@ def about_view(request):
         'islands' : Island.objects.all().order_by('modified'),
     }
     return render(request, 'core/views/about.html', context)
+
+
 
 def contact_view(request):
     if 'current_island_slug' in request.session:
@@ -209,6 +222,7 @@ def contact_view(request):
     return render(request, 'core/views/contact.html', context)
 
 
+
 def legal_view(request):
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
@@ -218,6 +232,13 @@ def legal_view(request):
         'islands' : Island.objects.all().order_by('modified'),
     }
     return render(request, 'core/views/legal.html', context)
+
+
+def logout_admin(request):
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    logout(request)
+    return redirect('core:bookings', island.slug)
 
 
 
