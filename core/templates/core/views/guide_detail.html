@@ -7,12 +7,51 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Togo – Travel & Tour Booking HTML Template</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <title>{{ title }} | Hawaii Travel Tips</title>
+    <meta name="description" content="{{ excerpt|striptags|truncatechars:160 }}">
+
+    <!-- SEO & Social -->
+    <meta property="og:title" content="{{ title }} | Hawaii Travel Tips">
+    <meta property="og:description" content="{{ excerpt|striptags|truncatechars:160 }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://hawaiitraveltips.com/guide/{{ title|slugify }}/">
+    <meta property="og:site_name" content="Hawaii Travel Tips">
+    <meta property="og:image" content="{% static 'core/img/og-image.webp' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ title }} | Hawaii Travel Tips">
+    <meta name="twitter:description" content="{{ excerpt|striptags|truncatechars:160 }}">
+    <meta name="twitter:image" content="{% static 'core/img/og-image.webp' %}">
+
+    <!-- canonical -->
+    <link rel="canonical" href="https://hawaiitraveltips.com/guide/{{ title|slugify }}/">
+
     <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Article",
+        "headline": "{{ title }}",
+        "description": "{{ excerpt|striptags|truncatechars:160 }}",
+        "url": "https://hawaiitraveltips.com/guide/{{ title|slugify }}/",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Hawaii Travel Tips",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "{% static 'core/img/og-image.webp' %}"
+            }
+        }
+    }
+    </script>
 
     <!-- CSS here -->
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
@@ -91,7 +130,7 @@
                                             <div class="col-xl-4 col-md-6">
                                                 <div class="togo-blog-item mb-24">
                                                     <div class="togo-blog-item-thumb">
-                                                        <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">
+                                                        <a href="{% url 'core:guide-detail' guide_slug=post.slug %}">
                                                             <img src="{{post.jetpack_featured_media_url}}" alt="">
                                                         </a>
                                                     </div>
@@ -111,11 +150,11 @@
                                                             </span>
                                                         </div>
                                                         <h4 class="togo-blog-item-title">
-                                                            <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">{{post.title.rendered|safe}}</a>
+                                                            <a href="{% url 'core:guide-detail' guide_slug=post.slug %}">{{post.title.rendered|safe}}</a>
                                                         </h4>
                                                         <div class="excerpt">{{post.excerpt.rendered|safe}}</div>
                                                         <div class="togo-blog-item-btn mt-10">
-                                                            <a class="line-border" href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">
+                                                            <a class="line-border" href="{% url 'core:guide-detail' guide_slug=post.slug %}">
                                                                 <span>Read more</span>
                                                             </a>
                                                         </div>
@@ -153,7 +192,7 @@
                                         <h4 class="togo-sidebar-widget-title">Recent Posts</h4>
                                         <div class="togo-sidebar-post-wrap">
                                             {% for post in wp_posts|slice:":5" %}
-                                            <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}" class="togo-sidebar-post-title">{{post.title.rendered|safe}}</a>
+                                            <a href="{% url 'core:guide-detail' guide_slug=post.slug %}" class="togo-sidebar-post-title">{{post.title.rendered|safe}}</a>
                                             {%endfor %}
                                         </div>
                                     </div>

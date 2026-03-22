@@ -6,9 +6,8 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Togo – Travel & Tour Booking HTML Template</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% block meta %}
+    {% endblock %}
 
     <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
@@ -73,7 +72,7 @@
                                         {% for post in wp_posts %}
                                         <div class="togo-sidebar-item d-flex align-items-center mb-50">
                                             <div class="togo-sidebar-item-thumb">
-                                                <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">
+                                                <a href="{% url 'core:guide-detail' guide_slug=post.slug %}">
                                                     <img src="{{post.jetpack_featured_media_url}}" alt="">
                                                 </a>
                                             </div>
@@ -82,10 +81,10 @@
                                                 <span class="togo-sidebar-item-tag bg-light px-2 rounded">{{tag}} </span>
                                                 {% endfor %}
                                                 <h4 class="togo-sidebar-item-title">
-                                                    <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">{{post.title.rendered|safe}}</a>
+                                                    <a href="{% url 'core:guide-detail' guide_slug=post.slug %}">{{post.title.rendered|safe}}</a>
                                                 </h4>
                                                 <div class="excerpt">{{post.excerpt.rendered|safe}}</div>
-                                                <a class="togo-tour-btn line-border mt-10" href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}">
+                                                <a class="togo-tour-btn line-border mt-10" href="{% url 'core:guide-detail' guide_slug=post.slug %}">
                                                     <span>
                                                         Read More
                                                     </span>
@@ -162,7 +161,7 @@
                                         <h4 class="togo-sidebar-widget-title">Recent Posts</h4>
                                         <div class="togo-sidebar-post-wrap">
                                             {% for post in wp_posts|slice:":5" %}
-                                            <a href="{% url 'core:guide-detail' island_slug=island.slug guide_slug=post.slug %}" class="togo-sidebar-post-title">{{post.title.rendered|safe}}</a>
+                                            <a href="{% url 'core:guide-detail' guide_slug=post.slug %}" class="togo-sidebar-post-title">{{post.title.rendered|safe}}</a>
                                             {%endfor %}
                                         </div>
                                     </div>

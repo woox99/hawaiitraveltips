@@ -14,6 +14,7 @@ from openpyxl import load_workbook
 from django.utils.text import slugify
 
 from django.db.models import Q
+import html
 
 
 
@@ -58,7 +59,6 @@ def island_view(request, island_slug):
     
     # Build the template path dynamically
     template_path = f'core/views/islands/{island.slug}.html'
-
     return render(request, template_path, context)
 
 
@@ -140,7 +140,7 @@ def bookings_view(request, island_slug):
             request.session['view'] = request.GET.get('view')
 
     # Build the template path dynamically
-    template_path = f'core/views/bookings/base_bookings.html'
+    template_path = f'core/views/bookings/{island.slug}.html'
     return render(request, template_path, context)
 
 
@@ -170,33 +170,49 @@ def guide_list_view(request, island_slug):
     }
 
     # Build the template path dynamically
-    return render(request, 'core/views/guide_list.html', context)
+    template_path = f'core/views/guides/{island.slug}.html'
+    return render(request, template_path, context)
 
 
 
-def guide_detail_view(request, island_slug, guide_slug):
-
-    # set the current island in the session if coming from the home page
-    request.session['current_island_slug'] = island_slug
-    island = get_object_or_404(Island, slug=island_slug)
+def guide_detail_view(request, guide_slug):
 
     # WordPress.com REST API endpoint - filter by slug to get the specific post
     WP_API_URL = f"https://public-api.wordpress.com/wp/v2/sites/team92d3a5e49bc-kctlm.wordpress.com/posts?slug={guide_slug}&_embed"
     wp_posts = get_wp_posts(WP_API_URL)
     wp_post = wp_posts[0]
 
+
+    ## If user is from site, get island_slug else if user is from search result get island from wp_post fetched
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    else:
+        wp_island_id = wp_post['_embedded']['wp:term'][0][0]['id']
+        island = get_object_or_404(Island, wp_category_id=wp_island_id)
+    print(island)
+    # island_terms = wp_post['_embedded']['wp:term'][0]  # first list is categories
+    # for term in island_terms:
+    #     print(term['id'], term['slug'], term['name'])
+
     # Get all posts for the sidebar
     WP_API_URL = f"https://public-api.wordpress.com/wp/v2/sites/team92d3a5e49bc-kctlm.wordpress.com/posts?categories={island.wp_category_id}&_embed"
     wp_posts = get_wp_posts(WP_API_URL)
+
+    title = html.unescape(wp_post['title']['rendered']).replace('\xa0', ' ').replace('&nbsp;', ' ')
+    excerpt = html.unescape(wp_post['excerpt']['rendered']).replace('\xa0', ' ').replace('&nbsp;', ' ')
+
+    print(title)
+    print(excerpt)
     
     context = {
         'island': island,
         'islands' : Island.objects.all().order_by('modified'),
         "wp_post": wp_post,
         "wp_posts": wp_posts,
+        'title' : title,
+        'excerpt' : excerpt,
     }
 
-    # Build the template path dynamically
     return render(request, 'core/views/guide_detail.html', context)
 
 

@@ -1,0 +1,39 @@
+{% extends 'core/views/bookings/base_bookings.html' %}
+{% load static %}
+
+{% block meta %}
+<title>Oahu Tours & Activities | Hawaii Travel Tips</title>
+<meta name="description" content="Browse the best tours and activities on Oahu. Discover adventures, excursions, and experiences for your Hawaiian vacation.">
+
+<!-- SEO & Social -->
+<meta property="og:title" content="Oahu Tours & Activities | Hawaii Travel Tips">
+<meta property="og:description" content="Browse the best tours and activities on Oahu. Discover adventures, excursions, and experiences for your Hawaiian vacation.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://hawaiitraveltips.com/oahu/tours-activities/">
+<meta property="og:site_name" content="Hawaii Travel Tips">
+<meta property="og:image" content="{% static 'core/img/og-image.webp' %}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Oahu Tours & Activities | Hawaii Travel Tips">
+<meta name="twitter:description" content="Browse the best tours and activities on Oahu. Discover adventures, excursions, and experiences for your Hawaiian vacation.">
+<meta name="twitter:image" content="{% static 'core/img/og-image.webp' %}">
+
+<!-- canonical -->
+<link rel="canonical" href="https://hawaiitraveltips.com/oahu/tours-activities/">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Hawaii Travel Tips",
+    "alternateName": "hawaiitraveltips.com",
+    "url": "https://www.hawaiitraveltips.com/oahu/tours-activities/",
+    "sameAs": [
+        "https://www.facebook.com/groups/1747780178610364"
+    ]
+}
+</script>
+{% endblock %}

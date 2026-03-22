@@ -6,14 +6,51 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Togo – Travel & Tour Booking HTML Template</title>
-    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/logo/favicon.png' %}">
+    <title>Hawaii Travel Tips | Explore the Islands of Hawaii</title>
+    <meta name="description" content="Discover the best tips, guides, and tours for visiting Hawaii. Plan your perfect Hawaiian vacation with insider advice for all islands.">
 
-    <!-- CSS here -->
+    <!-- SEO & Social -->
+    <meta property="og:title" content="Hawaii Travel Tips | Explore the Islands of Hawaii">
+    <meta property="og:description" content="Discover the best tips, guides, and tours for visiting Hawaii. Plan your perfect Hawaiian vacation with insider advice for all islands.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hawaiitraveltips.com/">
+    <meta property="og:site_name" content="Hawaii Travel Tips">
+    <meta property="og:image" content="{% static 'core/img/og-image.webp' %}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hawaii Travel Tips | Explore the Islands of Hawaii">
+    <meta name="twitter:description" content="Discover the best tips, guides, and tours for visiting Hawaii. Plan your perfect Hawaiian vacation with insider advice for all islands.">
+    <meta name="twitter:image" content="{% static 'core/img/og-image.webp' %}">
+
+    <!-- canonical -->
+    <link rel="canonical" href="https://hawaiitraveltips.com/">
+
+
+    <!-- Place favicon.ico in the root directory -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/logo/favicon.png' %}"> -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            "name": "Hawaii Travel Tips",
+            "alternateName": "hawaiitraveltips.com",
+            "url": "https://www.hawaiitraveltips.com",
+            "sameAs": [
+            "https://www.facebook.com/groups/1747780178610364"
+            ]
+        }
+    </script>
+
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/swiper-bundle.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/magnific-popup.css' %}">

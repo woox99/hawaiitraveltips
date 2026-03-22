@@ -7,21 +7,22 @@
 
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
+
     {% block meta %}
-    <!-- <title>Togo – Travel & Tour Booking HTML Template</title> -->
-    <!-- <meta name="description" content=""> -->
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     {% endblock %}
-
-    <!-- Place favicon.ico in the root directory -->
-    <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/logo/favicon.png' %}">
-
-    <!-- CSS here -->
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" href="/favicon.ico">
+    
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/swiper-bundle.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/magnific-popup.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/font-awesome-pro.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
+    
+
 
     <style>
         * {
@@ -342,7 +343,7 @@
                             <div class="col-lg-4 col-md-6">
                                 <div class="togo-blog-2-item mb-30 fade-anim" data-delay=".5">
                                     <div class="togo-blog-2-item-thumb mb-20">
-                                        <a href="blog-details.html">
+                                        <a href="{% url 'core:guide-detail' post.slug  %}">
                                             <img src="{{post.jetpack_featured_media_url}}" alt="">
                                         </a>
                                     </div>
@@ -354,7 +355,7 @@
                                             <span class="date"> {{post.modified|date:"M j, Y"}}</span>
                                             </div>
                                         <h4 class="togo-blog-2-item-title">
-                                            <a href="blog-details.html">{{post.title.rendered|safe}}</a>
+                                            <a href="{% url 'core:guide-detail' post.slug  %}">{{post.title.rendered|safe}}</a>
                                         </h4>
                                     </div>
                                 </div>
