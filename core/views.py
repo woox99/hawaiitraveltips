@@ -241,7 +241,7 @@ def logout_admin(request):
 
 
 
-def update_booking(request, booking_id):
+def update_booking_view(request, booking_id):
 
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])

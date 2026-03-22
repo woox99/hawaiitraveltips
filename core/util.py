@@ -18,11 +18,21 @@ def update_booking_util(request, booking_id):
     booking.is_pinned = True if request.POST['is_pinned'] == 'true' else False
     booking.details = request.POST['details']
     booking.duration = request.POST['duration']
-    booking.price = int(request.POST.get('price', 0))
-    booking.company_rating = Decimal(request.POST['company_rating'])
-    booking.company_reviews = int(request.POST['company_reviews'])
+
+    price = request.POST.get('price')
+    company_rating = request.POST.get('company_rating')
+    company_reviews = request.POST.get('company_reviews')
+    promo_amount = request.POST.get('promo_amount')
+    booking.price = int(price) if price else 0
+    booking.company_rating = int(company_rating) if company_rating else 0
+    booking.company_reviews = int(company_reviews) if company_reviews else 0
+    booking.promo_amount = int(promo_amount) if promo_amount else 0
+
+    # booking.company_rating = Decimal(request.POST['company_rating'])
+    # booking.company_reviews = int(request.POST['company_reviews'])
+    # booking.promo_amount = int(request.POST['promo_amount'])
+
     booking.is_promo = True if request.POST['is_promo'] == 'true' else False
-    booking.promo_amount = int(request.POST['promo_amount'])
     booking.promo_code = request.POST['promo_code']
     booking.city = request.POST['city']
     booking.island = get_object_or_404(Island, pk=request.POST['island_id'])

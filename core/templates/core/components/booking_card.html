@@ -1,11 +1,4 @@
 {% load static %}
-
-
-<!-- Template CSS -->
-
-<link rel="stylesheet" href="{% static 'core/css/main.css' %}">
-
-<!-- Booking Card for Update view only -->
     <div class="togo-tour-card style-9 mb-24">
         <div class="togo-tour-2-card-thumb p-relative mb-20">
             <div class="swiper togo-tour-card-active">
@@ -97,9 +90,12 @@
             <div class="togo-tour-card-bottom d-flex justify-content-between">
                 <div class="togo-tour-card-price">
                     <span class="togo-tour-card-price-prefix">from</span>
-                    <span class="togo-tour-card-price-regular"
-                        style="text-decoration: line-through;">${{booking.price}}</span>
+                    {% if booking.promo_code %}
+                    <span class="togo-tour-card-price-regular" style="text-decoration: line-through;">${{booking.price}}</span>
                     <span class="togo-tour-card-price-regular">${{booking.adjusted_price}}</span>
+                    {% else %}
+                    <span class="togo-tour-card-price-regular">${{booking.price}}</span>
+                    {% endif %}
                 </div>
                 <div class="togo-tour-card-map">
                     <a href="{{booking.referral_link}}&back={{back_url}}">
@@ -119,7 +115,17 @@
                     <small>Use Code:</small> <span class="fw-bold"
                         style="color: var(--togo-theme-primary);">{{booking.promo_code}}</span>
                 </p>
-            </div>
-            {% endif %}
-        </div>
+                </div>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <a class="btn btn-warning"
+                    href="{% url 'core:update-booking' booking.pk %}?category={{current_category|slugify}}&page={{page_obj.number}}"
+                    role="button">EDIT</a>
+                {% if booking.is_public %}
+                <button type="button" class="btn btn-primary" disabled>PUBLIC</button>
+                {% else %}
+                <button type="button" class="btn btn-danger" disabled>HIDDEN</button>
+                {% endif %}
+                {% endif %}
+                </div>
     </div>
