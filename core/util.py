@@ -9,6 +9,7 @@ from decimal import Decimal
 
 
 
+
 def update_booking_util(request, booking_id):
     booking = get_object_or_404(Booking, pk=booking_id)
 
@@ -23,14 +24,11 @@ def update_booking_util(request, booking_id):
     company_rating = request.POST.get('company_rating')
     company_reviews = request.POST.get('company_reviews')
     promo_amount = request.POST.get('promo_amount')
+    
     booking.price = int(price) if price else 0
-    booking.company_rating = int(company_rating) if company_rating else 0
+    booking.company_rating = float(company_rating) if company_rating else 0.0
     booking.company_reviews = int(company_reviews) if company_reviews else 0
     booking.promo_amount = int(promo_amount) if promo_amount else 0
-
-    # booking.company_rating = Decimal(request.POST['company_rating'])
-    # booking.company_reviews = int(request.POST['company_reviews'])
-    # booking.promo_amount = int(request.POST['promo_amount'])
 
     booking.is_promo = True if request.POST['is_promo'] == 'true' else False
     booking.promo_code = request.POST['promo_code']
@@ -44,6 +42,8 @@ def update_booking_util(request, booking_id):
 
     booking.save()
     return booking
+
+
 
 def paginate_bookings(bookings, request, per_page=12):
     paginator = Paginator(bookings, per_page)

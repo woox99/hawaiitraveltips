@@ -1,6 +1,8 @@
 from urllib import response
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import logout
+from django.contrib.admin.views.decorators import staff_member_required
+
 
 
 from core.models import *
@@ -77,7 +79,7 @@ def bookings_view(request, island_slug):
                 break
 
     if current_category:
-        bookings = Booking.objects.filter(island=island, is_public=True, tags=current_category).order_by("-is_pinned")
+        bookings = Booking.objects.filter(island=island, tags=current_category).order_by("is_pinned")
     elif request.GET.get('q'):
         query = request.GET.get('q')
         bookings = Booking.objects.filter(
@@ -85,10 +87,9 @@ def bookings_view(request, island_slug):
             Q(city__icontains=query) |
             Q(details__icontains=query),
             island=island,
-            is_public=True
-        ).order_by("-is_pinned")
+        ).order_by("is_pinned")
     else:
-        bookings = Booking.objects.filter(island=island).order_by("-is_pinned")
+        bookings = Booking.objects.filter(island=island).order_by("is_pinned", "is_popular", "is_public")
 
     # Apply sorting based on query param
     sort_slug = request.GET.get('sort')
@@ -99,15 +100,18 @@ def bookings_view(request, island_slug):
         sort_slug = request.session.get('sort_slug', '')
 
     if sort_slug == 'best-seller':
-        bookings = bookings.order_by("is_popular", "is_pinned")
+        bookings = bookings.order_by("-is_public", "-is_pinned", "-is_popular")
     elif sort_slug == 'rating':
-        bookings = bookings.order_by("-company_rating")
+        bookings = bookings.order_by("-company_rating", "-is_public")
     elif sort_slug == 'promo-code':
-        bookings = bookings.order_by("-is_promo", "-promo_amount")
+        bookings = bookings.order_by("-is_promo", "-promo_amount", 'is_public')
     elif sort_slug == 'price':
-        bookings = bookings.order_by("price")
+        bookings = bookings.order_by("-is_public","price", "-is_promo")
     elif sort_slug == 'title':
-        bookings = bookings.order_by("title")
+        bookings = bookings.order_by("-is_public", "title")
+
+    if not request.user.is_authenticated:
+        bookings = bookings.filter(is_public = True)
 
     # Pagination
     page_obj, page_range = paginate_bookings(bookings, request)
@@ -240,7 +244,7 @@ def logout_admin(request):
     return redirect('core:bookings', island.slug)
 
 
-
+@staff_member_required
 def update_booking_view(request, booking_id):
 
     if 'current_island_slug' in request.session:
@@ -260,7 +264,7 @@ def update_booking_view(request, booking_id):
     return render(request, 'core/views/update.html', context)
 
 
-
+@staff_member_required
 def save_booking(request, booking_id):
 
     if 'current_island_slug' in request.session:
@@ -292,7 +296,7 @@ def to_bool(value):
 
 
 def import_view(request):
-    path = 'core/bookings.xlsx'
+    path = 'core/bookings2.xlsx'
 
     wb = load_workbook(path)
     sheet = wb.active

@@ -15,7 +15,7 @@ class Island(models.Model):
 class Booking(models.Model):
     title = models.CharField(max_length=100)
     company_name = models.CharField(max_length=100, blank=True)
-    company_rating = models.IntegerField(blank=True, null=True, default=0)
+    company_rating = models.FloatField(blank=True, null=True, default=0.0)
     company_reviews = models.IntegerField(blank=True, null=True, default=0)
     city = models.CharField(max_length=100)
     tags = models.ManyToManyField('Category', related_name='bookings')
