@@ -20,7 +20,7 @@ from django.db.models import Q
 
 def home(request):
     # Check if 'current_island' is in the session and render the island instead of the home page
-    if 'current_island' in request.session:
+    if 'current_island_slug' in request.session:
         return redirect('core:island', island_slug=request.session['current_island_slug'])
 
     # Get 4 popular bookings for the island
@@ -79,7 +79,7 @@ def bookings_view(request, island_slug):
                 break
 
     if current_category:
-        bookings = Booking.objects.filter(island=island, tags=current_category).order_by("is_pinned")
+        bookings = Booking.objects.filter(island=island, tags=current_category).order_by("-is_pinned")
     elif request.GET.get('q'):
         query = request.GET.get('q')
         bookings = Booking.objects.filter(
@@ -87,9 +87,9 @@ def bookings_view(request, island_slug):
             Q(city__icontains=query) |
             Q(details__icontains=query),
             island=island,
-        ).order_by("is_pinned")
+        ).order_by("-is_pinned")
     else:
-        bookings = Booking.objects.filter(island=island).order_by("is_pinned", "is_popular", "is_public")
+        bookings = Booking.objects.filter(island=island).order_by("-is_pinned", "-is_popular", "-is_public")
 
     # Apply sorting based on query param
     sort_slug = request.GET.get('sort')
