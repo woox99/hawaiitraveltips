@@ -19,6 +19,18 @@ import html
 
 
 
+def index(request):
+
+    # Get 4 popular bookings for the island
+    bookings = Booking.objects.filter(is_pinned=True, is_public=True)[:4]
+    
+    context = {
+        'islands' : Island.objects.all().order_by('modified'),
+        'bookings': bookings,
+    }
+    return render(request, 'core/home.html', context)
+
+
 def home(request):
     # Check if 'current_island' is in the session and render the island instead of the home page
     if 'current_island_slug' in request.session:
@@ -182,14 +194,12 @@ def guide_detail_view(request, guide_slug):
     wp_posts = get_wp_posts(WP_API_URL)
     wp_post = wp_posts[0]
 
-
     ## If user is from site, get island_slug else if user is from search result get island from wp_post fetched
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
     else:
         wp_island_id = wp_post['_embedded']['wp:term'][0][0]['id']
         island = get_object_or_404(Island, wp_category_id=wp_island_id)
-    print(island)
     # island_terms = wp_post['_embedded']['wp:term'][0]  # first list is categories
     # for term in island_terms:
     #     print(term['id'], term['slug'], term['name'])
@@ -200,9 +210,6 @@ def guide_detail_view(request, guide_slug):
 
     title = html.unescape(wp_post['title']['rendered']).replace('\xa0', ' ').replace('&nbsp;', ' ')
     excerpt = html.unescape(wp_post['excerpt']['rendered']).replace('\xa0', ' ').replace('&nbsp;', ' ')
-
-    print(title)
-    print(excerpt)
     
     context = {
         'island': island,

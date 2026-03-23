@@ -61,6 +61,7 @@
     <link rel="stylesheet" href="{% static 'core/css/font-awesome-pro.css' %}">
     <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
 
+
     <style>
         .excerpt{
             display: -webkit-box;
@@ -69,7 +70,20 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        
+        h2{
+            padding-top: 2rem;
+            padding-bottom: 0.75rem;
+        }
+        p{
+            font-size: 16px !important;
+        }
+        li{
+            font-size: 16px !important;
+            margin-bottom: 0.5rem;
+        }
     </style>
+
 
 </head>
 
@@ -111,7 +125,7 @@
                                         {% for tag in wp_post.tag_names|slice:":3" %}
                                         <span class="bg-light px-2 rounded">{{tag}}</span>
                                         {% endfor %}
-                                        <h4 class="togo-postbox-details-title mb-30">{{wp_post.title.rendered|safe}}</h4>
+                                        <h1 class="togo-postbox-details-title mb-30">{{wp_post.title.rendered|safe}}</h1>
                                         <div class="togo-postbox-details-tags mb-30">
                                             <span>By Hawaii Travel Tips</span>
                                             <span>{{wp_post.modified|date:"M j, Y"}}</span>
@@ -171,9 +185,9 @@
                                     <div class="togo-sidebar-widget mb-30">
                                         <h4 class="togo-sidebar-widget-title">Search</h4>
                                         <div class="togo-sidebar-search">
-                                            <form action="#">
+                                            <form action="{% url 'core:bookings' island_slug=island.slug %}?q=" method="GET">
                                                 <div class="togo-sidebar-search-input">
-                                                    <input type="text" placeholder="Search...">
+                                                    <input type="text" name="q" placeholder="Search...">
                                                     <button type="submit">
                                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                                             xmlns="http://www.w3.org/2000/svg">
