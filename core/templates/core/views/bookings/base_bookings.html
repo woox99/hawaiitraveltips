@@ -113,6 +113,46 @@
                                             </div>
                                         </div>
                                     </form>
+                                    <!-- Island Filter -->
+                                    <div
+                                    class="d-xl-none togo-tour-grid-top-bar d-flex align-items-center justify-content-end">
+                                        <div class="togo-tour-grid-select-wrap">
+                                            <div class="togo-tour-grid-select">
+                                                <select class="wide" onchange="location = this.value;">
+                                                    {% for single_island in islands %}
+                                                    <option value="{% url 'core:bookings' single_island.slug %}" {% if island == single_island %}selected{% endif %}>
+                                                        {{ single_island.name }}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Category Filter -->
+                                    <div
+                                    class="d-xl-none togo-tour-grid-top-bar d-flex align-items-center justify-content-end">
+                                        <div class="togo-tour-grid-select-wrap">
+                                            <div class="togo-tour-grid-select">
+                                                <select class="wide" onchange="location = this.value;">
+                                                    {% if not current_category %}
+                                                    <option value="{% url 'core:bookings' island.slug %}" selected>
+                                                        View All
+                                                        {% else %}
+                                                    <option value="{% url 'core:bookings' island.slug %}">
+                                                        View All ({{ total_bookings_count }})
+                                                        {% endif %}
+
+                                                        {% for cat in categories %}
+                                                    <option
+                                                        value="{% url 'core:bookings' island.slug %}?category={{ cat|slugify }}"
+                                                        {% if current_category == cat%}selected{% endif %}>
+                                                        {{ cat.name }} ({{ cat.visible_bookings_count }})
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -239,46 +279,6 @@
                             </div>
                             <div class="col-xl-9 order-1 order-xl-2">
                                 <div class="togo-tour-grid-wrapper">
-                                    <div
-                                    class="d-xl-none togo-tour-grid-top-bar d-flex align-items-center justify-content-end">
-                                        <!-- Island Filter -->
-                                        <div class="togo-tour-grid-select-wrap">
-                                            <div class="togo-tour-grid-select">
-                                                <select class="wide" onchange="location = this.value;">
-                                                    {% for single_island in islands %}
-                                                    <option value="{% url 'core:bookings' single_island.slug %}" {% if island == single_island %}selected{% endif %}>
-                                                        {{ single_island.name }}
-                                                    </option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                    class="d-xl-none togo-tour-grid-top-bar d-flex align-items-center justify-content-end mt-1">
-                                        <!-- Category Filter -->
-                                        <div class="togo-tour-grid-select-wrap">
-                                            <div class="togo-tour-grid-select">
-                                                <select class="wide" onchange="location = this.value;">
-                                                    {% if not current_category %}
-                                                    <option value="{% url 'core:bookings' island.slug %}" selected>
-                                                        View All
-                                                        {% else %}
-                                                    <option value="{% url 'core:bookings' island.slug %}">
-                                                        View All ({{ total_bookings_count }})
-                                                        {% endif %}
-
-                                                        {% for cat in categories %}
-                                                    <option
-                                                        value="{% url 'core:bookings' island.slug %}?category={{ cat|slugify }}"
-                                                        {% if current_category == cat%}selected{% endif %}>
-                                                        {{ cat.name }} ({{ cat.visible_bookings_count }})
-                                                    </option>
-                                                    {% endfor %}
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div
                                         class="togo-tour-grid-top-bar d-flex align-items-center justify-content-between mb-15">
                                         <!-- View Filter -->
