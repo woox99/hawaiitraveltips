@@ -22,11 +22,14 @@ def error(request):
     return render(request, 'core/404.html')
 
 def index(request):
+    if 'current_island_slug' in request.session:
+        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
 
     # Get 4 popular bookings for the island
     bookings = Booking.objects.filter(is_pinned=True, is_public=True)[:4]
     
     context = {
+        'island' : island,
         'islands' : Island.objects.all().order_by('modified'),
         'bookings': bookings,
     }

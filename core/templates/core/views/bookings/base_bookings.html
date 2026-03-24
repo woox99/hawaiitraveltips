@@ -166,37 +166,6 @@
                         <div class="row">
                             <div class="col-xl-3 order-2 order-xl-1">
                                 <div class="togo-tour-sidebar mb-30">
-                                    <!-- <div class="togo-tour-widget">
-                                        <h4 class="togo-tour-widget-title">Price range <span class="icon">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8"
-                                                    viewBox="0 0 14 8" fill="none">
-                                                    <path d="M12.75 6.75L6.75 0.75L0.75 6.75" stroke="currentColor"
-                                                        stroke-width="1.5" stroke-linecap="round"
-                                                        stroke-linejoin="round" />
-                                                </svg>
-                                            </span></h4>
-                                        <div class="togo-tour-widget-content inner_content">
-                                            <div class="togo-tour-widget-filter p-relative">
-                                                <div id="slider-range" class="mb-25"></div>
-                                                <div class="input-range d-flex justify-content-between">
-                                                    <div class="input-range-item">
-                                                        <h4 class="input-range-item-title">
-                                                            Min. price
-                                                        </h4>
-                                                        <input type="text" id="min-amount" readonly
-                                                            placeholder="Min price">
-                                                    </div>
-                                                    <div class="input-range-item">
-                                                        <h4 class="input-range-item-title">
-                                                            Max. price
-                                                        </h4>
-                                                        <input type="text" id="max-amount" readonly
-                                                            placeholder="Max price">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
                                     <div class="togo-tour-widget">
                                         <h4 class="togo-tour-widget-title">Island <span class="icon">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="8"
@@ -265,7 +234,7 @@
                                                     </span>
                                                 </li>
                                                 {% endfor %}
-                                                {% if current_category or sort_slug %}
+                                                {% if current_category or sort_slug or request.GET.q %}
                                                 <li class="mt-4">
                                                     <a href="{% url 'core:clear-bookings' island.slug %}">
                                                         <i>Clear Filter</i>
@@ -283,19 +252,7 @@
                                         class="togo-tour-grid-top-bar d-flex align-items-center justify-content-between mb-15">
                                         <!-- View Filter -->
                                         <div class="togo-tour-grid-select-wrap d-flex align-items-start">
-                                            {% if request.session.view == 'list' %}
-                                            <a href="{% url 'core:bookings' island.slug %}?view=grid"
-                                                class="view-btn d-flex align-items-start border rounded-pill px-3 py-2">
-                                                <span class=" d-flex align-items-center gap-2">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
-                                                        viewBox="0 0 16 16">
-                                                        <path
-                                                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
-                                                    </svg>
-                                                    View Grid
-                                                </span>
-                                            </a>
-                                            {% else %}
+                                            {% if request.session.view == 'grid' %}
                                             <a href="{% url 'core:bookings' island.slug %}?view=list"
                                                 class="view-btn d-flex align-items-start border rounded-pill">
                                                 <span class="d-none d-md-flex align-items-center px-3 py-2 gap-2">
@@ -307,6 +264,24 @@
                                                     View List
                                                 </span>
                                             </a>
+                                            {% if request.GET.q %}
+                                            <i class="d-md-none"><a href="{% url 'core:bookings' island.slug %}">Search Results:</a></i>
+                                            {% endif %}
+                                            {% else %}
+                                            <a href="{% url 'core:bookings' island.slug %}?view=grid"
+                                                class="view-btn d-flex align-items-start border rounded-pill">
+                                                <span class="d-none d-md-flex align-items-center px-3 py-2 gap-2">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
+                                                        viewBox="0 0 16 16">
+                                                        <path
+                                                            d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5z" />
+                                                    </svg>
+                                                    View Grid
+                                                </span>
+                                            </a>
+                                            {% if request.GET.q %}
+                                            <i class="d-md-none"><a href="{% url 'core:bookings' island.slug %}">Search Results:</a></i>
+                                            {% endif %}
                                             {% endif %}
                                         </div>
                                         <!-- Sort Filter -->
@@ -350,9 +325,7 @@
                                     </div>
 
                                     <!-- Booking Cards start -->
-                                    {% if request.session.view == 'list' %}
-                                    {% include 'core/views/bookings/bookings_list_view.html' %}
-                                    {% else %}
+                                    {% if request.session.view == 'grid' %}
                                     <div class="togo-tour-grid-item-box">
                                         <div class="row">
                                             <!-- Booking Card start-->
@@ -364,6 +337,8 @@
                                             <!-- Booking Card End -->
                                         </div>
                                     </div>
+                                    {% else %}
+                                    {% include 'core/components/bookings_list_view.html' %}
                                     {% endif %}
                                     <!-- booking cards end-->
 
