@@ -253,6 +253,9 @@
                                                 </select>
                                             </div>
                                         </div>
+                                    </div>
+                                    <div
+                                    class="d-xl-none togo-tour-grid-top-bar d-flex align-items-center justify-content-end gap-1">
                                         <!-- Category Filter -->
                                         <div class="togo-tour-grid-select-wrap">
                                             <div class="togo-tour-grid-select">
@@ -283,7 +286,7 @@
                                             {% if request.session.view == 'list' %}
                                             <a href="{% url 'core:bookings' island.slug %}?view=grid"
                                                 class="view-btn d-flex align-items-start border rounded-pill px-3 py-2">
-                                                <span class="d-none d-md-flex align-items-center gap-2">
+                                                <span class=" d-flex align-items-center gap-2">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid"
                                                         viewBox="0 0 16 16">
                                                         <path
