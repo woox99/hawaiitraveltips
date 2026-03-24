@@ -19,8 +19,8 @@
                                 <nav class="togo-mobile-menu">
                                     <ul>
                                         <li class="togo-dropdown active">
-                                            {% if island %}
-                                            <a href="{% url 'core:home' %}">{{island.name}}</a>
+                                            {% if 'current_island_slug' in request.session %}
+                                            <a href="{% url 'core:home' %}">{{request.session.current_island_slug|title}}</a>
                                             {% else %}
                                             <a href="{% url 'core:home' %}">Select Island</a>
                                             {% endif %}

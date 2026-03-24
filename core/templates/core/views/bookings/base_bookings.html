@@ -372,7 +372,7 @@
                                                     <nav>
                                                         <ul>{% if page_obj.has_previous %}
                                                             <li><a rel="prev"
-                                                                    href="?page={{ page_obj.previous_page_number }}"
+                                                                    href="?page={{ page_obj.previous_page_number }}&category={{current_category|slugify}}"
                                                                     class="next">
                                                                     <span>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -389,7 +389,7 @@
 
                                                             {% for page_number in page_range %}
                                                             {% if page_number == page_obj.number %}
-                                                            <li><a class="active" href="?page={{ page_number }}">
+                                                            <li><a class="active" href="?page={{ page_number }}&category={{current_category|slugify}}">
                                                                     {{ page_number }}
                                                                 </a></li>
                                                             {% else %}
@@ -397,7 +397,7 @@
                                                                 {% if page_number == "…" %}
                                                                 <span>…</span>
                                                                 {% else %}
-                                                                <a href="?page={{ page_number }}">
+                                                                <a href="?page={{ page_number }}&category={{current_category|slugify}}">
                                                                     {{ page_number }}
                                                                 </a>
                                                                 {% endif %}
@@ -407,7 +407,7 @@
 
                                                             {% if page_obj.has_next %}
                                                             <li><a rel="next"
-                                                                    href="?page={{ page_obj.next_page_number }}"
+                                                                    href="?page={{ page_obj.next_page_number }}&category={{current_category|slugify}}"
                                                                     class="next">
                                                                     <span>
                                                                         <svg xmlns="http://www.w3.org/2000/svg"

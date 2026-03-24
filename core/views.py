@@ -2,6 +2,7 @@ from urllib import response
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import logout
 from django.contrib.admin.views.decorators import staff_member_required
+from django.urls import reverse
 
 
 
@@ -17,7 +18,8 @@ from django.db.models import Q
 import html
 
 
-
+def error(request):
+    return render(request, 'core/404.html')
 
 def index(request):
 
@@ -50,8 +52,8 @@ def home(request):
 def island_view(request, island_slug):
 
     # Set the current island in the session if coming from the home page
-    request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
+    request.session['current_island_slug'] = island_slug
 
     # Get 4 popular bookings for the island
     bookings = Booking.objects.filter(island=island, is_public=True, is_pinned=True)[:4]
@@ -78,8 +80,8 @@ def island_view(request, island_slug):
 def bookings_view(request, island_slug):
 
     # Set the current island in the session if coming from the home page
-    request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
+    request.session['current_island_slug'] = island_slug
 
     # Filter by category if category slug is provided in query params
     category_slug = request.GET.get('category', '')
@@ -135,6 +137,9 @@ def bookings_view(request, island_slug):
     for cat in categories:
         # cat.visible_bookings_count = cat.bookings.filter(island=island).count
         cat.visible_bookings_count = cat.bookings.filter(island=island, is_public=True).count
+
+    back_url = f'www.hawaiitraveltips.com/{island.slug}/tours-activities/?page={page_obj.number}&category={current_category}'
+
         
     context = {
         'island': island,
@@ -146,6 +151,7 @@ def bookings_view(request, island_slug):
         'bookings_count': bookings.count(),
         'total_bookings_count': Booking.objects.filter(island=island, is_public=True).count(),
         'sort_slug': sort_slug,
+        'back_url' : back_url,
     }
 
     if request.GET.get('view'):
@@ -168,8 +174,8 @@ def guide_list_view(request, island_slug):
 
 
     # set the current island in the session if coming from the home page
-    request.session['current_island_slug'] = island_slug
     island = get_object_or_404(Island, slug=island_slug)
+    request.session['current_island_slug'] = island_slug
 
     # WordPress.com REST API endpoint
     WP_API_URL = f"https://public-api.wordpress.com/wp/v2/sites/team92d3a5e49bc-kctlm.wordpress.com/posts?categories={island.wp_category_id}&_embed"
@@ -227,6 +233,8 @@ def guide_detail_view(request, guide_slug):
 def about_view(request):
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    else:
+        island = get_object_or_404(Island, slug='oahu')
 
     context = {
         'island': island,
@@ -239,6 +247,8 @@ def about_view(request):
 def contact_view(request):
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    else:
+        island = get_object_or_404(Island, slug='oahu')
 
     context = {
         'island': island,
@@ -251,6 +261,8 @@ def contact_view(request):
 def legal_view(request):
     if 'current_island_slug' in request.session:
         island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    else:
+        island = get_object_or_404(Island, slug='oahu')
 
     context = {
         'island': island,
@@ -290,8 +302,7 @@ def update_booking_view(request, booking_id):
 @staff_member_required
 def save_booking(request, booking_id):
 
-    if 'current_island_slug' in request.session:
-        island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    island = get_object_or_404(Island, slug=request.session['current_island_slug'])
         
     booking = update_booking_util(request, booking_id)
 
@@ -306,6 +317,27 @@ def save_booking(request, booking_id):
 
     }
     return render(request, 'core/views/update.html', context)
+
+
+@staff_member_required
+def delete_booking(request, booking_id):
+    # Get objects
+    island = get_object_or_404(Island, slug=request.session['current_island_slug'])
+    booking = get_object_or_404(Booking, pk=booking_id)
+
+    # Delete booking
+    booking.delete()
+
+    # Get query params from request
+    category = request.GET.get('category', '')
+    page = request.GET.get('page', '')
+
+    # Build URL
+    url = reverse('core:bookings', kwargs={'island_slug': island.slug})
+    if category or page:
+        url += f'?category={category}&page={page}'
+
+    return redirect(url)
 
 
 

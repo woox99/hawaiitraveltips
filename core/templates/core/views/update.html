@@ -231,7 +231,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-dark" data-bs-dismiss="modal">Cancel</button>
-                    <form action="" method="POST">
+                    <form action="{% url 'core:delete-booking' booking.pk %}?category={{current_category}}&page={{current_page_num}}" method="POST">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-outline-danger">Yes, Delete</button>
                     </form>

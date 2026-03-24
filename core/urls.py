@@ -5,6 +5,7 @@ app_name = 'core'
 
 urlpatterns = [
     path('', views.home, name='home'),
+    path('error', views.error, name='error'), #debug just for testing remove
     path('welcome/', views.index, name='index'),
     path('import/', views.import_view, name='import'), #debug
     path('about/', views.about_view, name='about'),
@@ -14,6 +15,7 @@ urlpatterns = [
     path('guide/<str:guide_slug>/', views.guide_detail_view, name='guide-detail'),
     path('update-booking/<int:booking_id>/', views.update_booking_view, name='update-booking'),
     path('save-booking/<int:booking_id>/', views.save_booking, name='save-booking'),
+    path('delete-booking/<int:booking_id>/', views.delete_booking, name='delete-booking'),
     path('<str:island_slug>/', views.island_view, name='island'),
     path('<str:island_slug>/tours-activities/', views.bookings_view, name='bookings'),
     path('<str:island_slug>/guides/', views.guide_list_view, name='guides'),
