@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+Disallow: /private/
+Disallow: /*?page=*
+Allow: /
+
+Sitemap: https://www.hawaiitraveltips.com/sitemap.xml

@@ -10,7 +10,7 @@
                         <div class="swiper togo-tour-card-active">
                             <div class="swiper-wrapper togo-slide-transtion">
                                 <div class="swiper-slide">
-                                    <a href="{{booking.referral_link}}">
+                                    <a href="{{booking.referral_link}}&back={{back_url}}">
                                         <img src="{{booking.image_URL}}" alt="{{booking.title}}">
                                     </a>
                                 </div>
@@ -64,7 +64,7 @@
                             </h5>
                         </div>
                         <h4 class="togo-tour-2-card-title">
-                            <a href="{{booking.referral_link}}">
+                            <a href="{{booking.referral_link}}?back={{back_url}}">
                                 {{booking.title}}
                             </a>
                         </h4>
@@ -99,7 +99,7 @@
                         <span class="togo-tour-card-price-prefix"></span>
                     </div>
                     <div class="togo-tour-list-btn mb-12">
-                        <a href="{{booking.referral_link}}" class="togo-btn-primary">View tour</a>
+                        <a href="{{booking.referral_link}}&back={{back_url}}" class="togo-btn-primary">View tour</a>
                     </div>
                         {% if booking.is_promo %}
                         <div class="mt-15">

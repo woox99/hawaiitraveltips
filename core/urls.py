@@ -1,9 +1,14 @@
 from django.urls import path
 from . import views
+from django.views.generic import TemplateView
+from django.views.generic.base import RedirectView
+
 
 app_name = 'core'
 
 urlpatterns = [
+    path("robots.txt", TemplateView.as_view(template_name="core/robots.txt", content_type="text/plain")),
+    path('robots.txt/', RedirectView.as_view(url='/robots.txt')),
     path('', views.home, name='home'),
     path('error', views.error, name='error'), #debug just for testing remove
     path('welcome/', views.index, name='index'),
