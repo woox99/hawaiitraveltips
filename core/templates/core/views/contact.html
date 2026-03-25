@@ -9,11 +9,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Contact Hawaii Travel Tips | Get in Touch</title>
-    <meta name="description" content="Have questions or need help planning your Hawaiian vacation? Contact Hawaii Travel Tips for expert advice, tips, and recommendations for exploring the islands.">
+    <meta name="description"
+        content="Have questions or need help planning your Hawaiian vacation? Contact Hawaii Travel Tips for expert advice, tips, and recommendations for exploring the islands.">
 
     <!-- SEO & Social -->
     <meta property="og:title" content="Contact Hawaii Travel Tips | Get in Touch">
-    <meta property="og:description" content="Have questions or need help planning your Hawaiian vacation? Contact Hawaii Travel Tips for expert advice, tips, and recommendations for exploring the islands.">
+    <meta property="og:description"
+        content="Have questions or need help planning your Hawaiian vacation? Contact Hawaii Travel Tips for expert advice, tips, and recommendations for exploring the islands.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hawaiitraveltips.com/contact/">
     <meta property="og:site_name" content="Hawaii Travel Tips">
@@ -24,7 +26,8 @@
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Contact Hawaii Travel Tips | Get in Touch">
-    <meta name="twitter:description" content="Have questions or need help planning your Hawaiian vacation? Contact Hawaii Travel Tips for expert advice, tips, and recommendations for exploring the islands.">
+    <meta name="twitter:description"
+        content="Have questions or need help planning your Hawaiian vacation? Contact Hawaii Travel Tips for expert advice, tips, and recommendations for exploring the islands.">
     <meta name="twitter:image" content="{% static 'core/img/og-image.webp' %}">
 
     <!-- canonical -->
@@ -112,40 +115,42 @@
                             <div class="col-lg-8">
                                 <div class="togo-contact-wrapper">
                                     <h4 class="togo-section-title fs-28 mb-15">Email us</h4>
-                                    <div class="togo-contact-form">
-                                        <div class="row gx-20">
-                                            <div class="col-xl-5 col-lg-4 col-sm-6 col-12">
-                                                <div class="togo-contact-input mb-20">
-                                                    <input type="text" placeholder="First name*"
-                                                        id="contact-first-name">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-5 col-lg-4 col-sm-6 col-12">
-                                                <div class="togo-contact-input mb-20">
-                                                    <input type="text" placeholder="Last name*" id="contact-last-name">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-6 col-sm-6 col-12">
-                                                <div class="togo-contact-input mb-20">
-                                                    <input type="email" placeholder="Email*" id="contact-email">
-                                                </div>
-                                            </div>
-                                            <div class="col-xl-12">
-                                                <div class="togo-contact-input mb-20">
-                                                    <textarea placeholder="Your message*"
-                                                        id="contact-message"></textarea>
-                                                </div>
-                                                <div class="togo-contact-input-wrap">
-                                                    <div class="togo-from-checkbox">
-                                                        <input id="active" type="checkbox" required>
-                                                        <label for="active">By checking this, you agree to our <a href="#">Privacy Policy</a></label>
+                                    <form action="https://formspree.io/f/xbdpjgbr" method="POST">
+                                        <!-- Subject line when you reply to emails -->
+                                        <input type="hidden" name="subject"
+                                            value="Thanks for contacting Hawaii Travel Tips" />
+                                        <div class="togo-contact-form">
+                                            <div class="row gx-20">
+                                                <div class="col-xl-5 col-lg-4 col-sm-6 col-12">
+                                                    <div class="togo-contact-input mb-20">
+                                                        <input type="text" placeholder="First name*"
+                                                            id="contact-first-name" name="name" required>
                                                     </div>
-                                                    <button class="togo-btn-primary" type="submit"
-                                                        id="contact-submit-btn">Submit</button>
+                                                </div>
+                                                <div class="col-xl-6 col-sm-6 col-12">
+                                                    <div class="togo-contact-input mb-20">
+                                                        <input type="email" placeholder="Email*" id="contact-email"
+                                                            name="email" required>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-12">
+                                                    <div class="togo-contact-input mb-20">
+                                                        <textarea placeholder="Your message*" id="contact-message"
+                                                            name="message" required></textarea>
+                                                    </div>
+                                                    <div class="togo-contact-input-wrap">
+                                                        <div class="togo-from-checkbox">
+                                                            <input id="active" type="checkbox" required>
+                                                            <label for="active">By checking this, you agree to our <a
+                                                                    href="{% url 'core:legal' %}">Privacy Policy</a></label>
+                                                        </div>
+                                                        <button class="togo-btn-primary" type="submit"
+                                                            id="contact-submit-btn">Submit</button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </form>
                                 </div>
                             </div>
                             <div class="col-lg-4">
@@ -211,8 +216,16 @@
     <script src="{% static 'core/js/fecha.js' %}"></script>
     <script src="{% static 'core/js/hotel-datepicker.js' %}"></script>
     <script src="{% static 'core/js/range-slider.js' %}"></script>
-    <script src="{% static 'core/js/email.js' %}"></script>
     <script src="{% static 'core/js/scripts.js' %}"></script>
+
+    <!-- Clear form -->
+    <script>
+        window.onbeforeunload = () => {
+            for (const form of document.getElementsByTagName('form')) {
+                form.reset();
+            }
+        }
+    </script>
 
 </body>
 

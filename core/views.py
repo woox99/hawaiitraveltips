@@ -18,8 +18,6 @@ from django.db.models import Q
 import html
 
 
-def error(request):
-    return render(request, 'core/404.html')
 
 def index(request):
     if 'current_island_slug' in request.session:
@@ -141,7 +139,7 @@ def bookings_view(request, island_slug):
         # cat.visible_bookings_count = cat.bookings.filter(island=island).count
         cat.visible_bookings_count = cat.bookings.filter(island=island, is_public=True).count
 
-    back_url = f'www.hawaiitraveltips.com/{island.slug}/tours-activities/?page={page_obj.number}&category={current_category}'
+    back_url = f'www.hawaiitraveltips.com/{island.slug}/tours-activities/?page={page_obj.number}&category={slugify(current_category)}'
 
         
     context = {

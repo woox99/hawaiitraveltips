@@ -19,7 +19,7 @@ class StaticViewSitemap(Sitemap):
 
 class IslandSitemap(Sitemap):
     priority = 1.0
-    changefreq = 'weekly'
+    changefreq = 'monthly'
 
     def items(self):
         return Island.objects.all()
@@ -33,7 +33,7 @@ class IslandSitemap(Sitemap):
 
 class IslandToursSitemap(Sitemap):
     priority = 0.8
-    changefreq = 'weekly'
+    changefreq = 'monthly'
 
     def items(self):
         # Return all islands
@@ -48,8 +48,8 @@ class IslandToursSitemap(Sitemap):
 
 
 class IslandGuidesSitemap(Sitemap):
-    priority = 0.8
-    changefreq = 'weekly'
+    priority = 0.5
+    changefreq = 'monthly'
 
     def items(self):
         # Return all islands
