@@ -25,6 +25,15 @@
     <link rel="stylesheet" href="{% static 'core/css/main.css' %}">
 
     <style>
+        .island-breadcrumb {
+            background-image: url("/static/core/img/{{ island.slug }}.webp");
+        }
+
+        @media (max-width: 768px) {
+            .island-breadcrumb {
+                background-image: url("/static/core/img/mobile-{{ island.slug }}.webp");
+            }
+        }
         .togo-tour-card-desc,
         .togo-tour-card-bottom {
             display: -webkit-box;
@@ -79,8 +88,8 @@
             <main>
 
                 <!-- breadcrumb area start -->
-                <div class="togo-breadcrumb-ptb togo-breadcrumb-bg bg-pos pt-150 pb-85"
-                    data-background="{% static 'core/img/'|add:island.slug|add:'.webp' %}">
+                <div class="island-breadcrumb togo-breadcrumb-ptb togo-breadcrumb-bg bg-pos pt-150 pb-85"
+                    data-background="">
                     <div class="container container-1440">
                         <div class="row">
                             <div class="col-lg-12">

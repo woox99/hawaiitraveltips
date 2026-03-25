@@ -1,6 +1,17 @@
 {% load static %}
+<style>
+    .togo-community-ptb {
+        background-image: url("/static/core/img/mountains.webp");
+    }
+
+    @media (max-width: 768px) {
+        .togo-community-ptb {
+            background-image: url("/static/core/img/mobile-mountains.webp");
+        }
+    }
+</style>
 <div class="togo-community-ptb pt-190 pb-190 togo-community-3-bg bg-pos"
-    data-background="{% static 'core/img/mountains.webp' %}">
+    data-background="">
     <div class="togo-community-3-bg-shape">
         <div class="shape-1">
             <img src="{% static 'core/img/cta/comunity-shape-1.png' %}" alt="">
