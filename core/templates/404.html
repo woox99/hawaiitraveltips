@@ -11,7 +11,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
 
    <!-- Place favicon.ico in the root directory -->
-   <link rel="shortcut icon" type="image/x-icon" href="assets/img/logo/favicon.png">
+   <link rel="icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+   <link rel="apple-touch-icon" href="{% static 'core/img/favicon.ico' %}">
 
    <!-- CSS here -->
    <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
@@ -74,7 +75,7 @@
                      <div class="col-lg-12">
                         <div class="togo-error-wrapper text-center">
                            <div class="togo-error-thumb pb-50">
-                              <img src="assets/img/carrer/error.png" alt="">
+                              <img src="{% static 'core/img/carrer/error.png' %}" alt="error image">
                            </div>
                            <h4 class="togo-section-title fs-34 mb-15">Oops, that didn’t work.</h4>
                            <p>The page you are looking for cannot be found.</p>

@@ -32,8 +32,8 @@
     <link rel="canonical" href="https://hawaiitraveltips.com/guide/{{ title|slugify }}/">
 
     <!-- Place favicon.ico in the root directory -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'core/img/favicon.ico' %}">
 
     <script type="application/ld+json">
     {
@@ -131,7 +131,7 @@
                                             <span>{{wp_post.modified|date:"M j, Y"}}</span>
                                         </div>
                                         <div class="togo-postbox-details-thumb mb-30">
-                                            <img src="{{wp_post.jetpack_featured_media_url}}" alt="">
+                                            <img src="{{wp_post.jetpack_featured_media_url}}" alt="{{wp_post.title.rendered|safe}}">
                                         </div>
                                         <div class="togo-postbox-details-text mb-30">
                                             {{wp_post.content.rendered|safe}}
@@ -145,7 +145,7 @@
                                                 <div class="togo-blog-item mb-24">
                                                     <div class="togo-blog-item-thumb">
                                                         <a href="{% url 'core:guide-detail' guide_slug=post.slug %}">
-                                                            <img src="{{post.jetpack_featured_media_url}}" alt="">
+                                                            <img src="{{post.jetpack_featured_media_url}}" alt="{{wp_post.title.rendered|safe}}">
                                                         </a>
                                                     </div>
                                                     <div class="togo-blog-item-content">

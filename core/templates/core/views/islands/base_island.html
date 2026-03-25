@@ -13,8 +13,9 @@
     {% endblock %}
     
     <!-- Favicon -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'core/img/favicon.ico' %}">
+
     
     <!-- Stylesheets -->
     <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
@@ -80,7 +81,7 @@
                 <div class="togo-hero-3-ptb">
                     <div class="togo-hero-3-wrapper p-relative">
                         <div class="togo-hero-3-bottom-shape">
-                            <img class="d-none d-md-block" src="{% static 'core/img/hero/home-3/bg-hero-shape.png' %}" alt="">
+                            <img class="d-none d-md-block" src="{% static 'core/img/hero/home-3/bg-hero-shape.png' %}" alt="texture image">
                         </div>
                         <div class="swiper togo-hero-2-active">
                             <div class="swiper-wrapper">
@@ -336,7 +337,7 @@
                                 <div class="togo-blog-2-item mb-30 fade-anim" data-delay=".5">
                                     <div class="togo-blog-2-item-thumb mb-20">
                                         <a href="{% url 'core:guide-detail' post.slug  %}">
-                                            <img src="{{post.jetpack_featured_media_url}}" alt="">
+                                            <img src="{{post.jetpack_featured_media_url}}" alt="{{post.title.rendered|safe}}">
                                         </a>
                                     </div>
                                     <div class="togo-blog-2-item-content">

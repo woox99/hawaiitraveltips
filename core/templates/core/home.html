@@ -33,8 +33,8 @@
 
     <!-- Place favicon.ico in the root directory -->
     <!-- <link rel="shortcut icon" type="image/x-icon" href="{% static 'core/img/logo/favicon.png' %}"> -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico">
-    <link rel="apple-touch-icon" href="/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="{% static 'core/img/favicon.ico' %}">
+    <link rel="apple-touch-icon" href="{% static 'core/img/favicon.ico' %}">
 
     <script type="application/ld+json">
         {
@@ -271,7 +271,7 @@
                                 <div class="togo-place-5-item p-relative mb-24" style="height: 100%;">
                                     <div class="togo-place-5-item-thumb p-relative fix" style="height: 100%;">
                                         <a href="{% url 'core:island' island_slug='oahu' %}">
-                                            <img src="{% static 'core/img/oahu.webp' %}" alt=""
+                                            <img src="{% static 'core/img/oahu.webp' %}" alt="oahu island landscape in Hawaii"
                                                 style="object-fit: cover; object-position: center; height: 100%;">
                                         </a>
                                     </div>
@@ -288,7 +288,7 @@
                                 <div class="togo-place-5-item p-relative mb-24">
                                     <div class="togo-place-5-item-thumb p-relative fix">
                                         <a href="{% url 'core:island' island_slug='oahu' %}">
-                                            <img src="{% static 'core/img/oahu.webp' %}" alt=""
+                                            <img src="{% static 'core/img/oahu.webp' %}" alt="oahu island landscape in Hawaii"
                                                 style="object-fit: cover; object-position: center; aspect-ratio: 1/1; overflow: hidden;">
                                         </a>
                                     </div>
@@ -303,7 +303,7 @@
                                 <div class="d-xl-none togo-place-5-item p-relative mb-24">
                                     <div class="togo-place-5-item-thumb p-relative fix">
                                         <a href="{% url 'core:island' island_slug='big-island' %}">
-                                            <img src="{% static 'core/img/big-island-select.webp' %}" alt=""
+                                            <img src="{% static 'core/img/big-island-select.webp' %}" alt="Big Island landscape in Hawaii"
                                                 style="object-fit: cover; object-position: center; aspect-ratio: 1/1; overflow: hidden;">
                                         </a>
                                     </div>
@@ -320,7 +320,7 @@
                                 <div class="togo-place-5-item p-relative mb-24">
                                     <div class="togo-place-5-item-thumb p-relative fix">
                                         <a href="{% url 'core:island' island_slug='maui' %}">
-                                            <img src="{% static 'core/img/maui.webp' %}" alt=""
+                                            <img src="{% static 'core/img/maui.webp' %}" alt="Maui island landscape in Hawaii"
                                                 style="object-fit: cover; object-position: center; aspect-ratio: 1/1; overflow: hidden;">
                                         </a>
                                     </div>
@@ -335,7 +335,7 @@
                                 <div class="togo-place-5-item p-relative">
                                     <div class="togo-place-5-item-thumb p-relative fix">
                                         <a href="{% url 'core:island' island_slug='kauai' %}">
-                                            <img src="{% static 'core/img/kauai.webp' %}" alt=""
+                                            <img src="{% static 'core/img/kauai.webp' %}" alt="Kauai island landscape in Hawaii"
                                                 style="object-fit: cover; object-position: center; aspect-ratio: 1/1; overflow: hidden;">
                                         </a>
                                     </div>
@@ -352,7 +352,7 @@
                                 <div class="togo-place-5-item p-relative mb-24" style="height: 100%;">
                                     <div class="togo-place-5-item-thumb p-relative fix" style="height: 100%;">
                                         <a href="{% url 'core:island' island_slug='big-island' %}">
-                                            <img src="{% static 'core/img/big-island-select.webp' %}" alt=""
+                                            <img src="{% static 'core/img/big-island-select.webp' %}" alt="Big island landscape in Hawaii"
                                                 style="object-fit: cover; object-position: center; height: 100%;">
                                         </a>
                                     </div>
@@ -447,7 +447,7 @@
                                 <div class="togo-tour-card mb-24">
                                     <div class="togo-tour-card-thumb p-relative mb-20">
                                         <a href="{{booking.referral_link}}&back=www.hawaiitraveltips.com/{{booking.island.slug}}/tours-activities/">
-                                            <img src="{{booking.image_URL}}" alt="">
+                                            <img src="{{booking.image_URL}}" alt="{{booking.title}}">
                                         </a>
                                     </div>
                                     <div class="togo-tour-card-content">
