@@ -488,6 +488,7 @@
                                             <p>{{booking.details}}</p>
                                         </div>
                                         <div class="togo-tour-card-price-wrap">
+                                            {% if booking.company_rating %}
                                             <div class="togo-tour-card-review">
                                                 <span class="togo-tour-card-rating">
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15"
@@ -499,9 +500,12 @@
                                                     </svg>
                                                     {{booking.company_rating}}</span>
                                                 <span class="togo-tour-card-rating-count">
-                                                    ({{booking.company_reviews}})
+                                                    <small>
+                                                        ({{booking.formatted_reviews}})
+                                                    </small>
                                                 </span>
                                             </div>
+                                            {% endif %}
                                             <div class="togo-tour-card-price">
                                                 <span class="togo-tour-card-price-prefix">from</span>
                                                 <span class="togo-tour-card-price-regular">${{booking.adjusted_price}}</span>

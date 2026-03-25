@@ -39,6 +39,11 @@ class Booking(models.Model):
         discounted = self.price - (self.price * self.promo_amount / 100)
         return max(round(discounted), 0)
 
+    @property
+    def formatted_reviews(self):
+        """Returns the adjusted price with commas, e.g., 1,123"""
+        return f"{self.company_reviews:,}"
+
     def __str__(self):
         return self.title
 

@@ -79,11 +79,16 @@
                 </div>
             </div>
             <div class="togo-footer-top-border pt-35 pb-30">
-                <div class="row align-items-center">
+                <div class="togo-footer-copyright-text">
+                    <p><a href="{% url 'core:index' %}" style="color: var(--togo-theme-primary)">Hawaii Travel Tips</a> © 2026 all right reserved.</p>
+                </div>
+                <div class="row align-items-center mt-2">
                     <div class="col-6">
-                        <div class="togo-footer-copyright-text">
-                            <p><a href="{% url 'core:index' %}">Hawaii Travel Tips</a> © 2026 all right reserved.</p>
-                        </div>
+                        <i>Powered by 
+                            <a target="_blank" href="https://kaimukidigital.com/" rel="nofollow" class="">
+                                <img src="{% static 'core/img/kaimuki_digital.webp' %}" alt="Kaimuki Digital Web Design Logo" style="height: 20px;">
+                            </a>
+                        </i>
                     </div>
                     <div class="col-6">
                         <div class="togo-footer-copyright-currence text-end">
@@ -100,7 +105,6 @@
                                     <h4>Currencies</h4>
                                     <ul class="currence-work">
                                         <li><a href="#">USD</a></li>
-                                        <li><a href="#">ERO</a></li>
                                     </ul>
                                 </div>
                             </div>

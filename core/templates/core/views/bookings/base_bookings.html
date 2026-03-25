@@ -419,20 +419,24 @@
                 <div class="togo-footer-2-ptb pt-60">
                     <div class="container">
                         <div class="togo-footer-top-border pt-35 pb-30">
-                            <div class="row align-items-center">
+                            <div class="togo-footer-copyright-text">
+                                <p><a href="{% url 'core:index' %}" style="color: var(--togo-theme-primary)">Hawaii Travel Tips</a> © 2026 all right reserved.</p>
+                            </div>
+                            <div class="row align-items-center mt-2">
                                 <div class="col-6">
-                                    <div class="togo-footer-copyright-text">
-                                        <p><a href="{% url 'core:index' %}">Hawaii Travel Tips</a> © 2026 all right reserved.
-                                        </p>
-                                    </div>
+                                    <i>Powered by 
+                                        <a target="_blank" href="https://kaimukidigital.com/" rel="nofollow" class="">
+                                            <img src="{% static 'core/img/kaimuki_digital.webp' %}" alt="Kaimuki Digital Web Design Logo" style="height: 20px;">
+                                        </a>
+                                    </i>
                                 </div>
                                 <div class="col-6">
                                     <div class="togo-footer-copyright-currence text-end">
                                         <div class="togo-footer-copyright-currence-btn">
                                             <span>
                                                 EN / USD
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                    viewBox="0 0 16 16" fill="none">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                                    fill="none">
                                                     <path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5"
                                                         stroke-linecap="round" stroke-linejoin="round" />
                                                 </svg>

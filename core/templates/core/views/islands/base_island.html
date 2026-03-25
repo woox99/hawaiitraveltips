@@ -271,7 +271,9 @@
                                                     {{booking.company_rating}}
                                                 </span>
                                                 <span class="togo-tour-card-rating-count">
-                                                    ({{ booking.company_reviews }})
+                                                    <small>
+                                                        ({{ booking.formatted_reviews }})
+                                                    </small>
                                                 </span>
                                             </div>
                                             {% endif %}
