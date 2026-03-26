@@ -63,8 +63,6 @@ def island_view(request, island_slug):
     WP_API_URL = f"https://public-api.wordpress.com/wp/v2/sites/team92d3a5e49bc-kctlm.wordpress.com/posts?categories={island.wp_category_id}&per_page=3&_embed"
     wp_posts = get_wp_posts(WP_API_URL)
 
-    # back_url = f'www.hawaiitraveltips.com/{quote(island.slug)}/?page={page_obj.number}'
-
     context = {
         'island': island,
         'islands' : Island.objects.all().order_by('modified'),
@@ -139,8 +137,7 @@ def bookings_view(request, island_slug):
         # cat.visible_bookings_count = cat.bookings.filter(island=island).count
         cat.visible_bookings_count = cat.bookings.filter(island=island, is_public=True).count
 
-    back_url = f'www.hawaiitraveltips.com/{island.slug}/tours-activities/?page={page_obj.number}&category={slugify(current_category)}'
-
+    back_url = f'https%3A%2F%2Fwww.hawaiitraveltips.com%2Fbig-island%2Ftours-activities%2F%3Fcategory%3D{slugify(current_category)}%26page%3D{page_obj.number}'
         
     context = {
         'island': island,
